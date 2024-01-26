@@ -15,9 +15,9 @@ albedo_color = Color(1, 0, 0, 1)
 [sub_resource type="BoxMesh" id="BoxMesh_08tyw"]
 material = SubResource("StandardMaterial3D_ga2eg")
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_m2ssr"]
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_xk3qu"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_m2ssr"]
 
 [node name="Terrain_0" type="MeshInstance3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4)
@@ -28,14 +28,23 @@ mesh = SubResource("PlaneMesh_l00jt")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_r3st0")
 
-[node name="Bloc_0" type="StaticBody3D" parent="."]
+[node name="RectangleStanding_0" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Bloc_0"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RectangleStanding_0"]
 shape = SubResource("BoxShape3D_xc3m0")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Bloc_0"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RectangleStanding_0"]
 transform = Transform3D(1, 0, 0, 0, 2, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("BoxMesh_08tyw")
+
+[node name="Bloc_0" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0.5, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Bloc_0"]
+shape = SubResource("BoxShape3D_xk3qu")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Bloc_0"]
 mesh = SubResource("BoxMesh_08tyw")
 
 [node name="Bloc_1" type="StaticBody3D" parent="."]
@@ -45,13 +54,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.5, 0)
 shape = SubResource("BoxShape3D_m2ssr")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Bloc_1"]
-mesh = SubResource("BoxMesh_08tyw")
-
-[node name="Bloc_2" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0.5, 0)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Bloc_2"]
-shape = SubResource("BoxShape3D_xk3qu")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Bloc_2"]
 mesh = SubResource("BoxMesh_08tyw")

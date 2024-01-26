@@ -138,9 +138,4 @@ func handle_foot_movement(foot, delta):
 	score += SPEED
 
 func die():
-	print(" ")
-	print(" ")
-	print("Le joueur est mort, SCORE : ", score)
-	print(" ")
-	print(" ")
-	get_tree().quit()
+	get_tree().change_scene_to_file("res://scenes/death.tscn")

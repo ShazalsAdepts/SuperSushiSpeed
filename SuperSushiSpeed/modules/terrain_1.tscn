@@ -7,6 +7,7 @@ size = Vector2(6, 9)
 data = PackedVector3Array(3, 0, 4.5, -3, 0, 4.5, 3, 0, -4.5, -3, 0, 4.5, -3, 0, -4.5, 3, 0, -4.5)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_xc3m0"]
+size = Vector3(1, 2, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ga2eg"]
 albedo_color = Color(1, 0, 0, 1)
@@ -24,12 +25,13 @@ mesh = SubResource("PlaneMesh_l00jt")
 shape = SubResource("ConcavePolygonShape3D_r3st0")
 
 [node name="Bloc_0" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Bloc_0"]
 shape = SubResource("BoxShape3D_xc3m0")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Bloc_0"]
+transform = Transform3D(1, 0, 0, 0, 2, 0, 0, 0, 1, 0, 0, 0)
 mesh = SubResource("BoxMesh_08tyw")
 
 [node name="Bloc_1" type="StaticBody3D" parent="."]

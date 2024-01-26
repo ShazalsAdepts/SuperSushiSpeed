@@ -1,0 +1,296 @@
+[gd_scene load_steps=20 format=3 uid="uid://cvutgrnmmm4kf"]
+
+[ext_resource type="Script" path="res://scripts/Menu.gd" id="1_idp3p"]
+[ext_resource type="AudioStream" uid="uid://dp7flf424tdqh" path="res://son/fuck_noel.mp3" id="1_ka1cd"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ug1b8"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_5m14d"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_kwyje"]
+size = Vector2(100, 100)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lx8su"]
+size = Vector3(1, 2, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_wwktt"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tluvv"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_8ra1c"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_2ekuy"]
+sky_material = SubResource("ProceduralSkyMaterial_8ra1c")
+
+[sub_resource type="Environment" id="Environment_30fck"]
+background_mode = 2
+sky = SubResource("Sky_2ekuy")
+tonemap_mode = 2
+fog_enabled = true
+fog_light_color = Color(0.945098, 0.709804, 0.486275, 1)
+fog_light_energy = 0.3
+fog_density = 0.0353
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_venuj"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_d5vs0"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_acfrt"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wxttn"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_o5etb"]
+
+[sub_resource type="Animation" id="Animation_hachs"]
+resource_name = "camer_anim"
+length = 10.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("background/SubViewportContainer/SubViewport/Camera3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2, 4, 6, 8, 10),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(2.54511, 2.2189, -2.35581), Vector3(3.33377, 2.11861, -0.871862), Vector3(2.89119, 1.647, -0.0494457), Vector3(2.89119, 1.647, -0.0494459), Vector3(3.00337, 2.11344, -1.91744), Vector3(2.54511, 2.2189, -2.35581)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("background/SubViewportContainer/SubViewport/Camera3D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2, 4, 6, 8, 10),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-0.349066, 2.68732, 7.63975e-09), Vector3(-0.349066, 2.5012, 7.63975e-09), Vector3(-0.349066, 2.24092, 7.63975e-09), Vector3(-0.349066, 2.58605, 3.70502e-10), Vector3(-0.349066, 2.71151, -1.31023e-08), Vector3(-0.349066, 2.68732, 7.63975e-09)]
+}
+
+[sub_resource type="Animation" id="Animation_s46yj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("background/SubViewportContainer/SubViewport/Camera3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(2.54511, 2.2189, -2.35581)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("background/SubViewportContainer/SubViewport/Camera3D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.349066, 2.68732, 7.63975e-09)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_a20fb"]
+_data = {
+"RESET": SubResource("Animation_s46yj"),
+"camer_anim": SubResource("Animation_hachs")
+}
+
+[node name="Menu" type="CanvasLayer"]
+
+[node name="background" type="Node3D" parent="."]
+
+[node name="Player" type="CharacterBody3D" parent="background"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.962638, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="background/Player"]
+transform = Transform3D(1.1, 0, 0, 0, 1.1, 0, 0, 0, 1.1, 0, 0, 0)
+shape = SubResource("CapsuleShape3D_ug1b8")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="background/Player"]
+mesh = SubResource("CapsuleMesh_5m14d")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="background"]
+mesh = SubResource("PlaneMesh_kwyje")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="background"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 50, 50, 0)
+mesh = SubResource("PlaneMesh_kwyje")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="background"]
+transform = Transform3D(1.91069e-15, 4.37114e-08, -1, 1, -4.37114e-08, 0, -4.37114e-08, -1, -4.37114e-08, 0, 50, 50)
+mesh = SubResource("PlaneMesh_kwyje")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="background"]
+transform = Transform3D(4.37114e-08, 1, 8.74228e-08, 1, -4.37114e-08, 0, 3.82137e-15, 8.74228e-08, -1, -50, 50, 0)
+mesh = SubResource("PlaneMesh_kwyje")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="background"]
+transform = Transform3D(1.91069e-15, 4.37114e-08, 1, 1, -4.37114e-08, 0, 4.37114e-08, 1, -4.37114e-08, 0, 50, -50)
+mesh = SubResource("PlaneMesh_kwyje")
+
+[node name="Bloc_0" type="StaticBody3D" parent="background"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 1, -3)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="background/Bloc_0"]
+shape = SubResource("BoxShape3D_lx8su")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="background/Bloc_0"]
+transform = Transform3D(1, 0, 0, 0, 2, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("BoxMesh_wwktt")
+
+[node name="Bloc_1" type="StaticBody3D" parent="background"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0.5, 4)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="background/Bloc_1"]
+shape = SubResource("BoxShape3D_tluvv")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="background/Bloc_1"]
+mesh = SubResource("BoxMesh_wwktt")
+
+[node name="Bloc_2" type="StaticBody3D" parent="background"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 6)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="background/Bloc_2"]
+shape = SubResource("BoxShape3D_lx8su")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="background/Bloc_2"]
+transform = Transform3D(1, 0, 0, 0, 2, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("BoxMesh_wwktt")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="background"]
+transform = Transform3D(-0.866025, -0.433013, 0.25, -0.354305, 0.884258, 0.30423, -0.3528, 0.174894, -0.919209, 0, 0, 0)
+light_color = Color(0.602401, 0.466914, 0.195508, 1)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="background"]
+environment = SubResource("Environment_30fck")
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="background"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SubViewport" type="SubViewport" parent="background/SubViewportContainer"]
+handle_input_locally = false
+size = Vector2i(1280, 720)
+render_target_update_mode = 4
+
+[node name="Camera3D" type="Camera3D" parent="background/SubViewportContainer/SubViewport"]
+transform = Transform3D(-0.89858, -0.150082, 0.412347, 7.17902e-09, 0.939693, 0.34202, -0.43881, 0.307332, -0.844389, 2.54511, 2.2189, -2.35581)
+
+[node name="Musique" type="AudioStreamPlayer" parent="background"]
+stream = ExtResource("1_ka1cd")
+pitch_scale = 1.5
+autoplay = true
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_idp3p")
+
+[node name="MarginContainer" type="MarginContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 64
+theme_override_constants/margin_top = 80
+theme_override_constants/margin_right = 64
+theme_override_constants/margin_bottom = 80
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/MarginContainer"]
+layout_mode = 2
+
+[node name="game_title" type="Label" parent="Control/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 62
+text = "SUPER SUSHI SPEED"
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+
+[node name="button_start" type="Button" parent="Control/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_colors/font_pressed_color = Color(0.545098, 0.0784314, 0.0862745, 1)
+theme_override_colors/font_hover_color = Color(0.745098, 0.360784, 0.286275, 1)
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxEmpty_venuj")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_d5vs0")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_acfrt")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_wxttn")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_o5etb")
+text = "Start Game"
+
+[node name="button_score" type="Button" parent="Control/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_colors/font_pressed_color = Color(0.545098, 0.0784314, 0.0862745, 1)
+theme_override_colors/font_hover_color = Color(0.745098, 0.360784, 0.286275, 1)
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxEmpty_venuj")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_d5vs0")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_acfrt")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_wxttn")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_o5etb")
+text = "Score"
+
+[node name="button_settings" type="Button" parent="Control/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_colors/font_pressed_color = Color(0.545098, 0.0784314, 0.0862745, 1)
+theme_override_colors/font_hover_color = Color(0.745098, 0.360784, 0.286275, 1)
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxEmpty_venuj")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_d5vs0")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_acfrt")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_wxttn")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_o5etb")
+text = "Settings
+"
+
+[node name="button_quit" type="Button" parent="Control/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_colors/font_pressed_color = Color(0.545098, 0.0784314, 0.0862745, 1)
+theme_override_colors/font_hover_color = Color(0.745098, 0.360784, 0.286275, 1)
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxEmpty_venuj")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_d5vs0")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_acfrt")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_wxttn")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_o5etb")
+text = "Quit
+"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_a20fb")
+}
+autoplay = "camer_anim"
+speed_scale = 0.3
+
+[connection signal="pressed" from="Control/MarginContainer/VBoxContainer/button_start" to="Control" method="_on_button_start_pressed"]
+[connection signal="pressed" from="Control/MarginContainer/VBoxContainer/button_score" to="Control" method="_on_button_score_pressed"]
+[connection signal="pressed" from="Control/MarginContainer/VBoxContainer/button_settings" to="Control" method="_on_button_settings_pressed"]
+[connection signal="pressed" from="Control/MarginContainer/VBoxContainer/button_quit" to="Control" method="_on_button_quit_pressed"]

@@ -140,10 +140,7 @@ func handle_foot_movement(foot, delta):
 func die():
 	print(" ")
 	print(" ")
-	print("Marius")
 	print("Le joueur est mort, SCORE : ", score)
 	print(" ")
 	print(" ")
-	print(" FRED ")
-	print("Nicolas")
 	get_tree().quit()

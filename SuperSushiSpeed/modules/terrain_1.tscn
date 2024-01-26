@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://7rmtdbt58kpc"]
+[gd_scene load_steps=8 format=3 uid="uid://7rmtdbt58kpc"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_l00jt"]
 size = Vector2(6, 9)
@@ -14,6 +14,10 @@ albedo_color = Color(1, 0, 0, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_08tyw"]
 material = SubResource("StandardMaterial3D_ga2eg")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_m2ssr"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xk3qu"]
 
 [node name="Terrain_0" type="MeshInstance3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4)
@@ -38,7 +42,7 @@ mesh = SubResource("BoxMesh_08tyw")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.5, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Bloc_1"]
-shape = SubResource("BoxShape3D_xc3m0")
+shape = SubResource("BoxShape3D_m2ssr")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Bloc_1"]
 mesh = SubResource("BoxMesh_08tyw")
@@ -47,7 +51,7 @@ mesh = SubResource("BoxMesh_08tyw")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0.5, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Bloc_2"]
-shape = SubResource("BoxShape3D_xc3m0")
+shape = SubResource("BoxShape3D_xk3qu")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Bloc_2"]
 mesh = SubResource("BoxMesh_08tyw")

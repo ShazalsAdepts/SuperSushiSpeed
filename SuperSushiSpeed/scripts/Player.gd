@@ -144,6 +144,5 @@ func die():
 	print("Le joueur est mort, SCORE : ", score)
 	print(" ")
 	print(" ")
-	print(" FRED ")
 	print("Nicolas")
 	get_tree().quit()

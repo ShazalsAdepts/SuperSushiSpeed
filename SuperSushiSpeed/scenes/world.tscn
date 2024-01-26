@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://dhkq2ebp8keuh" path="res://scenes/terrain_controller.tscn" id="1_1mi36"]
 [ext_resource type="Script" path="res://scripts/Player.gd" id="2_53c47"]
 [ext_resource type="Script" path="res://scripts/Son.gd" id="2_nb0ul"]
+[ext_resource type="ArrayMesh" uid="uid://chos5nhjs7sa6" path="res://assets/sushi/sushi.obj" id="3_dkcss"]
 [ext_resource type="Script" path="res://scripts/Camera.gd" id="3_eu6yv"]
 [ext_resource type="AudioStream" uid="uid://caj84cpccqsnn" path="res://son/kick.mp3" id="4_pbjbu"]
 [ext_resource type="AudioStream" uid="uid://dp7flf424tdqh" path="res://son/fuck_noel.mp3" id="4_wxao7"]
@@ -20,8 +21,6 @@ sky = SubResource("Sky_8qb5r")
 tonemap_mode = 2
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_y6d5c"]
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_asd8j"]
 
 [node name="World" type="Node3D"]
 
@@ -46,12 +45,14 @@ score_label = NodePath("score")
 speed_label = NodePath("speed")
 rythme_label = NodePath("title_rythme")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
-transform = Transform3D(1.1, 0, 0, 0, 1.1, 0, 0, 0, 1.1, 0, 0, 0)
-shape = SubResource("CapsuleShape3D_y6d5c")
+[node name="Sushi" type="MeshInstance3D" parent="Player"]
+transform = Transform3D(-1.31134e-08, 0, -0.3, 0, 0.3, 0, 0.3, 0, -1.31134e-08, 0, -1.11464, 0)
+mesh = ExtResource("3_dkcss")
+skeleton = NodePath("../..")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Player"]
-mesh = SubResource("CapsuleMesh_asd8j")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, -0.323193, 0)
+shape = SubResource("CapsuleShape3D_y6d5c")
 
 [node name="title_score" type="Label" parent="Player"]
 offset_left = 568.0

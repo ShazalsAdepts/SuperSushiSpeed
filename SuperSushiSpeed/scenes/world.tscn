@@ -1,0 +1,104 @@
+[gd_scene load_steps=12 format=3 uid="uid://ccv2ry3lkvg6p"]
+
+[ext_resource type="PackedScene" uid="uid://dhkq2ebp8keuh" path="res://scenes/terrain_controller.tscn" id="1_1mi36"]
+[ext_resource type="Script" path="res://scripts/Player.gd" id="2_53c47"]
+[ext_resource type="Script" path="res://scripts/Son.gd" id="2_nb0ul"]
+[ext_resource type="Script" path="res://scripts/Camera.gd" id="3_eu6yv"]
+[ext_resource type="AudioStream" uid="uid://caj84cpccqsnn" path="res://son/kick.mp3" id="4_pbjbu"]
+[ext_resource type="AudioStream" uid="uid://dp7flf424tdqh" path="res://son/fuck_noel.mp3" id="4_wxao7"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_rv4pa"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_8qb5r"]
+sky_material = SubResource("ProceduralSkyMaterial_rv4pa")
+
+[sub_resource type="Environment" id="Environment_vj3ns"]
+background_mode = 2
+sky = SubResource("Sky_8qb5r")
+tonemap_mode = 2
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_y6d5c"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_asd8j"]
+
+[node name="World" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_vj3ns")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+shadow_enabled = true
+
+[node name="TerrainController" parent="." node_paths=PackedStringArray("player") instance=ExtResource("1_1mi36")]
+player = NodePath("../Player")
+
+[node name="Player" type="CharacterBody3D" parent="." node_paths=PackedStringArray("terrain_controller", "player_camera", "musique", "son", "score_label", "speed_label", "rythme_label")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, -2)
+script = ExtResource("2_53c47")
+terrain_controller = NodePath("../TerrainController")
+player_camera = NodePath("../Camera")
+musique = NodePath("../Musique")
+son = NodePath("../Son")
+score_label = NodePath("score")
+speed_label = NodePath("speed")
+rythme_label = NodePath("title_rythme")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
+transform = Transform3D(1.1, 0, 0, 0, 1.1, 0, 0, 0, 1.1, 0, 0, 0)
+shape = SubResource("CapsuleShape3D_y6d5c")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Player"]
+mesh = SubResource("CapsuleMesh_asd8j")
+
+[node name="title_score" type="Label" parent="Player"]
+offset_left = 568.0
+offset_right = 619.0
+offset_bottom = 23.0
+text = "SCORE"
+
+[node name="title_speed" type="Label" parent="Player"]
+offset_left = 1050.0
+offset_top = 3.0
+offset_right = 1090.0
+offset_bottom = 26.0
+text = "SPEED :"
+
+[node name="title_rythme" type="Label" parent="Player"]
+offset_left = 6.0
+offset_top = 6.0
+offset_right = 46.0
+offset_bottom = 29.0
+
+[node name="speed" type="Label" parent="Player"]
+offset_left = 1108.0
+offset_top = 5.0
+offset_right = 1148.0
+offset_bottom = 28.0
+
+[node name="score" type="Label" parent="Player"]
+offset_left = 575.0
+offset_top = 25.0
+offset_right = 615.0
+offset_bottom = 48.0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Camera" type="Camera3D" parent="." node_paths=PackedStringArray("player")]
+transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 3, 3)
+script = ExtResource("3_eu6yv")
+player = NodePath("../Player")
+
+[node name="Musique" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_wxao7")
+autoplay = true
+
+[node name="Son" type="AudioStreamPlayer" parent="." node_paths=PackedStringArray("musique", "player")]
+stream = ExtResource("4_pbjbu")
+volume_db = -10.0
+autoplay = true
+script = ExtResource("2_nb0ul")
+musique = NodePath("../Musique")
+player = NodePath("../Player")

@@ -24,19 +24,13 @@ script = ExtResource("1_xiyis")
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.021
-anchor_top = 0.05
-anchor_right = 0.021
-anchor_bottom = 0.05
-offset_left = 157.12
-offset_top = 82.0
-offset_right = 1999.12
-offset_bottom = 1094.0
+offset_right = 2560.0
+offset_bottom = 1440.0
 scale = Vector2(0.5, 0.5)
-theme_override_constants/margin_left = 64
-theme_override_constants/margin_top = 80
-theme_override_constants/margin_right = 64
-theme_override_constants/margin_bottom = 80
+theme_override_constants/margin_left = 462
+theme_override_constants/margin_top = 240
+theme_override_constants/margin_right = 462
+theme_override_constants/margin_bottom = 240
 
 [node name="ColorRect" type="ColorRect" parent="MarginContainer"]
 layout_mode = 2

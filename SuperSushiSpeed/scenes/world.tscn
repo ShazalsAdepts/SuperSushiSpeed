@@ -54,7 +54,7 @@ mesh = ExtResource("3_dkcss")
 skeleton = NodePath("../..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
-transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, -0.410965, 0.0396836)
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, -0.323741, 0.0396836)
 shape = SubResource("CapsuleShape3D_y6d5c")
 
 [node name="title_score" type="Label" parent="Player"]
@@ -69,8 +69,8 @@ size_flags_horizontal = 4
 text = "SCORE"
 
 [node name="title_speed" type="Label" parent="Player"]
-offset_left = 1128.0
-offset_right = 1185.0
+offset_left = 1160.0
+offset_right = 1217.0
 offset_bottom = 23.0
 text = "SPEED :"
 
@@ -81,7 +81,7 @@ offset_right = 46.0
 offset_bottom = 29.0
 
 [node name="speed" type="Label" parent="Player"]
-offset_left = 1193.0
+offset_left = 1227.0
 offset_right = 1275.0
 offset_bottom = 23.0
 

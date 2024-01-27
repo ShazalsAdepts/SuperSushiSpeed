@@ -1,4 +1,8 @@
+<<<<<<< Updated upstream
 [gd_scene load_steps=26 format=3 uid="uid://cvutgrnmmm4kf"]
+=======
+[gd_scene load_steps=33 format=3 uid="uid://cvutgrnmmm4kf"]
+>>>>>>> Stashed changes
 
 [ext_resource type="Script" path="res://scripts/Menu.gd" id="1_idp3p"]
 [ext_resource type="ArrayMesh" uid="uid://chos5nhjs7sa6" path="res://assets/sushi/sushi.obj" id="1_ifvn5"]
@@ -59,6 +63,19 @@ shader_parameter/noise = SubResource("NoiseTexture2D_a6cg8")
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wxttn"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_o5etb"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hrek5"]
+bg_color = Color(0.129412, 0.129412, 0.129412, 0.929412)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xww2m"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bwj0s"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_taomd"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ku4yt"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_o63dg"]
 
 [sub_resource type="Animation" id="Animation_s46yj"]
 length = 0.001
@@ -286,8 +303,55 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_o5etb")
 text = "Quit
 "
 
+[node name="LeaderBoard" type="Panel" parent="Control"]
+layout_mode = 2
+offset_left = 736.0
+offset_top = 80.0
+offset_right = 1216.0
+offset_bottom = 640.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_hrek5")
+
+[node name="Label" type="Label" parent="Control/LeaderBoard"]
+layout_mode = 0
+offset_left = 80.0
+offset_top = 24.0
+offset_right = 402.0
+offset_bottom = 91.0
+theme_override_font_sizes/font_size = 48
+text = "Leaderboards"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Control/LeaderBoard"]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 104.0
+offset_right = 448.0
+offset_bottom = 448.0
+theme_override_font_sizes/normal_font_size = 31
+tab_size = 6
+
+[node name="close" type="Button" parent="Control/LeaderBoard"]
+layout_mode = 0
+offset_left = 424.0
+offset_right = 480.0
+offset_bottom = 45.0
+theme_override_font_sizes/font_size = 27
+theme_override_styles/normal = SubResource("StyleBoxEmpty_xww2m")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_bwj0s")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_taomd")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_ku4yt")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_o63dg")
+text = "X"
+
+[node name="score" type="Label" parent="Control/LeaderBoard"]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 464.0
+offset_right = 448.0
+offset_bottom = 536.0
+theme_override_colors/font_color = Color(0.898039, 0.862745, 0.501961, 1)
+theme_override_font_sizes/font_size = 35
+
 [node name="Pseudo" type="Label" parent="Control"]
-visible = false
 layout_mode = 2
 offset_left = 1168.0
 offset_top = 680.0
@@ -303,6 +367,7 @@ autoplay = "camer_anim"
 speed_scale = 0.3
 
 [node name="Panel" type="Panel" parent="."]
+visible = false
 offset_left = 384.0
 offset_top = 256.0
 offset_right = 896.0
@@ -346,4 +411,5 @@ mesh = ExtResource("9_ra113")
 [connection signal="pressed" from="Control/MarginContainer/VBoxContainer/button_score" to="Control" method="_on_button_score_pressed"]
 [connection signal="pressed" from="Control/MarginContainer/VBoxContainer/button_settings" to="Control" method="_on_button_settings_pressed"]
 [connection signal="pressed" from="Control/MarginContainer/VBoxContainer/button_quit" to="Control" method="_on_button_quit_pressed"]
+[connection signal="pressed" from="Control/LeaderBoard/close" to="Control" method="_on_close_pressed"]
 [connection signal="pressed" from="Panel/Button" to="Panel" method="_on_button_pressed"]

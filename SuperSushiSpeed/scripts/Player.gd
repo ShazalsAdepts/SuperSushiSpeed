@@ -135,13 +135,13 @@ func handle_rythme():
 			update_next_beat_player_index(1)
 		else:
 			# Hors rythme
-			if current_beat_player != 0:
+			if current_beat_player != 0 and current_beat_player != 1:
 				SPEED = MIN_SPEED
 				rythme = "WUT ?!"
 
 	elif (current_position > (son.beats[current_beat_player] + hors_rythme)) and restarted:
 		# Beat manqué
-		if current_beat_player != 0:
+		if current_beat_player != 0 and current_beat_player != 1:
 			SPEED = MIN_SPEED
 			rythme = "MISSED !"
 		update_next_beat_player_index(0)

@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://c1cxi8641ljnp"]
+[gd_scene load_steps=8 format=3 uid="uid://c1cxi8641ljnp"]
 
 [ext_resource type="ArrayMesh" uid="uid://0mli2ysjcqyk" path="res://assets/terrain/belt.obj" id="1_nfe0q"]
+[ext_resource type="Script" path="res://scripts/Wasabi.gd" id="2_x7j2o"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_l00jt"]
 lightmap_size_hint = Vector2i(32, 47)
@@ -8,6 +9,14 @@ size = Vector2(6, 9)
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_vqfyf"]
 data = PackedVector3Array(3, 0, 4.5, -3, 0, 4.5, 3, 0, -4.5, -3, 0, 4.5, -3, 0, -4.5, 3, 0, -4.5)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_wyq6f"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fy6p2"]
+albedo_color = Color(0.501961, 0.678431, 0.184314, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_xnvyy"]
+material = SubResource("StandardMaterial3D_fy6p2")
 
 [node name="Terrain_2" type="MeshInstance3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.08, -4)
@@ -22,3 +31,16 @@ shape = SubResource("ConcavePolygonShape3D_vqfyf")
 [node name="Belt" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.08, 0)
 mesh = ExtResource("1_nfe0q")
+
+[node name="WASABI" type="Area3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 1, -2)
+script = ExtResource("2_x7j2o")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WASABI"]
+shape = SubResource("SphereShape3D_wyq6f")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="WASABI"]
+mesh = SubResource("SphereMesh_xnvyy")
+skeleton = NodePath("")
+
+[connection signal="body_entered" from="WASABI" to="WASABI" method="_on_body_entered"]

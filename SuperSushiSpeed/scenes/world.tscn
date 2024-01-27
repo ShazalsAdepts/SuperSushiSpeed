@@ -1,7 +1,7 @@
 [gd_scene load_steps=18 format=3 uid="uid://ccv2ry3lkvg6p"]
 
 [ext_resource type="PackedScene" uid="uid://dhkq2ebp8keuh" path="res://scenes/terrain_controller.tscn" id="1_1mi36"]
-[ext_resource type="PackedScene" uid="uid://dq85pgyr6j3uq" path="res://scenes/death.tscn" id="1_ltm6j"]
+[ext_resource type="PackedScene" uid="uid://bwcp2rq5elr51" path="res://scenes/death.tscn" id="1_ltm6j"]
 [ext_resource type="Script" path="res://scripts/Player.gd" id="2_53c47"]
 [ext_resource type="Script" path="res://scripts/Son.gd" id="2_nb0ul"]
 [ext_resource type="ArrayMesh" uid="uid://chos5nhjs7sa6" path="res://assets/sushi/sushi.obj" id="3_dkcss"]

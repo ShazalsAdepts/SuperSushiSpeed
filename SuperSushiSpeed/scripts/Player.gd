@@ -3,8 +3,8 @@ extends CharacterBody3D
 var MAX_SPEED = 95.0
 var MIN_SPEED = 20.0
 var SPEED = 50.0
-const JUMP_VELOCITY = 9.0
-var lerp_speed = 5.0
+const JUMP_VELOCITY = 8.0
+var lerp_speed = 10.0
 
 var last_foot_used = "none"
 var consecutive_presses = 0
@@ -16,6 +16,7 @@ var consecutive_presses = 0
 @export var score_label: Label
 @export var speed_label: Label
 @export var rythme_label: Label
+@export var game_over: Control
 
 var rythme = ""
 
@@ -41,7 +42,7 @@ var can_miss = true
 
 func _physics_process(delta):
 	if not is_on_floor():
-		velocity.y -= gravity * 3.0 * delta
+		velocity.y -= gravity * 2 * delta
 	
 	var foot_input = get_foot_input()
 	if foot_input != "":
@@ -138,4 +139,5 @@ func handle_foot_movement(foot, delta):
 	score += SPEED
 
 func die():
-	get_tree().change_scene_to_file("res://scenes/death.tscn")
+	game_over.visible = true
+	gravity = 0

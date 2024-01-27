@@ -1,7 +1,7 @@
 [gd_scene load_steps=19 format=3 uid="uid://cvutgrnmmm4kf"]
 
 [ext_resource type="Script" path="res://scripts/Menu.gd" id="1_idp3p"]
-[ext_resource type="ArrayMesh" uid="uid://dw624a4ertbti" path="res://assets/sushi/sushi.obj" id="1_ifvn5"]
+[ext_resource type="ArrayMesh" uid="uid://chos5nhjs7sa6" path="res://assets/sushi/sushi.obj" id="1_ifvn5"]
 [ext_resource type="AudioStream" uid="uid://dp7flf424tdqh" path="res://son/fuck_noel.mp3" id="1_ka1cd"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_kwyje"]

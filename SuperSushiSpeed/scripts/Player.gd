@@ -2,7 +2,7 @@ extends CharacterBody3D
 
 var MAX_SPEED = 95.0
 var MIN_SPEED = 20.0
-var SPEED = 50.0
+var SPEED = 20.0
 const JUMP_VELOCITY = 8.0
 var lerp_speed = 10.0
 
@@ -18,6 +18,8 @@ var consecutive_presses = 0
 @export var rythme_label: Label
 @export var game_over: Control
 @export var speed_effect: ColorRect
+
+@onready var sprite = $Sushi
 
 var rythme = ""
 
@@ -47,6 +49,15 @@ var target_fov = 75.0
 var line_density = 0.00
 var transition_speed = 0.9
 
+const SLIDE_SPEED = 35.0
+const SLIDE_TIME = 0.2
+
+var sliding = false
+var slide_timer = SLIDE_TIME
+var can_slide = true
+
+@onready var slide_cooldown_timer = $slide_cooldown_timer
+
 func _physics_process(delta):
 	if not is_on_floor():
 		velocity.y -= gravity * 2 * delta
@@ -57,13 +68,23 @@ func _physics_process(delta):
 	else:
 		velocity.z = lerp(velocity.z, 0.0, delta * lerp_speed)
 
+	if sliding:
+		# Logique de glissade
+		slide_timer -= delta
+		if slide_timer <= 0:
+			end_slide()
+		else:
+			velocity.z = lerp(velocity.z, -SLIDE_SPEED, delta * lerp_speed)
+	elif can_slide and Input.is_action_just_pressed("ui_shift"):
+		start_slide()
+
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
 
 	var target_x = current_lane
-	var position = self.transform.origin
-	position.x = lerp(position.x, target_x, delta * lerp_speed) # Mouv horizontal
-	self.transform.origin = position
+	var position_player = self.transform.origin
+	position_player.x = lerp(position_player.x, target_x, delta * lerp_speed) # Mouv horizontal
+	self.transform.origin = position_player
 	
 	if terrain_controller: # Le terrain déplace le joueur
 		var terrain_velocity = terrain_controller.terrain_velocity
@@ -182,3 +203,17 @@ func handle_speed_effect(delta):
 	speed_effect.material.set_shader_parameter("line_density", lerp(current_line_density, line_density, (transition_speed - 0.1) * delta))
 	var current_fov = player_camera.fov
 	player_camera.fov = lerp(current_fov, target_fov, transition_speed * delta)
+
+func start_slide():
+	sliding = true
+	can_slide = false
+	slide_timer = SLIDE_TIME
+	# Ajustez la vitesse et l'orientation pour la glissade
+	slide_cooldown_timer.start()
+
+func end_slide():
+	sliding = false
+	# Réinitialisez la vitesse et l'orientation
+
+func _on_slide_cooldown_timer_timeout():
+	can_slide = true

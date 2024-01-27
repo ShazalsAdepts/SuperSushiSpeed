@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://3yooo6vjhvkn"]
+[gd_scene load_steps=9 format=3 uid="uid://3yooo6vjhvkn"]
 
 [ext_resource type="ArrayMesh" uid="uid://0mli2ysjcqyk" path="res://assets/terrain/belt.obj" id="1_0evqt"]
 [ext_resource type="ArrayMesh" uid="uid://d0abtngy35ys1" path="res://assets/terrain/soySauceBottle.obj" id="1_25n06"]
 [ext_resource type="ArrayMesh" uid="uid://c22vmpeitcfdu" path="res://assets/terrain/makiPlate1.obj" id="3_akv1c"]
+[ext_resource type="ArrayMesh" uid="uid://chos5nhjs7sa6" path="res://assets/sushi/sushi.obj" id="4_27nyv"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_l00jt"]
 size = Vector2(6, 9)
@@ -68,3 +69,7 @@ shape = SubResource("BoxShape3D_n5y33")
 transform = Transform3D(-3.93403e-08, 0, 0.9, 0, 0.9, 0, -0.9, 0, -3.93403e-08, 0, 0, 0)
 mesh = ExtResource("3_akv1c")
 skeleton = NodePath("../..")
+
+[node name="Sushi" type="MeshInstance3D" parent="."]
+transform = Transform3D(3.60723e-09, -2.1556e-08, -0.5, -0.493143, -0.0825238, 0, -0.0825238, 0.493143, -2.18557e-08, -4, 1.813, 0)
+mesh = ExtResource("4_27nyv")

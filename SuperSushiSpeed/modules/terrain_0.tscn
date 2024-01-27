@@ -1,7 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://c1cxi8641ljnp"]
+[gd_scene load_steps=7 format=3 uid="uid://c1cxi8641ljnp"]
 
 [ext_resource type="ArrayMesh" uid="uid://0mli2ysjcqyk" path="res://assets/terrain/belt.obj" id="1_nfe0q"]
-[ext_resource type="Script" path="res://scripts/Wasabi.gd" id="2_x7j2o"]
+[ext_resource type="ArrayMesh" uid="uid://c22vmpeitcfdu" path="res://assets/terrain/makiPlate1.obj" id="2_uva3h"]
+[ext_resource type="ArrayMesh" uid="uid://d0abtngy35ys1" path="res://assets/terrain/soySauceBottle.obj" id="3_2qugc"]
+[ext_resource type="ArrayMesh" uid="uid://dirbdys16vcdw" path="res://assets/terrain/soySauceBottleSUCRE.obj" id="4_ns0cy"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_l00jt"]
 lightmap_size_hint = Vector2i(32, 47)
@@ -9,14 +11,6 @@ size = Vector2(6, 9)
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_vqfyf"]
 data = PackedVector3Array(3, 0, 4.5, -3, 0, 4.5, 3, 0, -4.5, -3, 0, 4.5, -3, 0, -4.5, 3, 0, -4.5)
-
-[sub_resource type="SphereShape3D" id="SphereShape3D_wyq6f"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fy6p2"]
-albedo_color = Color(0.501961, 0.678431, 0.184314, 1)
-
-[sub_resource type="SphereMesh" id="SphereMesh_xnvyy"]
-material = SubResource("StandardMaterial3D_fy6p2")
 
 [node name="Terrain_2" type="MeshInstance3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.08, -4)
@@ -32,15 +26,34 @@ shape = SubResource("ConcavePolygonShape3D_vqfyf")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.08, 0)
 mesh = ExtResource("1_nfe0q")
 
-[node name="WASABI" type="Area3D" parent="."]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 1, -2)
-script = ExtResource("2_x7j2o")
+[node name="MakiPlate1" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -4, 0.9, 2.5)
+mesh = ExtResource("2_uva3h")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="WASABI"]
-shape = SubResource("SphereShape3D_wyq6f")
+[node name="MakiPlate2" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -4, 0.9, 1.5)
+mesh = ExtResource("2_uva3h")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="WASABI"]
-mesh = SubResource("SphereMesh_xnvyy")
-skeleton = NodePath("")
+[node name="MakiPlate3" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -4, 1.68, 2)
+mesh = ExtResource("2_uva3h")
 
-[connection signal="body_entered" from="WASABI" to="WASABI" method="_on_body_entered"]
+[node name="MakiPlate4" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 4, 0.9, 2.5)
+mesh = ExtResource("2_uva3h")
+
+[node name="MakiPlate5" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 4, 0.9, 1.5)
+mesh = ExtResource("2_uva3h")
+
+[node name="MakiPlate6" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 4, 1.68, 2)
+mesh = ExtResource("2_uva3h")
+
+[node name="SoySauceBottle" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 4, 0.9, -2)
+mesh = ExtResource("3_2qugc")
+
+[node name="SoySauceBottleSucre" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -4, 0.9, -2)
+mesh = ExtResource("4_ns0cy")

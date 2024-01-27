@@ -1,8 +1,12 @@
-[gd_scene load_steps=8 format=3 uid="uid://c0o5wxjchpn2"]
+[gd_scene load_steps=15 format=3 uid="uid://c0o5wxjchpn2"]
 
 [ext_resource type="ArrayMesh" uid="uid://0mli2ysjcqyk" path="res://assets/terrain/belt.obj" id="1_s4njb"]
 [ext_resource type="ArrayMesh" uid="uid://dirbdys16vcdw" path="res://assets/terrain/soySauceBottleSUCRE.obj" id="2_rbfcm"]
 [ext_resource type="ArrayMesh" uid="uid://d0abtngy35ys1" path="res://assets/terrain/soySauceBottle.obj" id="3_q8blv"]
+[ext_resource type="Script" path="res://scripts/Gimgembre.gd" id="4_b43ss"]
+[ext_resource type="ArrayMesh" uid="uid://dwsq6sg7m7pai" path="res://assets/terrain/teaCup.obj" id="5_b7qkh"]
+[ext_resource type="ArrayMesh" uid="uid://c22vmpeitcfdu" path="res://assets/terrain/makiPlate1.obj" id="6_nwdog"]
+[ext_resource type="ArrayMesh" uid="uid://yw08bnjt2uf8" path="res://assets/terrain/makiPlate.obj" id="7_jnsy4"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_l00jt"]
 lightmap_size_hint = Vector2i(32, 47)
@@ -16,6 +20,14 @@ size = Vector3(1, 2, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_mwk6s"]
 size = Vector3(1, 2, 1)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_28ynq"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lwwqx"]
+albedo_color = Color(0.858824, 0.890196, 0.360784, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_ptkyv"]
+material = SubResource("StandardMaterial3D_lwwqx")
 
 [node name="Terrain_0" type="MeshInstance3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.08, -4)
@@ -56,3 +68,31 @@ shape = SubResource("BoxShape3D_mwk6s")
 transform = Transform3D(0.127707, 0, 0.32587, 0, 0.35, 0, -0.32587, 0, 0.127707, 0, -1, 0)
 mesh = ExtResource("3_q8blv")
 skeleton = NodePath("../..")
+
+[node name="Gimgembre" type="Area3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 2, 1, -1.5)
+script = ExtResource("4_b43ss")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Gimgembre"]
+shape = SubResource("SphereShape3D_28ynq")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Gimgembre"]
+mesh = SubResource("SphereMesh_ptkyv")
+
+[node name="TeaCup" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 4, 1.1, 0)
+mesh = ExtResource("5_b7qkh")
+
+[node name="MakiPlate1" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 4, 0.9, 1.5)
+mesh = ExtResource("6_nwdog")
+
+[node name="MakiPlate2" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 4, 0.9, -1.5)
+mesh = ExtResource("6_nwdog")
+
+[node name="MakiPlate" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -4, 0.9, 0)
+mesh = ExtResource("7_jnsy4")
+
+[connection signal="body_entered" from="Gimgembre" to="Gimgembre" method="_on_body_entered"]

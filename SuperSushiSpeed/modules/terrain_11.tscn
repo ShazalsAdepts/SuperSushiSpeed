@@ -1,8 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://c6petjews1mxj"]
+[gd_scene load_steps=11 format=3 uid="uid://c6petjews1mxj"]
 
 [ext_resource type="ArrayMesh" uid="uid://0mli2ysjcqyk" path="res://assets/terrain/belt.obj" id="1_83is7"]
 [ext_resource type="ArrayMesh" uid="uid://dirbdys16vcdw" path="res://assets/terrain/soySauceBottleSUCRE.obj" id="2_ou83m"]
 [ext_resource type="ArrayMesh" uid="uid://d0abtngy35ys1" path="res://assets/terrain/soySauceBottle.obj" id="3_mebto"]
+[ext_resource type="ArrayMesh" uid="uid://dwsq6sg7m7pai" path="res://assets/terrain/teaCup.obj" id="4_wa80d"]
+[ext_resource type="ArrayMesh" uid="uid://c22vmpeitcfdu" path="res://assets/terrain/makiPlate1.obj" id="5_60em3"]
+[ext_resource type="ArrayMesh" uid="uid://yw08bnjt2uf8" path="res://assets/terrain/makiPlate.obj" id="6_kisgl"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_l00jt"]
 lightmap_size_hint = Vector2i(32, 47)
@@ -56,3 +59,19 @@ shape = SubResource("BoxShape3D_mwk6s")
 transform = Transform3D(0.127707, 0, 0.32587, 0, 0.35, 0, -0.32587, 0, 0.127707, 0, -1, 0)
 mesh = ExtResource("3_mebto")
 skeleton = NodePath("../..")
+
+[node name="TeaCup" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -4, 1.1, 0)
+mesh = ExtResource("4_wa80d")
+
+[node name="MakiPlate1" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -4, 0.9, 1.5)
+mesh = ExtResource("5_60em3")
+
+[node name="MakiPlate2" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -4, 0.9, -1.5)
+mesh = ExtResource("5_60em3")
+
+[node name="MakiPlate" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 4, 0.9, 0)
+mesh = ExtResource("6_kisgl")

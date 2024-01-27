@@ -10,7 +10,6 @@ extends Control
 @onready var son_slider = $MarginContainer/GridContainer/MusicSetting/HSlider
 @onready var sfx_slider = $MarginContainer/GridContainer/SFXSetting/HSlider
 
-
 func _on_button_quit_pressed():
 	self.set_visible(false)
 	settings.set_visible(true)

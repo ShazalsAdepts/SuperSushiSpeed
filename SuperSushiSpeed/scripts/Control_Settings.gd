@@ -1,6 +1,7 @@
 extends Control
 
 @export var menu: Control
+@export var video: Control
 @export var audio: Control
 
 func _on_button_audio_pressed():
@@ -10,3 +11,7 @@ func _on_button_audio_pressed():
 func _on_button_quit_pressed():
 	self.set_visible(false)
 	menu.set_visible(true)
+
+func _on_button_video_pressed():
+	self.set_visible(false)
+	video.set_visible(true)

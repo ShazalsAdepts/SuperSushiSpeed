@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://cvutgrnmmm4kf"]
+[gd_scene load_steps=37 format=3 uid="uid://cvutgrnmmm4kf"]
 
 [ext_resource type="Script" path="res://scripts/Menu.gd" id="1_idp3p"]
 [ext_resource type="ArrayMesh" uid="uid://chos5nhjs7sa6" path="res://assets/sushi/sushi.obj" id="1_ifvn5"]
@@ -11,6 +11,7 @@
 [ext_resource type="Script" path="res://scripts/Control_Settings.gd" id="8_0edwy"]
 [ext_resource type="Script" path="res://scripts/Control_Audio.gd" id="9_o8mhk"]
 [ext_resource type="ArrayMesh" uid="uid://yw08bnjt2uf8" path="res://assets/terrain/makiPlate.obj" id="9_ra113"]
+[ext_resource type="Script" path="res://scripts/ControlVideo.gd" id="10_c0xwu"]
 [ext_resource type="AudioStream" uid="uid://caj84cpccqsnn" path="res://son/kick.mp3" id="10_gb5uo"]
 [ext_resource type="ArrayMesh" uid="uid://iy8jg3y16avr" path="res://assets/terrain/makiPlate3.obj" id="10_u7oxn"]
 
@@ -177,6 +178,16 @@ transform = Transform3D(0.271133, 0, 0.420103, 0, 0.5, 0, -0.420103, 0, 0.271133
 mesh = ExtResource("4_tgpom")
 skeleton = NodePath("../..")
 
+[node name="MakiPlate" type="MeshInstance3D" parent="background"]
+transform = Transform3D(0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.965926, -4, 0, 2)
+mesh = ExtResource("9_ra113")
+skeleton = NodePath("../..")
+
+[node name="MakiPlate3" type="MeshInstance3D" parent="background"]
+transform = Transform3D(0.600239, 0, 0.799821, 0, 1, 0, -0.799821, 0, 0.600239, -1.51396, 0, 6.87479)
+mesh = ExtResource("10_u7oxn")
+skeleton = NodePath("../..")
+
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="background"]
 transform = Transform3D(-0.866025, -0.433013, 0.25, -0.354305, 0.884258, 0.30423, -0.3528, 0.174894, -0.919209, 0, 0, 0)
 light_color = Color(0.602401, 0.466914, 0.195508, 1)
@@ -296,7 +307,7 @@ theme_override_styles/hover = SubResource("StyleBoxEmpty_d5vs0")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_acfrt")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_wxttn")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_o5etb")
-text = "Audio"
+text = "Credits"
 
 [node name="MarginContainer2" type="MarginContainer" parent="Control/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 80)
@@ -373,7 +384,7 @@ offset_right = 1272.0
 offset_bottom = 711.0
 theme_override_font_sizes/font_size = 21
 
-[node name="ControlSettings" type="Control" parent="." node_paths=PackedStringArray("menu", "audio")]
+[node name="ControlSettings" type="Control" parent="." node_paths=PackedStringArray("menu", "video", "audio")]
 visible = false
 layout_mode = 3
 anchors_preset = 15
@@ -383,6 +394,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("8_0edwy")
 menu = NodePath("../Control")
+video = NodePath("../ControlVideo")
 audio = NodePath("../ControlAudio")
 
 [node name="MarginContainer" type="MarginContainer" parent="ControlSettings"]
@@ -421,7 +433,7 @@ theme_override_styles/hover = SubResource("StyleBoxEmpty_d5vs0")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_acfrt")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_wxttn")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_o5etb")
-text = "Son"
+text = "Audio"
 
 [node name="button_Video" type="Button" parent="ControlSettings/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -478,6 +490,85 @@ theme_override_styles/pressed = SubResource("StyleBoxEmpty_acfrt")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_wxttn")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_o5etb")
 text = "Back"
+
+[node name="ControlVideo" type="Control" parent="." node_paths=PackedStringArray("settings")]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("10_c0xwu")
+settings = NodePath("../ControlSettings")
+
+[node name="MarginContainer" type="MarginContainer" parent="ControlVideo"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 64
+theme_override_constants/margin_top = 80
+theme_override_constants/margin_right = 64
+theme_override_constants/margin_bottom = 80
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ControlVideo/MarginContainer"]
+layout_mode = 2
+
+[node name="game_title" type="Label" parent="ControlVideo/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 70
+text = "SUPER SUSHI SPEED"
+
+[node name="MarginContainer" type="MarginContainer" parent="ControlVideo/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ControlVideo/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="ControlVideo/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Window size "
+
+[node name="MarginContainer6" type="MarginContainer" parent="ControlVideo/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+
+[node name="OptionButton" type="OptionButton" parent="ControlVideo/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+flat = true
+item_count = 3
+selected = 0
+popup/item_0/text = "Windowed"
+popup/item_0/id = 0
+popup/item_1/text = "FullScreen"
+popup/item_1/id = 1
+popup/item_2/text = "Borderless"
+popup/item_2/id = 2
+
+[node name="MarginContainer2" type="MarginContainer" parent="ControlVideo/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+
+[node name="button_quit" type="Button" parent="ControlVideo/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_colors/font_pressed_color = Color(0.545098, 0.0784314, 0.0862745, 1)
+theme_override_colors/font_hover_color = Color(0.745098, 0.360784, 0.286275, 1)
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxEmpty_venuj")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_d5vs0")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_acfrt")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_wxttn")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_o5etb")
+text = "Back
+"
 
 [node name="ControlAudio" type="Control" parent="." node_paths=PackedStringArray("settings")]
 visible = false
@@ -572,7 +663,7 @@ custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 
 [node name="MarginContainer2" type="MarginContainer" parent="ControlAudio/MarginContainer/GridContainer"]
-custom_minimum_size = Vector2(0, 80)
+custom_minimum_size = Vector2(0, 81)
 layout_mode = 2
 
 [node name="button_quit" type="Button" parent="ControlAudio/MarginContainer/GridContainer"]
@@ -641,14 +732,6 @@ theme_override_constants/outline_size = 0
 theme_override_font_sizes/font_size = 37
 text = "✔"
 
-[node name="MakiPlate" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.965926, -4, 0, 2)
-mesh = ExtResource("9_ra113")
-
-[node name="MakiPlate3" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.600239, 0, 0.799821, 0, 1, 0, -0.799821, 0, 0.600239, -1.51396, 0, 6.87479)
-mesh = ExtResource("10_u7oxn")
-
 [node name="Musique" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("1_ka1cd")
 pitch_scale = 1.5
@@ -661,7 +744,10 @@ bus = &"Music"
 [connection signal="pressed" from="Control/MarginContainer/VBoxContainer/button_quit" to="Control" method="_on_button_quit_pressed"]
 [connection signal="pressed" from="Control/LeaderBoard/close" to="Control" method="_on_close_pressed"]
 [connection signal="pressed" from="ControlSettings/MarginContainer/VBoxContainer/button_Audio" to="ControlSettings" method="_on_button_audio_pressed"]
+[connection signal="pressed" from="ControlSettings/MarginContainer/VBoxContainer/button_Video" to="ControlSettings" method="_on_button_video_pressed"]
 [connection signal="pressed" from="ControlSettings/MarginContainer/VBoxContainer/button_quit" to="ControlSettings" method="_on_button_quit_pressed"]
+[connection signal="item_selected" from="ControlVideo/MarginContainer/VBoxContainer/HBoxContainer/OptionButton" to="ControlVideo" method="_on_option_button_item_selected"]
+[connection signal="pressed" from="ControlVideo/MarginContainer/VBoxContainer/button_quit" to="ControlVideo" method="_on_button_quit_pressed"]
 [connection signal="value_changed" from="ControlAudio/MarginContainer/GridContainer/MusicSetting/HSlider" to="ControlAudio" method="_on_h_slider_value_changed"]
 [connection signal="value_changed" from="ControlAudio/MarginContainer/GridContainer/SFXSetting/HSlider" to="ControlAudio" method="_on_h_slider_sfx_value_changed"]
 [connection signal="pressed" from="ControlAudio/MarginContainer/GridContainer/SFXSetting/button_play" to="ControlAudio" method="_on_button_sfx_play_pressed"]

@@ -140,6 +140,7 @@ bus = &"Music"
 
 [node name="Son" type="AudioStreamPlayer" parent="." node_paths=PackedStringArray("musique", "player")]
 stream = ExtResource("4_pbjbu")
+volume_db = -10.0
 autoplay = true
 bus = &"SFX"
 script = ExtResource("2_nb0ul")

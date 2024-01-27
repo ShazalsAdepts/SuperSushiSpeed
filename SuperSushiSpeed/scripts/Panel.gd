@@ -3,7 +3,7 @@ var GAME_KEY = "prod_4135c08094c1428cbe83647654cf6a81"
 var pseudo = "newbie"
 @export var session_token: String
 @export var player_identifier: String
-var leaderboard_id = 19889
+var leaderboard_id = 19943
 var saveRequest = HTTPRequest.new()
 var rename = HTTPRequest.new()
 # Called when the node enters the scene tree for the first time.
@@ -38,10 +38,7 @@ func _on_request_completed(result, response_code, headers, body):
 	var json = JSON.parse_string(body.get_string_from_utf8())
 	print(json)
 	saveRequest.queue_free()
-	session_token = json["session_token"]	
-	player_identifier = json["player_identifier"]
-	var de = FileAccess.open("res://usersave/session.json", FileAccess.WRITE)
-	de.store_string(JSON.new().stringify({"session_token":session_token}))
+	session_token = json["session_token"]
 	var url = "https://api.lootlocker.io/game/player/name"
 	var header = [
 		"x-session-token: "+ session_token,
@@ -64,3 +61,4 @@ func on_rename_completed(result, response_code, headers, body):
 	var data = JSON.parse_string(de.get_as_text())
 	de.store_string(JSON.new().stringify({"player_identifier":player_identifier}))
 	de.close()
+	get_node(".").set_visible(false)

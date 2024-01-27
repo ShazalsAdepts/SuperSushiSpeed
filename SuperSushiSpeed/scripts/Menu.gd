@@ -36,6 +36,8 @@ func _ready():
 func _on_request_completed(result, response_code, headers, body):
 	var json = JSON.parse_string(body.get_string_from_utf8())
 	print(json)
+	var pseudo = json["player_name"]
+	get_node("Pseudo").text = pseudo
 	connectCurrent.queue_free()
 	var session_token = json["session_token"]
 	var de = FileAccess.open("res://usersave/session.json", FileAccess.WRITE)

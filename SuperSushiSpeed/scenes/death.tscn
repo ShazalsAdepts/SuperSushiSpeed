@@ -56,13 +56,22 @@ size_flags_horizontal = 0
 theme_override_font_sizes/font_size = 50
 text = "  Score :"
 
-[node name="MarginContainer3" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 80)
-layout_mode = 2
-
 [node name="MarginContainer4" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 80)
 layout_mode = 2
+
+[node name="Save" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_colors/font_pressed_color = Color(0.450508, 0.0576604, 0.0646823, 1)
+theme_override_colors/font_hover_color = Color(0.878431, 0.176471, 0.180392, 1)
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxEmpty_deyhj")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_mb1vb")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_fsvxa")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_3pyo5")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_7i03n")
+text = "  Save Score !"
 
 [node name="MarginContainer5" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 80)
@@ -98,5 +107,6 @@ theme_override_styles/disabled = SubResource("StyleBoxEmpty_3pyo5")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_7i03n")
 text = "  Back to main menu"
 
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Save" to="." method="_on_save_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Restart" to="." method="_on_restart_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Back" to="." method="_on_back_pressed"]

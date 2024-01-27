@@ -37,7 +37,7 @@ shape = SubResource("BoxShape3D_g7468")
 mesh = SubResource("BoxMesh_0s1x3")
 
 [node name="RectangleStanding_1" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 1, -2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RectangleStanding_1"]
 shape = SubResource("BoxShape3D_g7468")
@@ -46,7 +46,7 @@ shape = SubResource("BoxShape3D_g7468")
 mesh = SubResource("BoxMesh_0s1x3")
 
 [node name="RectangleStanding_2" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RectangleStanding_2"]
 shape = SubResource("BoxShape3D_g7468")

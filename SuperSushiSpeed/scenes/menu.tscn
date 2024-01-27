@@ -1,8 +1,10 @@
-[gd_scene load_steps=19 format=3 uid="uid://cvutgrnmmm4kf"]
+[gd_scene load_steps=21 format=3 uid="uid://cvutgrnmmm4kf"]
 
 [ext_resource type="Script" path="res://scripts/Menu.gd" id="1_idp3p"]
 [ext_resource type="ArrayMesh" uid="uid://chos5nhjs7sa6" path="res://assets/sushi/sushi.obj" id="1_ifvn5"]
 [ext_resource type="AudioStream" uid="uid://dp7flf424tdqh" path="res://son/fuck_noel.mp3" id="1_ka1cd"]
+[ext_resource type="ArrayMesh" uid="uid://d0abtngy35ys1" path="res://assets/terrain/soySauceBottle.obj" id="4_lre6r"]
+[ext_resource type="ArrayMesh" uid="uid://dirbdys16vcdw" path="res://assets/terrain/soySauceBottleSUCRE.obj" id="4_tgpom"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_kwyje"]
 size = Vector2(100, 100)
@@ -152,13 +154,6 @@ mesh = SubResource("BoxMesh_wwktt")
 [node name="Bloc_2" type="StaticBody3D" parent="background"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 6)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="background/Bloc_2"]
-shape = SubResource("BoxShape3D_lx8su")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="background/Bloc_2"]
-transform = Transform3D(1, 0, 0, 0, 2, 0, 0, 0, 1, 0, 0, 0)
-mesh = SubResource("BoxMesh_wwktt")
-
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="background"]
 transform = Transform3D(-0.866025, -0.433013, 0.25, -0.354305, 0.884258, 0.30423, -0.3528, 0.174894, -0.919209, 0, 0, 0)
 light_color = Color(0.602401, 0.466914, 0.195508, 1)
@@ -186,6 +181,16 @@ transform = Transform3D(-0.898581, -0.150082, 0.412345, 7.17902e-09, 0.939693, 0
 stream = ExtResource("1_ka1cd")
 pitch_scale = 1.5
 autoplay = true
+
+[node name="SoySauceBottle" type="MeshInstance3D" parent="background"]
+transform = Transform3D(0.21, 0, 0, 0, 0.21, 0, 0, 0, 0.21, 0.555195, 0, 6.23403)
+mesh = ExtResource("4_lre6r")
+skeleton = NodePath("../..")
+
+[node name="SoySauceBottleSucre" type="MeshInstance3D" parent="background"]
+transform = Transform3D(0.108453, 0, 0.168041, 0, 0.2, 0, -0.168041, 0, 0.108453, -0.595167, 0, 5.62417)
+mesh = ExtResource("4_tgpom")
+skeleton = NodePath("../..")
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3

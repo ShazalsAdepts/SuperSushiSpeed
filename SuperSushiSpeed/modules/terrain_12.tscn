@@ -1,0 +1,76 @@
+[gd_scene load_steps=10 format=3 uid="uid://v3fo88utr2pw"]
+
+[ext_resource type="ArrayMesh" uid="uid://0mli2ysjcqyk" path="res://assets/terrain/belt.obj" id="1_e4exx"]
+[ext_resource type="Script" path="res://scripts/Wasabi.gd" id="2_1powd"]
+[ext_resource type="ArrayMesh" uid="uid://c22vmpeitcfdu" path="res://assets/terrain/makiPlate1.obj" id="3_icw7c"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_l00jt"]
+lightmap_size_hint = Vector2i(32, 47)
+size = Vector2(6, 9)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_vqfyf"]
+data = PackedVector3Array(3, 0, 4.5, -3, 0, 4.5, 3, 0, -4.5, -3, 0, 4.5, -3, 0, -4.5, 3, 0, -4.5)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_wyq6f"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_od2sa"]
+albedo_color = Color(0.501961, 0.678431, 0.184314, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_xnvyy"]
+material = SubResource("StandardMaterial3D_od2sa")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fv1cu"]
+size = Vector3(2, 2, 2)
+
+[node name="Terrain_2" type="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.08, -4)
+mesh = SubResource("PlaneMesh_l00jt")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.08, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_vqfyf")
+
+[node name="Belt" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.08, 0)
+mesh = ExtResource("1_e4exx")
+
+[node name="WASABI" type="Area3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 1, -2.5)
+script = ExtResource("2_1powd")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WASABI"]
+shape = SubResource("SphereShape3D_wyq6f")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="WASABI"]
+mesh = SubResource("SphereMesh_xnvyy")
+skeleton = NodePath("")
+
+[node name="Bloc_0" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.08, -2.5)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Bloc_0"]
+transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 0, 0.5, 0)
+shape = SubResource("BoxShape3D_fv1cu")
+
+[node name="MakiPlate1" type="MeshInstance3D" parent="Bloc_0"]
+transform = Transform3D(-3.93403e-08, 0, 0.9, 0, 0.9, 0, -0.9, 0, -3.93403e-08, 0, 0, 0)
+mesh = ExtResource("3_icw7c")
+skeleton = NodePath("../..")
+
+[node name="Bloc_1" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0.08, -2.5)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Bloc_1"]
+transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 0, 0.5, 0)
+shape = SubResource("BoxShape3D_fv1cu")
+
+[node name="MakiPlate1" type="MeshInstance3D" parent="Bloc_1"]
+transform = Transform3D(-3.93403e-08, 0, 0.9, 0, 0.9, 0, -0.9, 0, -3.93403e-08, 0, 0, 0)
+mesh = ExtResource("3_icw7c")
+skeleton = NodePath("../..")
+
+[connection signal="body_entered" from="WASABI" to="WASABI" method="_on_body_entered"]

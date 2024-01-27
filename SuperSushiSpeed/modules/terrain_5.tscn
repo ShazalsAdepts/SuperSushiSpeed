@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://feskj2gsc8r3"]
+[gd_scene load_steps=12 format=3 uid="uid://feskj2gsc8r3"]
 
 [ext_resource type="ArrayMesh" uid="uid://0mli2ysjcqyk" path="res://assets/terrain/belt.obj" id="1_na23c"]
 [ext_resource type="ArrayMesh" uid="uid://d0abtngy35ys1" path="res://assets/terrain/soySauceBottle.obj" id="2_dd51y"]
 [ext_resource type="ArrayMesh" uid="uid://yw08bnjt2uf8" path="res://assets/terrain/makiPlate.obj" id="3_hvgpd"]
+[ext_resource type="Script" path="res://scripts/Wasabi.gd" id="4_uoqeb"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_l00jt"]
 lightmap_size_hint = Vector2i(32, 47)
@@ -16,6 +17,14 @@ size = Vector3(2, 3, 4)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ga87s"]
 size = Vector3(1, 2, 1)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_v8kip"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fy6p2"]
+albedo_color = Color(0.501961, 0.678431, 0.184314, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_gtvqk"]
+material = SubResource("StandardMaterial3D_fy6p2")
 
 [node name="Terrain_0" type="MeshInstance3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.08, -4)
@@ -87,3 +96,16 @@ shape = SubResource("BoxShape3D_joaa3")
 
 [node name="MakiPlate" type="MeshInstance3D" parent="RectangleLying_1"]
 mesh = ExtResource("3_hvgpd")
+
+[node name="WASABI" type="Area3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 1, -3.5)
+script = ExtResource("4_uoqeb")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WASABI"]
+shape = SubResource("SphereShape3D_v8kip")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="WASABI"]
+mesh = SubResource("SphereMesh_gtvqk")
+skeleton = NodePath("")
+
+[connection signal="body_entered" from="WASABI" to="WASABI" method="_on_body_entered"]

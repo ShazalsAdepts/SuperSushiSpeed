@@ -141,7 +141,8 @@ func handle_foot_movement(foot, delta):
 			consecutive_presses = 0.0
 	else:
 		consecutive_presses = 1.0
-		velocity.z = lerp(velocity.z, -SPEED, delta * lerp_speed)
+		if can_score :
+			velocity.z = lerp(velocity.z, -SPEED, delta * lerp_speed)
 		
 	last_foot_used = foot
 	update_score(SPEED)

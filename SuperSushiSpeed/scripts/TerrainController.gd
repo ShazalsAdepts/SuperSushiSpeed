@@ -7,7 +7,7 @@ var terrain_belt: Array[MeshInstance3D] = []
 
 @export var player: CharacterBody3D
 
-var acceleration: float = 0.04
+var acceleration: float = 0.03
 var max_speed: float = 20.0
 var terrain_velocity: float = 0.8
 var num_terrain_blocks = 15

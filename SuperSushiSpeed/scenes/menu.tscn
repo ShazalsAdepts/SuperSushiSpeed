@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://cvutgrnmmm4kf"]
+[gd_scene load_steps=26 format=3 uid="uid://cvutgrnmmm4kf"]
 
 [ext_resource type="Script" path="res://scripts/Menu.gd" id="1_idp3p"]
 [ext_resource type="ArrayMesh" uid="uid://chos5nhjs7sa6" path="res://assets/sushi/sushi.obj" id="1_ifvn5"]
@@ -6,17 +6,12 @@
 [ext_resource type="Script" path="res://scripts/Panel.gd" id="3_7in1f"]
 [ext_resource type="ArrayMesh" uid="uid://d0abtngy35ys1" path="res://assets/terrain/soySauceBottle.obj" id="4_lre6r"]
 [ext_resource type="ArrayMesh" uid="uid://dirbdys16vcdw" path="res://assets/terrain/soySauceBottleSUCRE.obj" id="4_tgpom"]
+[ext_resource type="ArrayMesh" uid="uid://c22vmpeitcfdu" path="res://assets/terrain/makiPlate1.obj" id="5_d41ew"]
 [ext_resource type="Shader" path="res://scripts/SpeedEffect.gdshader" id="6_00kbi"]
+[ext_resource type="ArrayMesh" uid="uid://yw08bnjt2uf8" path="res://assets/terrain/makiPlate.obj" id="9_ra113"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_kwyje"]
 size = Vector2(100, 100)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_lx8su"]
-size = Vector3(1, 2, 1)
-
-[sub_resource type="BoxMesh" id="BoxMesh_wwktt"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_tluvv"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_8ra1c"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -165,25 +160,6 @@ transform = Transform3D(0.108453, 0, 0.168041, 0, 0.2, 0, -0.168041, 0, 0.108453
 mesh = ExtResource("4_tgpom")
 skeleton = NodePath("../..")
 
-[node name="Bloc_0" type="StaticBody3D" parent="background"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 1, -3)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="background/Bloc_0"]
-shape = SubResource("BoxShape3D_lx8su")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="background/Bloc_0"]
-transform = Transform3D(1, 0, 0, 0, 2, 0, 0, 0, 1, 0, 0, 0)
-mesh = SubResource("BoxMesh_wwktt")
-
-[node name="Bloc_1" type="StaticBody3D" parent="background"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0.5, 4)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="background/Bloc_1"]
-shape = SubResource("BoxShape3D_tluvv")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="background/Bloc_1"]
-mesh = SubResource("BoxMesh_wwktt")
-
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="background"]
 transform = Transform3D(-0.866025, -0.433013, 0.25, -0.354305, 0.884258, 0.30423, -0.3528, 0.174894, -0.919209, 0, 0, 0)
 light_color = Color(0.602401, 0.466914, 0.195508, 1)
@@ -211,6 +187,11 @@ transform = Transform3D(-0.898581, -0.150082, 0.412345, 7.17902e-09, 0.939693, 0
 stream = ExtResource("1_ka1cd")
 pitch_scale = 1.5
 autoplay = true
+
+[node name="MakiPlate1" type="MeshInstance3D" parent="background"]
+transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, 4, 0, 5)
+mesh = ExtResource("5_d41ew")
+skeleton = NodePath("../..")
 
 [node name="SpeedEffect" type="ColorRect" parent="."]
 material = SubResource("ShaderMaterial_el6b5")
@@ -356,6 +337,10 @@ offset_bottom = 152.0
 theme_override_constants/outline_size = 0
 theme_override_font_sizes/font_size = 37
 text = "✔"
+
+[node name="MakiPlate" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.965926, -4, 0, 2)
+mesh = ExtResource("9_ra113")
 
 [connection signal="pressed" from="Control/MarginContainer/VBoxContainer/button_start" to="Control" method="_on_button_start_pressed"]
 [connection signal="pressed" from="Control/MarginContainer/VBoxContainer/button_score" to="Control" method="_on_button_score_pressed"]

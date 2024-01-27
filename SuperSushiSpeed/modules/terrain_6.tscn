@@ -14,11 +14,11 @@ data = PackedVector3Array(3, 0, 4.5, -3, 0, 4.5, 3, 0, -4.5, -3, 0, 4.5, -3, 0, 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_krwkh"]
 points = PackedVector3Array(0.5, 0.5, -1, -0.5, 0.5, -1, 0.5, -0.5, -1, -0.5, -0.5, -1, 0.5, -0.5, 1, -0.5, -0.5, 1)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r7v6f"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fmx01"]
 albedo_color = Color(1, 0, 0, 1)
 
 [sub_resource type="PrismMesh" id="PrismMesh_pooai"]
-material = SubResource("StandardMaterial3D_r7v6f")
+material = SubResource("StandardMaterial3D_fmx01")
 left_to_right = 0.0
 size = Vector3(2, 1, 1)
 

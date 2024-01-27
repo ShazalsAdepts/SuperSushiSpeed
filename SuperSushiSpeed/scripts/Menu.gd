@@ -7,12 +7,13 @@ var connectCurrent = HTTPRequest.new()
 
 func _ready():
 	if FileAccess.file_exists("res://usersave/user_login.json"):
+		print("file existe")
 		var de = FileAccess.open("res://usersave/user_login.json", FileAccess.READ)
 		var data = JSON.parse_string(de.get_as_text())
 		de.close()
 		var popup = get_node("../Panel")
 		var pseudo = get_node("Pseudo")
-		if data["player_identifier"] == null:
+		if data["player_identifier"] == null ||  data["player_identifier"] == "":
 			popup.set_visible(true)
 		else:
 			popup.set_visible(false)
@@ -33,8 +34,10 @@ func _ready():
 			)
 			connectCurrent.request_completed.connect(_on_request_completed)
 	else:
+		print("not exist")
 		var de = FileAccess.open("res://usersave/user_login.json", FileAccess.WRITE)
 		de.store_string(JSON.new().stringify({"player_identifier":null}))
+		de.close()
 		var popup = get_node("../Panel")
 		popup.set_visible(true)
 		

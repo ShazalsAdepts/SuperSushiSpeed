@@ -39,6 +39,7 @@ func _on_request_completed(result, response_code, headers, body):
 	print(json)
 	saveRequest.queue_free()
 	session_token = json["session_token"]
+	player_identifier = json["player_identifier"]
 	var url = "https://api.lootlocker.io/game/player/name"
 	var header = [
 		"x-session-token: "+ session_token,
@@ -53,12 +54,10 @@ func _on_request_completed(result, response_code, headers, body):
 	
 	
 func on_rename_completed(result, response_code, headers, body):
-	print(body)
-	print(body.get_string_from_utf8())
-	print(response_code)
+	var pseudot = get_node("../Control/Pseudo")
+	pseudot.text = pseudo
+	pseudot.set_visible(true)
 	rename.queue_free()
-	var de = FileAccess.open("res://usersave/user_login.json", FileAccess.WRITE_READ)
-	var data = JSON.parse_string(de.get_as_text())
+	var de = FileAccess.open("res://usersave/user_login.json", FileAccess.WRITE)
 	de.store_string(JSON.new().stringify({"player_identifier":player_identifier}))
-	de.close()
 	get_node(".").set_visible(false)

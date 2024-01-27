@@ -1,6 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://bnq6h6yh6s84f"]
+[gd_scene load_steps=9 format=3 uid="uid://bnq6h6yh6s84f"]
 
 [ext_resource type="ArrayMesh" uid="uid://0mli2ysjcqyk" path="res://assets/terrain/belt.obj" id="1_f87h3"]
+[ext_resource type="ArrayMesh" uid="uid://yw08bnjt2uf8" path="res://assets/terrain/makiPlate.obj" id="2_br2oo"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_l00jt"]
 size = Vector2(6, 9)
@@ -18,15 +19,8 @@ albedo_color = Color(1, 0, 0, 1)
 material = SubResource("StandardMaterial3D_lvmeu")
 size = Vector3(1, 2, 1)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_of7j1"]
-size = Vector3(1, 1, 2)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v3y6x"]
-albedo_color = Color(1, 0, 0, 1)
-
-[sub_resource type="BoxMesh" id="BoxMesh_p06fu"]
-material = SubResource("StandardMaterial3D_v3y6x")
-size = Vector3(1, 1, 2)
+[sub_resource type="BoxShape3D" id="BoxShape3D_wb5lw"]
+size = Vector3(2, 3, 4)
 
 [node name="Terrain_0" type="MeshInstance3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.08, -4)
@@ -65,33 +59,39 @@ shape = SubResource("BoxShape3D_g7468")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="RectangleStanding_2"]
 mesh = SubResource("BoxMesh_0s1x3")
 
-[node name="RectangleLying_0" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="RectangleLying_0"]
-shape = SubResource("BoxShape3D_of7j1")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="RectangleLying_0"]
-mesh = SubResource("BoxMesh_p06fu")
-
-[node name="RectangleLying_1" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.5, 0)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="RectangleLying_1"]
-shape = SubResource("BoxShape3D_of7j1")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="RectangleLying_1"]
-mesh = SubResource("BoxMesh_p06fu")
-
-[node name="RectangleLying_2" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0.5, 0)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="RectangleLying_2"]
-shape = SubResource("BoxShape3D_of7j1")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="RectangleLying_2"]
-mesh = SubResource("BoxMesh_p06fu")
-
 [node name="Belt" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.08, 0)
 mesh = ExtResource("1_f87h3")
+
+[node name="RectangleLying_2" type="StaticBody3D" parent="."]
+transform = Transform3D(0.81, 0, 0, 0, 0.81, 0, 0, 0, 0.81, 2, 0.08, 1)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RectangleLying_2"]
+shape = SubResource("BoxShape3D_wb5lw")
+
+[node name="MakiPlate" type="MeshInstance3D" parent="RectangleLying_2"]
+mesh = ExtResource("2_br2oo")
+skeleton = NodePath("")
+
+[node name="RectangleLying_3" type="StaticBody3D" parent="."]
+transform = Transform3D(0.81, 0, 0, 0, 0.81, 0, 0, 0, 0.81, 0, 0.08, 1)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RectangleLying_3"]
+shape = SubResource("BoxShape3D_wb5lw")
+
+[node name="MakiPlate" type="MeshInstance3D" parent="RectangleLying_3"]
+mesh = ExtResource("2_br2oo")
+skeleton = NodePath("")
+
+[node name="RectangleLying_4" type="StaticBody3D" parent="."]
+transform = Transform3D(0.81, 0, 0, 0, 0.81, 0, 0, 0, 0.81, -2, 0.08, 1)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RectangleLying_4"]
+shape = SubResource("BoxShape3D_wb5lw")
+
+[node name="MakiPlate" type="MeshInstance3D" parent="RectangleLying_4"]
+mesh = ExtResource("2_br2oo")
+skeleton = NodePath("")

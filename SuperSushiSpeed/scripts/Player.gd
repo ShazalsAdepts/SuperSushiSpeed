@@ -17,6 +17,7 @@ var consecutive_presses = 0
 @export var speed_label: Label
 @export var rythme_label: Label
 @export var game_over: Control
+@export var speed_effect: ColorRect
 
 var rythme = ""
 
@@ -42,6 +43,9 @@ var can_miss = true
 
 var can_score = true
 
+var target_fov = 75.0
+var transition_speed = 0.9
+
 func _physics_process(delta):
 	if not is_on_floor():
 		velocity.y -= gravity * 2 * delta
@@ -66,6 +70,7 @@ func _physics_process(delta):
 
 	move_and_slide()
 	handle_rythme()
+	handle_speed_effect(delta)
 	
 	if (player_camera and global_transform.origin.z > player_camera.global_transform.origin.z) or global_transform.origin.y < -1:
 		die()
@@ -150,3 +155,29 @@ func die():
 func update_score(x):
 	if can_score == true:
 		score += x
+
+func handle_speed_effect(delta):
+	var line_density = 0.00
+	
+	if SPEED <= MIN_SPEED:
+		line_density = 0.01
+		target_fov = 75.0
+	elif SPEED <= MIN_SPEED + 20:
+		line_density = 0.02
+		target_fov = 80.0
+	elif SPEED <= MIN_SPEED + 35:
+		line_density = 0.03
+		target_fov = 85.0
+	elif SPEED <= MIN_SPEED + 50:
+		line_density = 0.04
+		target_fov = 90.0
+	elif SPEED >= MAX_SPEED - 5:
+		line_density = 0.06
+		target_fov = 95.0
+	
+	if !can_score:
+		target_fov = 75.0
+	
+	speed_effect.material.set_shader_parameter("line_density", line_density)
+	var current_fov = player_camera.fov
+	player_camera.fov = lerp(current_fov, target_fov, transition_speed * delta)

@@ -50,7 +50,7 @@ var target_fov = 75.0
 var line_density = 0.00
 var transition_speed = 0.9
 
-const SLIDE_SPEED = 35.0
+const SLIDE_SPEED = 30.0
 const SLIDE_TIME = 0.3
 
 var sliding = false
@@ -135,13 +135,15 @@ func handle_rythme():
 			update_next_beat_player_index(1)
 		else:
 			# Hors rythme
-			SPEED = MIN_SPEED
-			rythme = "WUT ?!"
+			if current_beat_player != 0:
+				SPEED = MIN_SPEED
+				rythme = "WUT ?!"
 
 	elif (current_position > (son.beats[current_beat_player] + hors_rythme)) and restarted:
 		# Beat manqué
-		SPEED = MIN_SPEED
-		rythme = "MISSED !"
+		if current_beat_player != 0:
+			SPEED = MIN_SPEED
+			rythme = "MISSED !"
 		update_next_beat_player_index(0)
 
 func update_next_beat_player_index(x):
@@ -209,7 +211,7 @@ func start_slide():
 	can_slide = false
 	slide_timer = SLIDE_TIME
 	slide_cooldown_timer.start()
-	self.rotation.x = 90
+	self.rotation.x = -4.8
 	self.position.y -= 0.3
 
 func end_slide():

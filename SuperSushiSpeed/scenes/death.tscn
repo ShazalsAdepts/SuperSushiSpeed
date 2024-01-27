@@ -34,7 +34,7 @@ theme_override_constants/margin_bottom = 240
 
 [node name="ColorRect" type="ColorRect" parent="MarginContainer"]
 layout_mode = 2
-color = Color(0.0980392, 0.00392157, 0.00392157, 1)
+color = Color(0.179556, 0.00963724, 0.0110899, 1)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
@@ -50,7 +50,7 @@ text = "YOU LOSE"
 custom_minimum_size = Vector2(0, 80)
 layout_mode = 2
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+[node name="label_score" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
 theme_override_font_sizes/font_size = 50

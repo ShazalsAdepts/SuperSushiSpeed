@@ -142,7 +142,8 @@ func handle_foot_movement(foot, delta):
 
 func die():
 	can_score = false
-	await get_tree().create_timer(0.8).timeout
+	game_over.set_score(score)
+	await get_tree().create_timer(0.4).timeout
 	game_over.visible = true
 	gravity = 0
 

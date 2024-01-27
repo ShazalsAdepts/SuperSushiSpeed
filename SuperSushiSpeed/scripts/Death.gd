@@ -17,3 +17,6 @@ func _on_restart_pressed():
 
 func _on_back_pressed():
 	get_tree().change_scene_to_file("res://scenes/menu.tscn")
+
+func set_score(x):
+	$MarginContainer/VBoxContainer/label_score.text = "  Score: " + str(x)

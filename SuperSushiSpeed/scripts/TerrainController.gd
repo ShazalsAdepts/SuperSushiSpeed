@@ -9,7 +9,7 @@ var terrain_belt: Array[MeshInstance3D] = []
 
 var acceleration: float = 0.04
 var max_speed: float = 20.0
-var terrain_velocity: float = 1
+var terrain_velocity: float = 0.8
 var num_terrain_blocks = 15
 var terrian_blocks_path = "res://modules"
 var some_threshold = 60.0

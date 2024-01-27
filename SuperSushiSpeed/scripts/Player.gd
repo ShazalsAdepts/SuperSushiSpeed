@@ -114,10 +114,6 @@ func handle_rythme():
 	if (Input.is_action_just_pressed("ui_left") or Input.is_action_just_pressed("ui_right")):
 		var beat_time = son.beats[current_beat_player]
 		var time_difference = current_position - beat_time
-		print(current_beat_player)
-		if current_beat_player == 0:
-			time_difference = musique.stream.get_length() - current_position
-			print(time_difference)
 		
 		if abs(time_difference) <= missed_beat_time:
 			if SPEED < MAX_SPEED:
@@ -149,7 +145,7 @@ func handle_rythme():
 		update_next_beat_player_index(0)
 
 func update_next_beat_player_index(x):
-	if (x == 0 and son.next_beat_index < son.beats.size()) or (x == 1 and son.next_beat_index + 1 < son.beats.size()):
+	if son.next_beat_index + x < son.beats.size():
 		current_beat_player = son.next_beat_index + x
 	elif current_beat_player != 0:
 		current_beat_player = x

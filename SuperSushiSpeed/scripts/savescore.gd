@@ -20,7 +20,7 @@ func _process(delta):
 
 
 func _on_save_pressed():
-	var de = FileAccess.open("res://usersave/session.json", FileAccess.READ)
+	var de = FileAccess.open("res://usersave/session.txt", FileAccess.READ)
 	var session = JSON.parse_string(de.get_as_text())
 	var session_token = session["session_token"]
 	var data = { "score": str(score), "member_id": "Andinox" }

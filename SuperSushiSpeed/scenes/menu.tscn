@@ -1,8 +1,9 @@
-[gd_scene load_steps=26 format=3 uid="uid://cvutgrnmmm4kf"]
+[gd_scene load_steps=27 format=3 uid="uid://cvutgrnmmm4kf"]
 
 [ext_resource type="Script" path="res://scripts/Menu.gd" id="1_idp3p"]
 [ext_resource type="ArrayMesh" uid="uid://chos5nhjs7sa6" path="res://assets/sushi/sushi.obj" id="1_ifvn5"]
 [ext_resource type="AudioStream" uid="uid://dp7flf424tdqh" path="res://son/fuck_noel.mp3" id="1_ka1cd"]
+[ext_resource type="Script" path="res://scripts/Panel.gd" id="3_7in1f"]
 [ext_resource type="ArrayMesh" uid="uid://d0abtngy35ys1" path="res://assets/terrain/soySauceBottle.obj" id="4_lre6r"]
 [ext_resource type="ArrayMesh" uid="uid://dirbdys16vcdw" path="res://assets/terrain/soySauceBottleSUCRE.obj" id="4_tgpom"]
 [ext_resource type="Shader" path="res://scripts/SpeedEffect.gdshader" id="6_00kbi"]

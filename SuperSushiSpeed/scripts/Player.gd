@@ -40,6 +40,8 @@ var current_beat_player = 0.0
 var restarted = true
 var can_miss = true
 
+var can_score = true
+
 func _physics_process(delta):
 	if not is_on_floor():
 		velocity.y -= gravity * 2 * delta
@@ -65,7 +67,7 @@ func _physics_process(delta):
 	move_and_slide()
 	handle_rythme()
 	
-	if player_camera and global_transform.origin.z > player_camera.global_transform.origin.z:
+	if (player_camera and global_transform.origin.z > player_camera.global_transform.origin.z) or global_transform.origin.y < -1:
 		die()
 	
 	score_label.text = str(score)
@@ -136,8 +138,14 @@ func handle_foot_movement(foot, delta):
 		velocity.z = lerp(velocity.z, -SPEED, delta * lerp_speed)
 		
 	last_foot_used = foot
-	score += SPEED
+	update_score(SPEED)
 
 func die():
+	can_score = false
+	await get_tree().create_timer(0.8).timeout
 	game_over.visible = true
 	gravity = 0
+
+func update_score(x):
+	if can_score == true:
+		score += x

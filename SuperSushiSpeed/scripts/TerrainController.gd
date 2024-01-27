@@ -62,7 +62,7 @@ func _progress_terrain(delta: float) -> void:
 	for block in terrain_belt:
 		block.position.z += terrain_velocity * delta
 
-	if terrain_belt[0].position.z >= terrain_belt[0].mesh.size.y/2:
+	if terrain_belt[0].position.z >= terrain_belt[0].mesh.size.y:
 		var last_terrain = terrain_belt[-1]
 		var first_terrain = terrain_belt.pop_front()
 

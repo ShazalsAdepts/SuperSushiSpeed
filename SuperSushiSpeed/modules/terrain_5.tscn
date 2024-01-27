@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://bnc2vu7hyg0xp"]
+[gd_scene load_steps=9 format=3 uid="uid://bnc2vu7hyg0xp"]
 
 [ext_resource type="ArrayMesh" uid="uid://0mli2ysjcqyk" path="res://assets/terrain/belt.obj" id="1_na23c"]
+[ext_resource type="ArrayMesh" uid="uid://d0abtngy35ys1" path="res://assets/terrain/soySauceBottle.obj" id="2_dd51y"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_l00jt"]
 lightmap_size_hint = Vector2i(32, 47)
@@ -8,6 +9,19 @@ size = Vector2(6, 9)
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_vqfyf"]
 data = PackedVector3Array(3, 0, 4.5, -3, 0, 4.5, 3, 0, -4.5, -3, 0, 4.5, -3, 0, -4.5, 3, 0, -4.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ga87s"]
+size = Vector3(1, 2, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_joaa3"]
+size = Vector3(1, 1, 2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v3y6x"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_rjo55"]
+material = SubResource("StandardMaterial3D_v3y6x")
+size = Vector3(1, 1, 2)
 
 [node name="Terrain_0" type="MeshInstance3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.08, -4)
@@ -23,3 +37,70 @@ shape = SubResource("ConcavePolygonShape3D_vqfyf")
 [node name="Belt" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.08, 0)
 mesh = ExtResource("1_na23c")
+
+[node name="RectangleStanding_0" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -1)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RectangleStanding_0"]
+transform = Transform3D(1.4, 0, 0, 0, 1.4, 0, 0, 0, 1.4, 0, 0.4, 0)
+shape = SubResource("BoxShape3D_ga87s")
+
+[node name="SoySauceBottle" type="MeshInstance3D" parent="RectangleStanding_0"]
+transform = Transform3D(0.127707, 0, 0.32587, 0, 0.35, 0, -0.32587, 0, 0.127707, 0, -1, 0)
+mesh = ExtResource("2_dd51y")
+skeleton = NodePath("../..")
+
+[node name="RectangleLying_0" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.5, 1)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RectangleLying_0"]
+shape = SubResource("BoxShape3D_joaa3")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RectangleLying_0"]
+mesh = SubResource("BoxMesh_rjo55")
+
+[node name="RectangleLying_1" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.5, 3)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RectangleLying_1"]
+shape = SubResource("BoxShape3D_joaa3")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RectangleLying_1"]
+mesh = SubResource("BoxMesh_rjo55")
+
+[node name="RectangleLying_2" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.5, -1)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RectangleLying_2"]
+shape = SubResource("BoxShape3D_joaa3")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RectangleLying_2"]
+mesh = SubResource("BoxMesh_rjo55")
+
+[node name="RectangleLying_3" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0.5, -1)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RectangleLying_3"]
+shape = SubResource("BoxShape3D_joaa3")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RectangleLying_3"]
+mesh = SubResource("BoxMesh_rjo55")
+
+[node name="RectangleLying_4" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0.5, 1)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RectangleLying_4"]
+shape = SubResource("BoxShape3D_joaa3")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RectangleLying_4"]
+mesh = SubResource("BoxMesh_rjo55")
+
+[node name="RectangleLying_5" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0.5, 3)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RectangleLying_5"]
+shape = SubResource("BoxShape3D_joaa3")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RectangleLying_5"]
+mesh = SubResource("BoxMesh_rjo55")

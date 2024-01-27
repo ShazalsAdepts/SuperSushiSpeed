@@ -1,4 +1,6 @@
-[gd_scene load_steps=12 format=3 uid="uid://5s3j72vwjsq2"]
+[gd_scene load_steps=13 format=3 uid="uid://5s3j72vwjsq2"]
+
+[ext_resource type="ArrayMesh" uid="uid://0mli2ysjcqyk" path="res://assets/terrain/belt.obj" id="1_kqwd5"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_l00jt"]
 size = Vector2(6, 9)
@@ -91,3 +93,7 @@ shape = SubResource("ConvexPolygonShape3D_krwkh")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Triangle_0"]
 mesh = SubResource("PrismMesh_pooai")
+
+[node name="Belt" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.08, 0)
+mesh = ExtResource("1_kqwd5")

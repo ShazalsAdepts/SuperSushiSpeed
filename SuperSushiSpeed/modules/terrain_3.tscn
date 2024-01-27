@@ -1,4 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://buls6rsiwdm5m"]
+[gd_scene load_steps=7 format=3 uid="uid://buls6rsiwdm5m"]
+
+[ext_resource type="ArrayMesh" uid="uid://0mli2ysjcqyk" path="res://assets/terrain/belt.obj" id="1_tinxq"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_l00jt"]
 size = Vector2(6, 9)
@@ -60,3 +62,7 @@ shape = SubResource("BoxShape3D_g7468")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="RectangleStanding_3"]
 mesh = SubResource("BoxMesh_0s1x3")
+
+[node name="Belt" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.08, 0)
+mesh = ExtResource("1_tinxq")

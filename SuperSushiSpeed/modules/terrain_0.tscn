@@ -1,4 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://c1cxi8641ljnp"]
+[gd_scene load_steps=4 format=3 uid="uid://c1cxi8641ljnp"]
+
+[ext_resource type="ArrayMesh" uid="uid://0mli2ysjcqyk" path="res://assets/terrain/belt.obj" id="1_nfe0q"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_l00jt"]
 size = Vector2(6, 9)
@@ -14,3 +16,7 @@ mesh = SubResource("PlaneMesh_l00jt")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_vqfyf")
+
+[node name="Belt" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.08, 0)
+mesh = ExtResource("1_nfe0q")

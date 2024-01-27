@@ -1,8 +1,8 @@
 [gd_scene load_steps=19 format=3 uid="uid://cvutgrnmmm4kf"]
 
 [ext_resource type="Script" path="res://scripts/Menu.gd" id="1_idp3p"]
+[ext_resource type="ArrayMesh" uid="uid://chos5nhjs7sa6" path="res://assets/sushi/sushi.obj" id="1_ifvn5"]
 [ext_resource type="AudioStream" uid="uid://dp7flf424tdqh" path="res://son/fuck_noel.mp3" id="1_ka1cd"]
-[ext_resource type="PackedScene" uid="uid://cjt7hfybhupyy" path="res://assets/sushi/sushi.blend" id="1_ryuer"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_kwyje"]
 size = Vector2(100, 100)
@@ -106,8 +106,10 @@ _data = {
 
 [node name="background" type="Node3D" parent="."]
 
-[node name="Sushi" parent="background" instance=ExtResource("1_ryuer")]
+[node name="Sushi" type="MeshInstance3D" parent="background"]
 transform = Transform3D(-0.280324, 0, -0.285339, 0, 0.4, 0, 0.285339, 0, -0.280324, -0.0770888, 0, 0.450738)
+mesh = ExtResource("1_ifvn5")
+skeleton = NodePath("../..")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="background"]
 mesh = SubResource("PlaneMesh_kwyje")

@@ -71,5 +71,5 @@ mesh = ExtResource("3_akv1c")
 skeleton = NodePath("../..")
 
 [node name="Sushi" type="MeshInstance3D" parent="."]
-transform = Transform3D(3.60723e-09, -2.1556e-08, -0.5, -0.493143, -0.0825238, 0, -0.0825238, 0.493143, -2.18557e-08, -4, 1.813, 0)
+transform = Transform3D(-0.00317892, 0.131703, 0.269526, 0.296654, 0.0414276, -0.0167446, -0.0445704, 0.266342, -0.130673, -4.33605, 0.958, -1.5186)
 mesh = ExtResource("4_27nyv")

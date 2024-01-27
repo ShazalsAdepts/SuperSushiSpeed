@@ -68,5 +68,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.08, 0)
 mesh = ExtResource("1_ptxd0")
 
 [node name="Sushi" type="MeshInstance3D" parent="."]
-transform = Transform3D(3.60723e-09, -2.1556e-08, -0.5, -0.493143, -0.0825238, 0, -0.0825238, 0.493143, -2.18557e-08, 4, 1.813, 0)
+transform = Transform3D(0.0123974, -0.0740839, 0.290444, 0.295886, 0.0495143, 2.62268e-08, -0.0479372, 0.286461, 0.075114, 4.27871, 0.958, 1.63242)
 mesh = ExtResource("4_o7kcr")

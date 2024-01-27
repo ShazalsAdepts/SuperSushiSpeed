@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://bnq6h6yh6s84f"]
+[gd_scene load_steps=11 format=3 uid="uid://bnq6h6yh6s84f"]
 
 [ext_resource type="ArrayMesh" uid="uid://0mli2ysjcqyk" path="res://assets/terrain/belt.obj" id="1_f87h3"]
 [ext_resource type="ArrayMesh" uid="uid://yw08bnjt2uf8" path="res://assets/terrain/makiPlate.obj" id="2_br2oo"]
 [ext_resource type="ArrayMesh" uid="uid://d0abtngy35ys1" path="res://assets/terrain/soySauceBottle.obj" id="3_6u4r1"]
 [ext_resource type="ArrayMesh" uid="uid://dirbdys16vcdw" path="res://assets/terrain/soySauceBottleSUCRE.obj" id="4_jtsy4"]
+[ext_resource type="ArrayMesh" uid="uid://dwsq6sg7m7pai" path="res://assets/terrain/teaCup.obj" id="5_msdwy"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_l00jt"]
 size = Vector2(6, 9)
@@ -105,3 +106,11 @@ shape = SubResource("BoxShape3D_st31d")
 transform = Transform3D(-0.204239, 0, 0.284229, 0, 0.35, 0, -0.284229, 0, -0.204239, 0, -1, 0)
 mesh = ExtResource("4_jtsy4")
 skeleton = NodePath("../..")
+
+[node name="SoySauceBottleSucre" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.3, 0, 0, 0, -1.31134e-08, 0.3, 0, -0.3, -1.31134e-08, 4, 1.55, 2.76369)
+mesh = ExtResource("4_jtsy4")
+
+[node name="TeaCup" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -4, 1.1, -4)
+mesh = ExtResource("5_msdwy")

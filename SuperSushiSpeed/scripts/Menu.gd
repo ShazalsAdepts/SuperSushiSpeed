@@ -39,10 +39,7 @@ func _on_request_completed(result, response_code, headers, body):
 	var pseudo = json["player_name"]
 	get_node("Pseudo").text = pseudo
 	connectCurrent.queue_free()
-	var session_token = json["session_token"]
-	var de = FileAccess.open("res://usersave/session.json", FileAccess.WRITE)
-	de.store_string(JSON.new().stringify({"session_token":session_token}))
-	de.close()
+	
 
 func _on_button_start_pressed():
 	get_tree().change_scene_to_file("res://scenes/count_down.tscn")

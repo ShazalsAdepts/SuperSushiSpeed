@@ -4,8 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://dq85pgyr6j3uq" path="res://scenes/death.tscn" id="1_ltm6j"]
 [ext_resource type="Script" path="res://scripts/Player.gd" id="2_53c47"]
 [ext_resource type="Script" path="res://scripts/Son.gd" id="2_nb0ul"]
-[ext_resource type="ArrayMesh" uid="uid://chos5nhjs7sa6" path="res://assets/sushi/sushi.obj" id="3_dkcss"]
 [ext_resource type="Script" path="res://scripts/Camera.gd" id="3_eu6yv"]
+[ext_resource type="PackedScene" uid="uid://cjt7hfybhupyy" path="res://assets/sushi/sushi.blend" id="4_a0072"]
 [ext_resource type="AudioStream" uid="uid://caj84cpccqsnn" path="res://son/kick.mp3" id="4_pbjbu"]
 [ext_resource type="AudioStream" uid="uid://dp7flf424tdqh" path="res://son/fuck_noel.mp3" id="4_wxao7"]
 
@@ -48,10 +48,8 @@ speed_label = NodePath("speed")
 rythme_label = NodePath("title_rythme")
 game_over = NodePath("../Camera/Death")
 
-[node name="Sushi" type="MeshInstance3D" parent="Player"]
+[node name="Sushi" parent="Player" instance=ExtResource("4_a0072")]
 transform = Transform3D(-1.31134e-08, 0, -0.3, 0, 0.3, 0, 0.3, 0, -1.31134e-08, 0, -1.11464, 0)
-mesh = ExtResource("3_dkcss")
-skeleton = NodePath("../..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
 transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, -0.323741, 0.0396836)

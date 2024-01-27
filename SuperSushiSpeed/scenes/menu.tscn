@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://cvutgrnmmm4kf"]
+[gd_scene load_steps=36 format=3 uid="uid://cvutgrnmmm4kf"]
 
 [ext_resource type="Script" path="res://scripts/Menu.gd" id="1_idp3p"]
 [ext_resource type="ArrayMesh" uid="uid://chos5nhjs7sa6" path="res://assets/sushi/sushi.obj" id="1_ifvn5"]
@@ -11,6 +11,7 @@
 [ext_resource type="Script" path="res://scripts/Control_Settings.gd" id="8_0edwy"]
 [ext_resource type="Script" path="res://scripts/Control_Audio.gd" id="9_o8mhk"]
 [ext_resource type="ArrayMesh" uid="uid://yw08bnjt2uf8" path="res://assets/terrain/makiPlate.obj" id="9_ra113"]
+[ext_resource type="AudioStream" uid="uid://caj84cpccqsnn" path="res://son/kick.mp3" id="10_gb5uo"]
 [ext_resource type="ArrayMesh" uid="uid://iy8jg3y16avr" path="res://assets/terrain/makiPlate3.obj" id="10_u7oxn"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_kwyje"]
@@ -199,11 +200,6 @@ render_target_update_mode = 4
 [node name="Camera3D" type="Camera3D" parent="background/SubViewportContainer/SubViewport"]
 transform = Transform3D(-0.898581, -0.150082, 0.412345, 7.17902e-09, 0.939693, 0.34202, -0.438809, 0.307333, -0.844389, 2.54511, 2.2189, -2.35581)
 
-[node name="Musique" type="AudioStreamPlayer" parent="background"]
-stream = ExtResource("1_ka1cd")
-pitch_scale = 1.5
-autoplay = true
-
 [node name="MakiPlate1" type="MeshInstance3D" parent="background"]
 transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, 4, 0, 5)
 mesh = ExtResource("5_d41ew")
@@ -215,6 +211,7 @@ offset_right = 1280.0
 offset_bottom = 720.0
 
 [node name="Control" type="Control" parent="." node_paths=PackedStringArray("settings")]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -288,6 +285,23 @@ theme_override_styles/disabled = SubResource("StyleBoxEmpty_wxttn")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_o5etb")
 text = "Settings
 "
+
+[node name="button_credits" type="Button" parent="Control/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_colors/font_pressed_color = Color(0.545098, 0.0784314, 0.0862745, 1)
+theme_override_colors/font_hover_color = Color(0.745098, 0.360784, 0.286275, 1)
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxEmpty_venuj")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_d5vs0")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_acfrt")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_wxttn")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_o5etb")
+text = "Audio"
+
+[node name="MarginContainer2" type="MarginContainer" parent="Control/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
 
 [node name="button_quit" type="Button" parent="Control/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -397,6 +411,62 @@ text = "SUPER SUSHI SPEED"
 custom_minimum_size = Vector2(0, 80)
 layout_mode = 2
 
+[node name="button_Audio" type="Button" parent="ControlSettings/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_colors/font_pressed_color = Color(0.545098, 0.0784314, 0.0862745, 1)
+theme_override_colors/font_hover_color = Color(0.745098, 0.360784, 0.286275, 1)
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxEmpty_venuj")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_d5vs0")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_acfrt")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_wxttn")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_o5etb")
+text = "Son"
+
+[node name="button_Video" type="Button" parent="ControlSettings/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_colors/font_pressed_color = Color(0.545098, 0.0784314, 0.0862745, 1)
+theme_override_colors/font_hover_color = Color(0.745098, 0.360784, 0.286275, 1)
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxEmpty_venuj")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_d5vs0")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_acfrt")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_wxttn")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_o5etb")
+text = "Video"
+
+[node name="button_Controls" type="Button" parent="ControlSettings/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_colors/font_pressed_color = Color(0.545098, 0.0784314, 0.0862745, 1)
+theme_override_colors/font_hover_color = Color(0.745098, 0.360784, 0.286275, 1)
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxEmpty_venuj")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_d5vs0")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_acfrt")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_wxttn")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_o5etb")
+text = "Controls"
+
+[node name="button_Calibration" type="Button" parent="ControlSettings/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_colors/font_pressed_color = Color(0.545098, 0.0784314, 0.0862745, 1)
+theme_override_colors/font_hover_color = Color(0.745098, 0.360784, 0.286275, 1)
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxEmpty_venuj")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_d5vs0")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_acfrt")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_wxttn")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_o5etb")
+text = "Calibration"
+
+[node name="MarginContainer2" type="MarginContainer" parent="ControlSettings/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+
 [node name="button_quit" type="Button" parent="ControlSettings/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
@@ -408,11 +478,9 @@ theme_override_styles/hover = SubResource("StyleBoxEmpty_d5vs0")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_acfrt")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_wxttn")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_o5etb")
-text = "Quit
-"
+text = "Back"
 
 [node name="ControlAudio" type="Control" parent="." node_paths=PackedStringArray("settings")]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -420,6 +488,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("9_o8mhk")
+bus_name = "Music"
+bus_sfx_name = "SFX"
 settings = NodePath("../ControlSettings")
 
 [node name="MarginContainer" type="MarginContainer" parent="ControlAudio"]
@@ -434,20 +504,78 @@ theme_override_constants/margin_top = 80
 theme_override_constants/margin_right = 64
 theme_override_constants/margin_bottom = 80
 
-[node name="VBoxContainer" type="VBoxContainer" parent="ControlAudio/MarginContainer"]
+[node name="GridContainer" type="GridContainer" parent="ControlAudio/MarginContainer"]
 layout_mode = 2
 
-[node name="game_title" type="Label" parent="ControlAudio/MarginContainer/VBoxContainer"]
+[node name="game_title" type="Label" parent="ControlAudio/MarginContainer/GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
 theme_override_font_sizes/font_size = 70
 text = "SUPER SUSHI SPEED"
 
-[node name="MarginContainer" type="MarginContainer" parent="ControlAudio/MarginContainer/VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="ControlAudio/MarginContainer/GridContainer"]
 custom_minimum_size = Vector2(0, 80)
 layout_mode = 2
 
-[node name="button_quit" type="Button" parent="ControlAudio/MarginContainer/VBoxContainer"]
+[node name="MusicSetting" type="VBoxContainer" parent="ControlAudio/MarginContainer/GridContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="ControlAudio/MarginContainer/GridContainer/MusicSetting"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Music"
+
+[node name="HSlider" type="HSlider" parent="ControlAudio/MarginContainer/GridContainer/MusicSetting"]
+layout_mode = 2
+min_value = -24.0
+max_value = 24.0
+
+[node name="MarginContainer3" type="MarginContainer" parent="ControlAudio/MarginContainer/GridContainer"]
+custom_minimum_size = Vector2(0, 2)
+layout_mode = 2
+
+[node name="SFXSetting" type="VBoxContainer" parent="ControlAudio/MarginContainer/GridContainer"]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="ControlAudio/MarginContainer/GridContainer/SFXSetting"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "SFX"
+
+[node name="HSlider" type="HSlider" parent="ControlAudio/MarginContainer/GridContainer/SFXSetting"]
+layout_mode = 2
+min_value = -24.0
+max_value = 24.0
+
+[node name="button_play" type="Button" parent="ControlAudio/MarginContainer/GridContainer/SFXSetting"]
+layout_mode = 2
+theme_override_colors/font_pressed_color = Color(0.545098, 0.0784314, 0.0862745, 1)
+theme_override_colors/font_hover_color = Color(0.745098, 0.360784, 0.286275, 1)
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxEmpty_venuj")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_d5vs0")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_acfrt")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_wxttn")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_o5etb")
+text = "Play"
+
+[node name="MarginContainer3" type="MarginContainer" parent="ControlAudio/MarginContainer/GridContainer/SFXSetting"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+
+[node name="MarginContainer4" type="MarginContainer" parent="ControlAudio/MarginContainer/GridContainer/SFXSetting"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+
+[node name="MarginContainer5" type="MarginContainer" parent="ControlAudio/MarginContainer/GridContainer/SFXSetting"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+
+[node name="MarginContainer2" type="MarginContainer" parent="ControlAudio/MarginContainer/GridContainer"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+
+[node name="button_quit" type="Button" parent="ControlAudio/MarginContainer/GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
 theme_override_colors/font_pressed_color = Color(0.545098, 0.0784314, 0.0862745, 1)
@@ -458,8 +586,16 @@ theme_override_styles/hover = SubResource("StyleBoxEmpty_d5vs0")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_acfrt")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_wxttn")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_o5etb")
-text = "Quit
+text = "Back
 "
+
+[node name="son_settings" type="AudioStreamPlayer" parent="ControlAudio"]
+stream = ExtResource("1_ka1cd")
+bus = &"Music"
+
+[node name="sfx_settings" type="AudioStreamPlayer" parent="ControlAudio"]
+stream = ExtResource("10_gb5uo")
+bus = &"SFX"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -513,9 +649,21 @@ mesh = ExtResource("9_ra113")
 transform = Transform3D(0.600239, 0, 0.799821, 0, 1, 0, -0.799821, 0, 0.600239, -1.51396, 0, 6.87479)
 mesh = ExtResource("10_u7oxn")
 
+[node name="Musique" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_ka1cd")
+pitch_scale = 1.5
+autoplay = true
+bus = &"Music"
+
 [connection signal="pressed" from="Control/MarginContainer/VBoxContainer/button_start" to="Control" method="_on_button_start_pressed"]
 [connection signal="pressed" from="Control/MarginContainer/VBoxContainer/button_score" to="Control" method="_on_button_score_pressed"]
 [connection signal="pressed" from="Control/MarginContainer/VBoxContainer/button_settings" to="Control" method="_on_button_settings_pressed"]
 [connection signal="pressed" from="Control/MarginContainer/VBoxContainer/button_quit" to="Control" method="_on_button_quit_pressed"]
 [connection signal="pressed" from="Control/LeaderBoard/close" to="Control" method="_on_close_pressed"]
+[connection signal="pressed" from="ControlSettings/MarginContainer/VBoxContainer/button_Audio" to="ControlSettings" method="_on_button_audio_pressed"]
+[connection signal="pressed" from="ControlSettings/MarginContainer/VBoxContainer/button_quit" to="ControlSettings" method="_on_button_quit_pressed"]
+[connection signal="value_changed" from="ControlAudio/MarginContainer/GridContainer/MusicSetting/HSlider" to="ControlAudio" method="_on_h_slider_value_changed"]
+[connection signal="value_changed" from="ControlAudio/MarginContainer/GridContainer/SFXSetting/HSlider" to="ControlAudio" method="_on_h_slider_sfx_value_changed"]
+[connection signal="pressed" from="ControlAudio/MarginContainer/GridContainer/SFXSetting/button_play" to="ControlAudio" method="_on_button_sfx_play_pressed"]
+[connection signal="pressed" from="ControlAudio/MarginContainer/GridContainer/button_quit" to="ControlAudio" method="_on_button_quit_pressed"]
 [connection signal="pressed" from="Panel/Button" to="Panel" method="_on_button_pressed"]

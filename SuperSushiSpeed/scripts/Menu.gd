@@ -4,7 +4,6 @@ var API_KEY = "prod_4135c08094c1428cbe83647654cf6a81"
 var player_identifier: String
 var connectCurrent = HTTPRequest.new()
 
-
 func _ready():
 	if FileAccess.file_exists("res://usersave/user_login.json"):
 		print("file existe")
@@ -41,14 +40,12 @@ func _ready():
 		var popup = get_node("../Panel")
 		popup.set_visible(true)
 		
-		
 func _on_request_completed(result, response_code, headers, body):
 	var json = JSON.parse_string(body.get_string_from_utf8())
 	print(json)
 	var pseudo = json["player_name"]
 	get_node("Pseudo").text = pseudo
 	connectCurrent.queue_free()
-	
 
 func _on_button_start_pressed():
 	get_tree().change_scene_to_file("res://scenes/count_down.tscn")
@@ -61,11 +58,6 @@ func _on_button_settings_pressed():
 
 func _on_button_quit_pressed():
 	get_tree().quit()
-
-
-
-
-
 
 func _on_pseudo_input_gui_input(event):
 	if event is InputEventKey and event.pressed:

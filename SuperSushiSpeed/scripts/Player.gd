@@ -50,8 +50,11 @@ var target_fov = 75.0
 var line_density = 0.00
 var transition_speed = 0.9
 
-const SLIDE_SPEED = 30.0
-const SLIDE_TIME = 0.3
+var SLIDE_SPEED = 50.0
+const SLIDE_TIME = 0.5
+const SLIDE_ROTATION_START = 4.8  # Début de rotation pour le slide
+const SLIDE_ROTATION_END = 0.0      # Fin de rotation après le slide
+const ROTATION_INTERP_SPEED = 8  # Vitesse d'interpolation de la rotation
 
 var sliding = false
 var slide_timer = SLIDE_TIME
@@ -75,6 +78,7 @@ func _physics_process(delta):
 			end_slide()
 		else:
 			velocity.z = lerp(velocity.z, -SLIDE_SPEED, delta * lerp_speed)
+			SLIDE_SPEED -= 1
 	elif can_slide and Input.is_action_just_pressed("ui_shift"):
 		start_slide()
 
@@ -118,6 +122,8 @@ func handle_rythme():
 		if abs(time_difference) <= missed_beat_time:
 			if SPEED < MAX_SPEED:
 				SPEED += 10
+			elif SPEED == 95:
+				SPEED = 100.0
 			# Logique pour mouvement en rythme
 			rythme = "ON TIME"
 			update_next_beat_player_index(1)
@@ -207,16 +213,17 @@ func handle_speed_effect(delta):
 	player_camera.fov = lerp(current_fov, target_fov, transition_speed * delta)
 
 func start_slide():
+	SLIDE_SPEED = 30.0
 	sliding = true
 	can_slide = false
 	slide_timer = SLIDE_TIME
 	slide_cooldown_timer.start()
-	self.rotation.x = -4.8
+	self.rotation.x = SLIDE_ROTATION_START
 	self.position.y -= 0.3
 
 func end_slide():
 	sliding = false
-	self.rotation.x = 0
+	self.rotation.x = SLIDE_ROTATION_END
 	self.position.y += 1.3
 
 func _on_slide_cooldown_timer_timeout():

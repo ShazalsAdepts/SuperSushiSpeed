@@ -300,6 +300,7 @@ text = "Quit
 "
 
 [node name="LeaderBoard" type="Panel" parent="Control"]
+visible = false
 layout_mode = 2
 offset_left = 736.0
 offset_top = 80.0

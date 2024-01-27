@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://iy8jg3y16avr"
+path="res://.godot/imported/makiPlate3.obj-629fa7021fced24b63e66a11b5860b5d.mesh"
+
+[deps]
+
+files=["res://.godot/imported/makiPlate3.obj-629fa7021fced24b63e66a11b5860b5d.mesh"]
+
+source_file="res://assets/terrain/makiPlate3.obj"
+dest_files=["res://.godot/imported/makiPlate3.obj-629fa7021fced24b63e66a11b5860b5d.mesh", "res://.godot/imported/makiPlate3.obj-629fa7021fced24b63e66a11b5860b5d.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

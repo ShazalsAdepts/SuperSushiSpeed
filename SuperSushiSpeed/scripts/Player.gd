@@ -143,4 +143,4 @@ func die():
 	print("Le joueur est mort, SCORE : ", score)
 	print(" ")
 	print(" ")
-	get_tree().quit()
+	get_tree().change_scene_to_file("res://scenes/SaveScore.tscn")

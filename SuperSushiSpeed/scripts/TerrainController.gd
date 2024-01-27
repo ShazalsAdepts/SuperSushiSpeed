@@ -21,6 +21,9 @@ func _ready() -> void:
 	_load_terrain_scenes(terrian_blocks_path)
 	_init_blocks(num_terrain_blocks)
 
+
+
+
 func _physics_process(delta: float) -> void:
 	_progress_terrain(delta)
 	_increase_speed(delta)

@@ -28,7 +28,7 @@ tonemap_mode = 2
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_seaa6"]
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_a6cg8"]
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_sx0mn"]
 width = 1280
 height = 720
 color_ramp = SubResource("Gradient_50w3l")
@@ -43,7 +43,7 @@ shader_parameter/line_faloff = 0.587
 shader_parameter/mask_size = 0.318
 shader_parameter/mask_edge = 0.367
 shader_parameter/animation_speed = 20.0
-shader_parameter/noise = SubResource("NoiseTexture2D_a6cg8")
+shader_parameter/noise = SubResource("NoiseTexture2D_sx0mn")
 
 [node name="World" type="Node3D"]
 

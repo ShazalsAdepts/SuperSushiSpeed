@@ -44,6 +44,7 @@ var can_miss = true
 var can_score = true
 
 var target_fov = 75.0
+var line_density = 0.00
 var transition_speed = 0.9
 
 func _physics_process(delta):
@@ -157,27 +158,26 @@ func update_score(x):
 		score += x
 
 func handle_speed_effect(delta):
-	var line_density = 0.00
-	
 	if SPEED <= MIN_SPEED:
 		line_density = 0.01
-		target_fov = 75.0
-	elif SPEED <= MIN_SPEED + 20:
-		line_density = 0.02
-		target_fov = 80.0
-	elif SPEED <= MIN_SPEED + 35:
+		target_fov = 70.0
+	elif SPEED <= MIN_SPEED + 10:
 		line_density = 0.03
-		target_fov = 85.0
-	elif SPEED <= MIN_SPEED + 50:
+		target_fov = 80.0
+	elif SPEED <= MIN_SPEED + 30:
 		line_density = 0.04
 		target_fov = 90.0
-	elif SPEED >= MAX_SPEED - 5:
+	elif SPEED <= MIN_SPEED + 50:
+		line_density = 0.05
+		target_fov = 100.0
+	else:
 		line_density = 0.06
-		target_fov = 95.0
+		target_fov = 110.0
 	
 	if !can_score:
 		target_fov = 75.0
 	
-	speed_effect.material.set_shader_parameter("line_density", line_density)
+	var current_line_density = speed_effect.material.get_shader_parameter("line_density")
+	speed_effect.material.set_shader_parameter("line_density", lerp(current_line_density, line_density, (transition_speed - 0.1) * delta))
 	var current_fov = player_camera.fov
 	player_camera.fov = lerp(current_fov, target_fov, transition_speed * delta)

@@ -1,10 +1,11 @@
-[gd_scene load_steps=21 format=3 uid="uid://cvutgrnmmm4kf"]
+[gd_scene load_steps=26 format=3 uid="uid://cvutgrnmmm4kf"]
 
 [ext_resource type="Script" path="res://scripts/Menu.gd" id="1_idp3p"]
 [ext_resource type="ArrayMesh" uid="uid://chos5nhjs7sa6" path="res://assets/sushi/sushi.obj" id="1_ifvn5"]
 [ext_resource type="AudioStream" uid="uid://dp7flf424tdqh" path="res://son/fuck_noel.mp3" id="1_ka1cd"]
 [ext_resource type="ArrayMesh" uid="uid://d0abtngy35ys1" path="res://assets/terrain/soySauceBottle.obj" id="4_lre6r"]
 [ext_resource type="ArrayMesh" uid="uid://dirbdys16vcdw" path="res://assets/terrain/soySauceBottleSUCRE.obj" id="4_tgpom"]
+[ext_resource type="Shader" path="res://scripts/SpeedEffect.gdshader" id="6_00kbi"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_kwyje"]
 size = Vector2(100, 100)
@@ -31,6 +32,27 @@ fog_enabled = true
 fog_light_color = Color(0.945098, 0.709804, 0.486275, 1)
 fog_light_energy = 0.3
 fog_density = 0.0353
+
+[sub_resource type="Gradient" id="Gradient_pak1m"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_7lpnk"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_a6cg8"]
+width = 1280
+height = 720
+color_ramp = SubResource("Gradient_pak1m")
+noise = SubResource("FastNoiseLite_7lpnk")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_el6b5"]
+shader = ExtResource("6_00kbi")
+shader_parameter/line_color = Color(0.74902, 1, 0.988235, 1)
+shader_parameter/line_count = 2.0
+shader_parameter/line_density = 0.06
+shader_parameter/line_faloff = 0.587
+shader_parameter/mask_size = 0.318
+shader_parameter/mask_edge = 0.367
+shader_parameter/animation_speed = 20.0
+shader_parameter/noise = SubResource("NoiseTexture2D_a6cg8")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_venuj"]
 
@@ -188,6 +210,11 @@ transform = Transform3D(-0.898581, -0.150082, 0.412345, 7.17902e-09, 0.939693, 0
 stream = ExtResource("1_ka1cd")
 pitch_scale = 1.5
 autoplay = true
+
+[node name="SpeedEffect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_el6b5")
+offset_right = 1280.0
+offset_bottom = 720.0
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3

@@ -1,12 +1,11 @@
-[gd_scene load_steps=21 format=3 uid="uid://de7lfun0ovq48"]
+[gd_scene load_steps=26 format=3 uid="uid://cvutgrnmmm4kf"]
 
 [ext_resource type="Script" path="res://scripts/Menu.gd" id="1_idp3p"]
+[ext_resource type="ArrayMesh" uid="uid://chos5nhjs7sa6" path="res://assets/sushi/sushi.obj" id="1_ifvn5"]
 [ext_resource type="AudioStream" uid="uid://dp7flf424tdqh" path="res://son/fuck_noel.mp3" id="1_ka1cd"]
-[ext_resource type="Script" path="res://scripts/Panel.gd" id="3_7in1f"]
-
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ug1b8"]
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_5m14d"]
+[ext_resource type="ArrayMesh" uid="uid://d0abtngy35ys1" path="res://assets/terrain/soySauceBottle.obj" id="4_lre6r"]
+[ext_resource type="ArrayMesh" uid="uid://dirbdys16vcdw" path="res://assets/terrain/soySauceBottleSUCRE.obj" id="4_tgpom"]
+[ext_resource type="Shader" path="res://scripts/SpeedEffect.gdshader" id="6_00kbi"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_kwyje"]
 size = Vector2(100, 100)
@@ -33,6 +32,27 @@ fog_enabled = true
 fog_light_color = Color(0.945098, 0.709804, 0.486275, 1)
 fog_light_energy = 0.3
 fog_density = 0.0353
+
+[sub_resource type="Gradient" id="Gradient_pak1m"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_7lpnk"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_a6cg8"]
+width = 1280
+height = 720
+color_ramp = SubResource("Gradient_pak1m")
+noise = SubResource("FastNoiseLite_7lpnk")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_el6b5"]
+shader = ExtResource("6_00kbi")
+shader_parameter/line_color = Color(0.74902, 1, 0.988235, 1)
+shader_parameter/line_count = 2.0
+shader_parameter/line_density = 0.06
+shader_parameter/line_faloff = 0.587
+shader_parameter/mask_size = 0.318
+shader_parameter/mask_edge = 0.367
+shader_parameter/animation_speed = 20.0
+shader_parameter/noise = SubResource("NoiseTexture2D_a6cg8")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_venuj"]
 
@@ -110,15 +130,10 @@ _data = {
 
 [node name="background" type="Node3D" parent="."]
 
-[node name="Player" type="CharacterBody3D" parent="background"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.962638, 0)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="background/Player"]
-transform = Transform3D(1.1, 0, 0, 0, 1.1, 0, 0, 0, 1.1, 0, 0, 0)
-shape = SubResource("CapsuleShape3D_ug1b8")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="background/Player"]
-mesh = SubResource("CapsuleMesh_5m14d")
+[node name="Sushi" type="MeshInstance3D" parent="background"]
+transform = Transform3D(-0.280324, 0, -0.285339, 0, 0.4, 0, 0.285339, 0, -0.280324, -0.0770888, 0, 0.450738)
+mesh = ExtResource("1_ifvn5")
+skeleton = NodePath("../..")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="background"]
 mesh = SubResource("PlaneMesh_kwyje")
@@ -139,6 +154,16 @@ mesh = SubResource("PlaneMesh_kwyje")
 transform = Transform3D(1.91069e-15, 4.37114e-08, 1, 1, -4.37114e-08, 0, 4.37114e-08, 1, -4.37114e-08, 0, 50, -50)
 mesh = SubResource("PlaneMesh_kwyje")
 
+[node name="SoySauceBottle" type="MeshInstance3D" parent="background"]
+transform = Transform3D(0.21, 0, 0, 0, 0.21, 0, 0, 0, 0.21, 0.555195, 0, 6.23403)
+mesh = ExtResource("4_lre6r")
+skeleton = NodePath("../..")
+
+[node name="SoySauceBottleSucre" type="MeshInstance3D" parent="background"]
+transform = Transform3D(0.108453, 0, 0.168041, 0, 0.2, 0, -0.168041, 0, 0.108453, -0.595167, 0, 5.62417)
+mesh = ExtResource("4_tgpom")
+skeleton = NodePath("../..")
+
 [node name="Bloc_0" type="StaticBody3D" parent="background"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 1, -3)
 
@@ -156,16 +181,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0.5, 4)
 shape = SubResource("BoxShape3D_tluvv")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="background/Bloc_1"]
-mesh = SubResource("BoxMesh_wwktt")
-
-[node name="Bloc_2" type="StaticBody3D" parent="background"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 6)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="background/Bloc_2"]
-shape = SubResource("BoxShape3D_lx8su")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="background/Bloc_2"]
-transform = Transform3D(1, 0, 0, 0, 2, 0, 0, 0, 1, 0, 0, 0)
 mesh = SubResource("BoxMesh_wwktt")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="background"]
@@ -196,6 +211,11 @@ stream = ExtResource("1_ka1cd")
 pitch_scale = 1.5
 autoplay = true
 
+[node name="SpeedEffect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_el6b5")
+offset_right = 1280.0
+offset_bottom = 720.0
+
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 15
@@ -223,7 +243,7 @@ layout_mode = 2
 [node name="game_title" type="Label" parent="Control/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
-theme_override_font_sizes/font_size = 62
+theme_override_font_sizes/font_size = 70
 text = "SUPER SUSHI SPEED"
 
 [node name="MarginContainer" type="MarginContainer" parent="Control/MarginContainer/VBoxContainer"]
@@ -235,7 +255,7 @@ layout_mode = 2
 size_flags_horizontal = 0
 theme_override_colors/font_pressed_color = Color(0.545098, 0.0784314, 0.0862745, 1)
 theme_override_colors/font_hover_color = Color(0.745098, 0.360784, 0.286275, 1)
-theme_override_font_sizes/font_size = 30
+theme_override_font_sizes/font_size = 40
 theme_override_styles/normal = SubResource("StyleBoxEmpty_venuj")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_d5vs0")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_acfrt")
@@ -248,7 +268,7 @@ layout_mode = 2
 size_flags_horizontal = 0
 theme_override_colors/font_pressed_color = Color(0.545098, 0.0784314, 0.0862745, 1)
 theme_override_colors/font_hover_color = Color(0.745098, 0.360784, 0.286275, 1)
-theme_override_font_sizes/font_size = 30
+theme_override_font_sizes/font_size = 40
 theme_override_styles/normal = SubResource("StyleBoxEmpty_venuj")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_d5vs0")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_acfrt")
@@ -261,7 +281,7 @@ layout_mode = 2
 size_flags_horizontal = 0
 theme_override_colors/font_pressed_color = Color(0.545098, 0.0784314, 0.0862745, 1)
 theme_override_colors/font_hover_color = Color(0.745098, 0.360784, 0.286275, 1)
-theme_override_font_sizes/font_size = 30
+theme_override_font_sizes/font_size = 40
 theme_override_styles/normal = SubResource("StyleBoxEmpty_venuj")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_d5vs0")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_acfrt")
@@ -275,7 +295,7 @@ layout_mode = 2
 size_flags_horizontal = 0
 theme_override_colors/font_pressed_color = Color(0.545098, 0.0784314, 0.0862745, 1)
 theme_override_colors/font_hover_color = Color(0.745098, 0.360784, 0.286275, 1)
-theme_override_font_sizes/font_size = 30
+theme_override_font_sizes/font_size = 40
 theme_override_styles/normal = SubResource("StyleBoxEmpty_venuj")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_d5vs0")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_acfrt")

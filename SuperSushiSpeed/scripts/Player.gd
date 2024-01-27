@@ -3,8 +3,8 @@ extends CharacterBody3D
 var MAX_SPEED = 95.0
 var MIN_SPEED = 20.0
 var SPEED = 50.0
-const JUMP_VELOCITY = 9.0
-var lerp_speed = 5.0
+const JUMP_VELOCITY = 8.0
+var lerp_speed = 10.0
 
 var last_foot_used = "none"
 var consecutive_presses = 0
@@ -16,6 +16,8 @@ var consecutive_presses = 0
 @export var score_label: Label
 @export var speed_label: Label
 @export var rythme_label: Label
+@export var game_over: Control
+@export var speed_effect: ColorRect
 
 var rythme = ""
 
@@ -39,9 +41,15 @@ var current_beat_player = 0.0
 var restarted = true
 var can_miss = true
 
+var can_score = true
+
+var target_fov = 75.0
+var line_density = 0.00
+var transition_speed = 0.9
+
 func _physics_process(delta):
 	if not is_on_floor():
-		velocity.y -= gravity * 3.0 * delta
+		velocity.y -= gravity * 2 * delta
 	
 	var foot_input = get_foot_input()
 	if foot_input != "":
@@ -63,8 +71,9 @@ func _physics_process(delta):
 
 	move_and_slide()
 	handle_rythme()
+	handle_speed_effect(delta)
 	
-	if player_camera and global_transform.origin.z > player_camera.global_transform.origin.z:
+	if (player_camera and global_transform.origin.z > player_camera.global_transform.origin.z) or global_transform.origin.y < -1:
 		die()
 	
 	score_label.text = str(score)
@@ -132,15 +141,44 @@ func handle_foot_movement(foot, delta):
 			consecutive_presses = 0.0
 	else:
 		consecutive_presses = 1.0
-		velocity.z = lerp(velocity.z, -SPEED, delta * lerp_speed)
+		if can_score :
+			velocity.z = lerp(velocity.z, -SPEED, delta * lerp_speed)
 		
 	last_foot_used = foot
-	score += SPEED
+	update_score(SPEED)
 
 func die():
-	print(" ")
-	print(" ")
-	print("Le joueur est mort, SCORE : ", score)
-	print(" ")
-	print(" ")
-	get_tree().change_scene_to_file("res://scenes/SaveScore.tscn")
+	can_score = false
+	game_over.set_score(score)
+	await get_tree().create_timer(0.4).timeout
+	game_over.visible = true
+	gravity = 0
+
+func update_score(x):
+	if can_score == true:
+		score += x
+
+func handle_speed_effect(delta):
+	if SPEED <= MIN_SPEED:
+		line_density = 0.01
+		target_fov = 70.0
+	elif SPEED <= MIN_SPEED + 10:
+		line_density = 0.03
+		target_fov = 80.0
+	elif SPEED <= MIN_SPEED + 30:
+		line_density = 0.04
+		target_fov = 90.0
+	elif SPEED <= MIN_SPEED + 50:
+		line_density = 0.05
+		target_fov = 100.0
+	else:
+		line_density = 0.06
+		target_fov = 110.0
+	
+	if !can_score:
+		target_fov = 75.0
+	
+	var current_line_density = speed_effect.material.get_shader_parameter("line_density")
+	speed_effect.material.set_shader_parameter("line_density", lerp(current_line_density, line_density, (transition_speed - 0.1) * delta))
+	var current_fov = player_camera.fov
+	player_camera.fov = lerp(current_fov, target_fov, transition_speed * delta)

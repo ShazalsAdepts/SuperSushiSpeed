@@ -7,9 +7,9 @@ var terrain_belt: Array[MeshInstance3D] = []
 
 @export var player: CharacterBody3D
 
-var acceleration: float = 0.04
+var acceleration: float = 0.03
 var max_speed: float = 20.0
-var terrain_velocity: float = 1
+var terrain_velocity: float = 0.8
 var num_terrain_blocks = 15
 var terrian_blocks_path = "res://modules"
 var some_threshold = 60.0
@@ -53,7 +53,7 @@ func _init_blocks(number_of_blocks: int) -> void:
 		var block
 		if block_index == 0:
 			block = TerrainBlocks[0].instantiate()
-			block.position.z = -block.mesh.size.y/2
+			block.position.z = -block.mesh.size.y/3
 		else:
 			block = TerrainBlocks.pick_random().instantiate()
 			_append_to_far_edge(terrain_belt[block_index-1], block)
@@ -65,7 +65,7 @@ func _progress_terrain(delta: float) -> void:
 	for block in terrain_belt:
 		block.position.z += terrain_velocity * delta
 
-	if terrain_belt[0].position.z >= terrain_belt[0].mesh.size.y/2:
+	if terrain_belt[0].position.z >= terrain_belt[0].mesh.size.y:
 		var last_terrain = terrain_belt[-1]
 		var first_terrain = terrain_belt.pop_front()
 

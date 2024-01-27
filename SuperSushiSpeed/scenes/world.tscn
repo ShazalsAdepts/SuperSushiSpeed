@@ -1,11 +1,14 @@
-[gd_scene load_steps=12 format=3 uid="uid://ccv2ry3lkvg6p"]
+[gd_scene load_steps=18 format=3 uid="uid://ccv2ry3lkvg6p"]
 
 [ext_resource type="PackedScene" uid="uid://dhkq2ebp8keuh" path="res://scenes/terrain_controller.tscn" id="1_1mi36"]
+[ext_resource type="PackedScene" uid="uid://dq85pgyr6j3uq" path="res://scenes/death.tscn" id="1_ltm6j"]
 [ext_resource type="Script" path="res://scripts/Player.gd" id="2_53c47"]
 [ext_resource type="Script" path="res://scripts/Son.gd" id="2_nb0ul"]
+[ext_resource type="ArrayMesh" uid="uid://chos5nhjs7sa6" path="res://assets/sushi/sushi.obj" id="3_dkcss"]
 [ext_resource type="Script" path="res://scripts/Camera.gd" id="3_eu6yv"]
 [ext_resource type="AudioStream" uid="uid://caj84cpccqsnn" path="res://son/kick.mp3" id="4_pbjbu"]
 [ext_resource type="AudioStream" uid="uid://dp7flf424tdqh" path="res://son/fuck_noel.mp3" id="4_wxao7"]
+[ext_resource type="Shader" path="res://scripts/SpeedEffect.gdshader" id="6_r1j7f"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_rv4pa"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -21,7 +24,26 @@ tonemap_mode = 2
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_y6d5c"]
 
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_asd8j"]
+[sub_resource type="Gradient" id="Gradient_50w3l"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_seaa6"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_sx0mn"]
+width = 1280
+height = 720
+color_ramp = SubResource("Gradient_50w3l")
+noise = SubResource("FastNoiseLite_seaa6")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_o18js"]
+shader = ExtResource("6_r1j7f")
+shader_parameter/line_color = Color(0.74902, 1, 0.988235, 1)
+shader_parameter/line_count = 2.0
+shader_parameter/line_density = 0.06
+shader_parameter/line_faloff = 0.587
+shader_parameter/mask_size = 0.318
+shader_parameter/mask_edge = 0.367
+shader_parameter/animation_speed = 20.0
+shader_parameter/noise = SubResource("NoiseTexture2D_sx0mn")
 
 [node name="World" type="Node3D"]
 
@@ -29,14 +51,15 @@ tonemap_mode = 2
 environment = SubResource("Environment_vj3ns")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+transform = Transform3D(-0.766437, -0.135223, 0.627925, -3.70553e-08, 0.977589, 0.210523, -0.64232, 0.161353, -0.74926, 0, 0, 0)
+light_color = Color(0.769174, 0.349663, 0.0927091, 1)
 shadow_enabled = true
 
 [node name="TerrainController" parent="." node_paths=PackedStringArray("player") instance=ExtResource("1_1mi36")]
 player = NodePath("../Player")
 
-[node name="Player" type="CharacterBody3D" parent="." node_paths=PackedStringArray("terrain_controller", "player_camera", "musique", "son", "score_label", "speed_label", "rythme_label")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, -2)
+[node name="Player" type="CharacterBody3D" parent="." node_paths=PackedStringArray("terrain_controller", "player_camera", "musique", "son", "score_label", "speed_label", "rythme_label", "game_over", "speed_effect")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3017, -2)
 script = ExtResource("2_53c47")
 terrain_controller = NodePath("../TerrainController")
 player_camera = NodePath("../Camera")
@@ -45,25 +68,33 @@ son = NodePath("../Son")
 score_label = NodePath("score")
 speed_label = NodePath("speed")
 rythme_label = NodePath("title_rythme")
+game_over = NodePath("../Camera/Death")
+speed_effect = NodePath("../Camera/SpeedEffect")
+
+[node name="Sushi" type="MeshInstance3D" parent="Player"]
+transform = Transform3D(-1.31134e-08, 0, -0.3, 0, 0.3, 0, 0.3, 0, -1.31134e-08, 0, -1.11464, 0)
+mesh = ExtResource("3_dkcss")
+skeleton = NodePath("../..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
-transform = Transform3D(1.1, 0, 0, 0, 1.1, 0, 0, 0, 1.1, 0, 0, 0)
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, -0.323741, 0.0396836)
 shape = SubResource("CapsuleShape3D_y6d5c")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Player"]
-mesh = SubResource("CapsuleMesh_asd8j")
-
 [node name="title_score" type="Label" parent="Player"]
-offset_left = 568.0
-offset_right = 619.0
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -25.5
+offset_right = 25.5
 offset_bottom = 23.0
+grow_horizontal = 2
+size_flags_horizontal = 4
 text = "SCORE"
 
 [node name="title_speed" type="Label" parent="Player"]
-offset_left = 1050.0
-offset_top = 3.0
-offset_right = 1090.0
-offset_bottom = 26.0
+offset_left = 1160.0
+offset_right = 1217.0
+offset_bottom = 23.0
 text = "SPEED :"
 
 [node name="title_rythme" type="Label" parent="Player"]
@@ -73,16 +104,15 @@ offset_right = 46.0
 offset_bottom = 29.0
 
 [node name="speed" type="Label" parent="Player"]
-offset_left = 1108.0
-offset_top = 5.0
-offset_right = 1148.0
-offset_bottom = 28.0
+offset_left = 1227.0
+offset_right = 1275.0
+offset_bottom = 23.0
 
 [node name="score" type="Label" parent="Player"]
-offset_left = 575.0
-offset_top = 25.0
-offset_right = 615.0
-offset_bottom = 48.0
+offset_left = 610.0
+offset_top = 23.0
+offset_right = 668.0
+offset_bottom = 46.0
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -90,6 +120,14 @@ vertical_alignment = 1
 transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 3, 3)
 script = ExtResource("3_eu6yv")
 player = NodePath("../Player")
+
+[node name="SpeedEffect" type="ColorRect" parent="Camera"]
+material = SubResource("ShaderMaterial_o18js")
+offset_right = 1280.0
+offset_bottom = 720.0
+
+[node name="Death" parent="Camera" instance=ExtResource("1_ltm6j")]
+visible = false
 
 [node name="Musique" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_wxao7")

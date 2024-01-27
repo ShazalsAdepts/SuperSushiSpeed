@@ -42,7 +42,7 @@ func _on_request_completed(result, response_code, headers, body):
 
 
 func _on_button_start_pressed():
-	get_tree().change_scene_to_file("res://scenes/world.tscn")
+	get_tree().change_scene_to_file("res://scenes/count_down.tscn")
 
 func _on_button_score_pressed():
 	pass # Replace with function body.

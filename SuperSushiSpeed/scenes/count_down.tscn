@@ -1,0 +1,40 @@
+[gd_scene load_steps=3 format=3 uid="uid://540ehlltsvu8"]
+
+[ext_resource type="Script" path="res://scripts/CountDown.gd" id="1_8e4jt"]
+[ext_resource type="AudioStream" uid="uid://caj84cpccqsnn" path="res://son/kick.mp3" id="2_2xvde"]
+
+[node name="CountDown" type="Control" node_paths=PackedStringArray("son", "label")]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1280.0
+offset_bottom = 720.0
+script = ExtResource("1_8e4jt")
+son = NodePath("Son")
+label = NodePath("Label")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 1280.0
+offset_bottom = 720.0
+color = Color(0.179556, 0.00963724, 0.0110899, 1)
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -57.0
+offset_top = -136.5
+offset_right = 57.0
+offset_bottom = 136.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 200
+text = "5"
+
+[node name="Son" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_2xvde")
+volume_db = 1.0
+autoplay = true

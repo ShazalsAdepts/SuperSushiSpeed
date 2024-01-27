@@ -1,7 +1,7 @@
 extends CharacterBody3D
 
 var MAX_SPEED = 95.0
-var MIN_SPEED = 20.0
+var MIN_SPEED = 0.00
 var SPEED = 20.0
 const JUMP_VELOCITY = 8.0
 var lerp_speed = 10.0
@@ -20,6 +20,7 @@ var consecutive_presses = 0
 @export var speed_effect: ColorRect
 
 @onready var sprite = $Sushi
+@onready var hitbox = $PlayerHitbox
 
 var rythme = ""
 
@@ -50,7 +51,7 @@ var line_density = 0.00
 var transition_speed = 0.9
 
 const SLIDE_SPEED = 35.0
-const SLIDE_TIME = 0.2
+const SLIDE_TIME = 0.3
 
 var sliding = false
 var slide_timer = SLIDE_TIME
@@ -69,7 +70,6 @@ func _physics_process(delta):
 		velocity.z = lerp(velocity.z, 0.0, delta * lerp_speed)
 
 	if sliding:
-		# Logique de glissade
 		slide_timer -= delta
 		if slide_timer <= 0:
 			end_slide()
@@ -114,6 +114,10 @@ func handle_rythme():
 	if (Input.is_action_just_pressed("ui_left") or Input.is_action_just_pressed("ui_right")):
 		var beat_time = son.beats[current_beat_player]
 		var time_difference = current_position - beat_time
+		print(current_beat_player)
+		if current_beat_player == 0:
+			time_difference = musique.stream.get_length() - current_position
+			print(time_difference)
 		
 		if abs(time_difference) <= missed_beat_time:
 			if SPEED < MAX_SPEED:
@@ -208,12 +212,14 @@ func start_slide():
 	sliding = true
 	can_slide = false
 	slide_timer = SLIDE_TIME
-	# Ajustez la vitesse et l'orientation pour la glissade
 	slide_cooldown_timer.start()
+	self.rotation.x = 90
+	self.position.y -= 0.3
 
 func end_slide():
 	sliding = false
-	# Réinitialisez la vitesse et l'orientation
+	self.rotation.x = 0
+	self.position.y += 1.3
 
 func _on_slide_cooldown_timer_timeout():
 	can_slide = true

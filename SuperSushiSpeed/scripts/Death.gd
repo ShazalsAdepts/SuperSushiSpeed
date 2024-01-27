@@ -59,8 +59,6 @@ func _on_request_completed(result, response_code, headers, body):
 	# Send request
 	submit_score_http.request("https://api.lootlocker.io/game/leaderboards/"+leaderboard_key+"/submit", header, HTTPClient.METHOD_POST, JSON.stringify(data))
 
-
-
 func _on_upload_score_request_completed(result, response_code, headers, body):
 	var json = JSON.new()
 	json.parse(body.get_string_from_utf8())

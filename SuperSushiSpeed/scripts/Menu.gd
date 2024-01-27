@@ -8,6 +8,9 @@ var session_token: String = ""
 var getsession: HTTPRequest
 var leaderboard_http: HTTPRequest
 var player_id: String
+
+@export var settings: Control
+
 func _ready():
 	if FileAccess.file_exists("res://usersave/user_login.json"):
 		print("file existe")
@@ -93,12 +96,11 @@ func _on_button_score_pressed():
 		get_leaderboards()
 
 func _on_button_settings_pressed():
-	pass # Replace with function body.
+	self.set_visible(false)
+	settings.set_visible(true)
 
 func _on_button_quit_pressed():
 	get_tree().quit()
-
-
 
 func get_leaderboards():
 	print("Getting leaderboards")
@@ -133,12 +135,14 @@ func _on_leaderboard_request_completed(result, response_code, headers, body):
 	get_node("LeaderBoard/score").text = player
 	# Clear node
 	leaderboard_http.queue_free()
-	
+
 func _on_pseudo_input_gui_input(event):
 	if event is InputEventKey and event.pressed:
 		if event.keycode == 4194309:
 			pass
 
-
 func _on_close_pressed():
 	get_node("LeaderBoard").set_visible(false)
+
+func _on_button_credits_pressed():
+	pass

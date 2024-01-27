@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://v3fo88utr2pw"]
+[gd_scene load_steps=17 format=3 uid="uid://cmj2bfymwthro"]
 
 [ext_resource type="ArrayMesh" uid="uid://0mli2ysjcqyk" path="res://assets/terrain/belt.obj" id="1_e4exx"]
 [ext_resource type="Script" path="res://scripts/Wasabi.gd" id="2_1powd"]

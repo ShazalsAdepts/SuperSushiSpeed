@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://cvutgrnmmm4kf"]
+[gd_scene load_steps=42 format=3 uid="uid://cvutgrnmmm4kf"]
 
 [ext_resource type="Script" path="res://scripts/Menu.gd" id="1_idp3p"]
 [ext_resource type="AudioStream" uid="uid://dp7flf424tdqh" path="res://son/fuck_noel.mp3" id="1_ka1cd"]
@@ -7,8 +7,12 @@
 [ext_resource type="PackedScene" uid="uid://bnq6h6yh6s84f" path="res://modules/terrain_9.tscn" id="3_5viik"]
 [ext_resource type="Script" path="res://scripts/Panel.gd" id="3_7in1f"]
 [ext_resource type="PackedScene" uid="uid://c1cxi8641ljnp" path="res://modules/terrain_0.tscn" id="4_q87e3"]
+[ext_resource type="PackedScene" uid="uid://c0o5wxjchpn2" path="res://modules/terrain_10.tscn" id="5_ju7aw"]
 [ext_resource type="Shader" path="res://scripts/SpeedEffect.gdshader" id="6_00kbi"]
+[ext_resource type="PackedScene" uid="uid://cmj2bfymwthro" path="res://modules/terrain_12.tscn" id="6_p14ig"]
+[ext_resource type="ArrayMesh" uid="uid://d0abtngy35ys1" path="res://assets/terrain/soySauceBottle.obj" id="7_wjgra"]
 [ext_resource type="Script" path="res://scripts/Control_Settings.gd" id="8_0edwy"]
+[ext_resource type="ArrayMesh" uid="uid://yqsrtn28p2ml" path="res://assets/sushi/sushiV2MOOSCLES.obj" id="8_o3q3n"]
 [ext_resource type="Script" path="res://scripts/Control_Audio.gd" id="9_o8mhk"]
 [ext_resource type="Texture2D" uid="uid://psbfhxgc2yp3" path="res://assets/ui/tuto.PNG" id="9_tiung"]
 [ext_resource type="Script" path="res://scripts/ControlVideo.gd" id="10_c0xwu"]
@@ -146,7 +150,7 @@ _data = {
 [node name="background" type="Node3D" parent="."]
 
 [node name="SushiV2" type="MeshInstance3D" parent="background"]
-transform = Transform3D(0.0489483, 0, -0.396994, 0, 0.4, 0, 0.396994, 0, 0.0489483, 1.27863, 58.513, 5.06054)
+transform = Transform3D(0.0489483, 2.27164e-09, -0.396994, -0.329224, 0.223527, -0.0405924, 0.221847, 0.331717, 0.0273531, 1.27863, 57.5465, 3.38136)
 mesh = ExtResource("1_xyix8")
 skeleton = NodePath("../..")
 
@@ -181,6 +185,20 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 53.628, -1.63)
 [node name="Terrain_3" parent="background" instance=ExtResource("4_q87e3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 53.628, 25.0784)
 
+[node name="Terrain_4" parent="background" instance=ExtResource("5_ju7aw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 53.628, 33.746)
+
+[node name="Terrain_5" parent="background" instance=ExtResource("6_p14ig")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 53.628, 42.3607)
+
+[node name="SOYSAUCESAMERE" type="MeshInstance3D" parent="background"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.45489, 50.1659, 10.107)
+mesh = ExtResource("7_wjgra")
+
+[node name="MUSCLE" type="MeshInstance3D" parent="background"]
+transform = Transform3D(0.208589, -0.338473, -0.449363, 0.51028, 0.315616, -0.00086518, 0.236865, -0.381867, 0.397583, 5.02217, 60.2955, 7.67751)
+mesh = ExtResource("8_o3q3n")
+
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="background"]
 transform = Transform3D(-0.866025, -0.433013, 0.25, -0.354305, 0.884258, 0.30423, -0.3528, 0.174894, -0.919208, 0, 63.8551, 0)
 light_color = Color(0.602401, 0.466914, 0.195508, 1)
@@ -202,7 +220,7 @@ size = Vector2i(1280, 720)
 render_target_update_mode = 4
 
 [node name="Camera3D" type="Camera3D" parent="background/SubViewportContainer/SubViewport"]
-transform = Transform3D(-0.89858, -0.150082, 0.412345, 7.17902e-09, 0.939693, 0.34202, -0.438809, 0.307333, -0.844389, 2.54511, 2.2189, -2.35581)
+transform = Transform3D(-0.89858, -0.150082, 0.412345, 7.17901e-09, 0.939693, 0.34202, -0.438809, 0.307333, -0.844389, 2.54511, 2.2189, -2.35581)
 current = true
 
 [node name="SpeedEffect" type="ColorRect" parent="."]

@@ -88,7 +88,6 @@ func _physics_process(delta):
 	var target_x = current_lane
 	var position_player = self.transform.origin
 	position_player.x = lerp(position_player.x, target_x, delta * lerp_speed) # Mouv horizontal
-	position_player.x = lerp(position_player.x, final_target_x, delta * final_lerp_speed) # Mouv horizontal
 	self.transform.origin = position_player
 	
 	if terrain_controller: # Le terrain déplace le joueur

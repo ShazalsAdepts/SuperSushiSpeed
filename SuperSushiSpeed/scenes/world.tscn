@@ -182,7 +182,7 @@ rythme_label = NodePath("title_rythme")
 game_over = NodePath("../Camera/Death")
 speed_effect = NodePath("../Camera/SpeedEffect")
 
-[node name="GPUParticles3D" type="GPUParticles3D" parent="Player"]
+[node name="Trails" type="GPUParticles3D" parent="Player"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.175, 0)
 amount = 500
 process_material = SubResource("ParticleProcessMaterial_45ql7")

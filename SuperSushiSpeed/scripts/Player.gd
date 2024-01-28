@@ -127,6 +127,11 @@ func _physics_process(delta):
 			SPEED = 100.0
 		unlock_double_jump = false
 		multiply = 1
+		
+	if SPEED >= 100:
+		find_child("Trails").visible = true
+	else:
+		find_child("Trails").visible = false
 
 	move_and_slide()
 	handle_rythme()

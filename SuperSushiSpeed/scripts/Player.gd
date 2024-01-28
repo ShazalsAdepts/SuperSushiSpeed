@@ -179,6 +179,16 @@ func _physics_process(delta):
 		dash.size.x = 52 + ((5-timer.get_time_left()) * 148)/5
 		dash["theme_override_styles/panel"].region_rect = Rect2(0,0,83.72 +((5 -timer.get_time_left()) * 238.78)/5,219)
 	
+	var mutation = get_node("mutation_cooldown_timer")
+	var wasabi = get_node("wasabi")
+	if mutation.is_stopped():
+		wasabi.size.x = 515
+		wasabi["theme_override_styles/panel"].region_rect = Rect2(0,0,926,259)
+	else:
+		wasabi.size.x = (mutation.get_time_left() *515)/5
+		wasabi["theme_override_styles/panel"].region_rect = Rect2(0,0,(mutation.get_time_left()*929)/5,259)
+		
+		
 func get_foot_input(): 
 	if Input.is_action_just_pressed("ui_left"):
 		return "left"
@@ -316,5 +326,6 @@ func mutate(x):
 	find_child("Sushi").mesh = sushi_muscle
 
 func _on_mutation_cooldown_timer_timeout():
+	get_node("mutation_cooldown_timer").stop()
 	find_child("Sushi").mesh = sushi_normal
 	is_mutated = false

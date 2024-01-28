@@ -97,6 +97,7 @@ corner_radius_bottom_left = 50
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_c1hpv"]
 texture = ExtResource("5_sibel")
+region_rect = Rect2(-2, 0, 926, 259)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_g7yg4"]
 texture = ExtResource("9_ptidc")
@@ -298,10 +299,10 @@ offset_bottom = 646.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_0m2mq")
 
 [node name="wasabi" type="Panel" parent="Player"]
-offset_left = 66.0
-offset_top = 29.0
-offset_right = 538.0
-offset_bottom = 167.0
+offset_left = 33.0
+offset_top = 15.0
+offset_right = 548.0
+offset_bottom = 178.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_c1hpv")
 
 [node name="Panel6" type="Panel" parent="Player"]

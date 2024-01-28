@@ -80,6 +80,7 @@ var multiply = 1
 @onready var slide_cooldown_timer = $slide_cooldown_timer
 @onready var mutation_cooldown_timer = $mutation_cooldown_timer
 @onready var sushi_muscle = load("res://assets/sushi/sushiV2MOOSCLES.obj")
+@onready var sushi_muscle_slide = load("res://assets/sushi/sushiV2Flex1.obj")
 @onready var sushi_normal = load("res://assets/sushi/sushiV2.obj")
 @onready var sushi_normal_right = load("res://assets/sushi/sushiV2Right.obj")
 @onready var sushi_normal_left = load("res://assets/sushi/sushiV2Left.obj")
@@ -101,6 +102,8 @@ func _physics_process(delta):
 		if slide_timer <= 0:
 			end_slide()
 		else:
+			if is_mutated:
+				find_child("Sushi").mesh = sushi_muscle_slide
 			velocity.z = lerp(velocity.z, -SLIDE_SPEED, delta * lerp_speed)
 			SLIDE_SPEED -= 1
 	elif unlock_slide and can_slide and Input.is_action_just_pressed("ui_shift"):
@@ -372,6 +375,8 @@ func start_slide():
 	self.position.y -= 0.3
 
 func end_slide():
+	if is_mutated:
+		find_child("Sushi").mesh = sushi_muscle
 	sliding = false
 	self.rotation.x = SLIDE_ROTATION_END
 	self.position.y += 1.3

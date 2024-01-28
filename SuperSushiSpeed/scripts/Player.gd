@@ -101,7 +101,6 @@ func _physics_process(delta):
 	move_and_slide()
 	handle_rythme()
 	handle_speed_effect(delta)
-	print("====")
 	var balls = [
 		get_node("ball"),
 		get_node("ball1"),
@@ -115,19 +114,24 @@ func _physics_process(delta):
 	for ball in balls:
 		ball.set_visible(false)
 	
+	for ballss in son.beats:
+		var inco = ballss- musique.get_playback_position()
+		if inco < 0.1 && inco > 0:
+				get_node("Panel3/AnimationPlayer").play("beats_up")
+	
 	var dif = 0
 	for income in range(2):
 		for rly_income in range(1, 23):
 			var beats_time = son.beats[rly_income]
-			var incoming_in = beats_time - (dif -  musique.get_playback_position() )
+			var incoming_in = beats_time - (dif -  musique.get_playback_position())
 			if incoming_in < 2 && incoming_in > 0:
 				balls[i].set_visible(true)
 				var x = ((incoming_in)*974)/2+100
 				balls[i].position.x = x
 				balls[i].position.y = 576
 				i = i +1
-		dif = 9.62
-	
+			
+		dif = 9.62 / musique.pitch_scale
 	
 		
 
@@ -144,6 +148,10 @@ func get_foot_input():
 	elif Input.is_action_just_pressed("ui_right"):
 		return "right"
 	return ""
+	
+func _on_AnimationPlayer_animation_finished(anim_name):
+	print("wut ?")
+	get_node("Panel3/AnimationPlayer").pause("beats_up")
 
 func handle_rythme():
 	current_position = musique.get_playback_position()

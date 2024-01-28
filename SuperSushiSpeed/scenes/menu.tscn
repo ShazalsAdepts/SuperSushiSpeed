@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" path="res://scripts/Menu.gd" id="1_idp3p"]
 [ext_resource type="AudioStream" uid="uid://dp7flf424tdqh" path="res://son/fuck_noel.mp3" id="1_ka1cd"]
-[ext_resource type="ArrayMesh" uid="uid://dnjuf26dvei18" path="res://assets/sushi/sushiV2.obj" id="1_xyix8"]
 [ext_resource type="PackedScene" uid="uid://b7em5nclcedhd" path="res://modules/terrain_8.tscn" id="2_3yrtf"]
 [ext_resource type="PackedScene" uid="uid://bnq6h6yh6s84f" path="res://modules/terrain_9.tscn" id="3_5viik"]
 [ext_resource type="Script" path="res://scripts/Panel.gd" id="3_7in1f"]
@@ -19,6 +18,7 @@
 [ext_resource type="AudioStream" uid="uid://caj84cpccqsnn" path="res://son/kick.mp3" id="10_gb5uo"]
 [ext_resource type="PackedScene" uid="uid://d4ao3xixeb7k1" path="res://scenes/input_button.tscn" id="14_7gu46"]
 [ext_resource type="Script" path="res://scripts/ControlControls.gd" id="14_ufsc4"]
+[ext_resource type="ArrayMesh" uid="uid://4byvbcj6m5fv" path="res://assets/sushi/sushiV2Flex1.obj" id="20_yfkw2"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_kwyje"]
 size = Vector2(100, 100)
@@ -149,11 +149,6 @@ _data = {
 
 [node name="background" type="Node3D" parent="."]
 
-[node name="SushiV2" type="MeshInstance3D" parent="background"]
-transform = Transform3D(0.0489483, 2.27164e-09, -0.396994, -0.329224, 0.223527, -0.0405924, 0.221847, 0.331717, 0.0273531, 1.27863, 57.5465, 3.38136)
-mesh = ExtResource("1_xyix8")
-skeleton = NodePath("../..")
-
 [node name="Ground" type="MeshInstance3D" parent="background"]
 mesh = SubResource("PlaneMesh_kwyje")
 
@@ -192,11 +187,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 53.628, 33.746)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 53.628, 42.3607)
 
 [node name="SOYSAUCESAMERE" type="MeshInstance3D" parent="background"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.45489, 50.1659, 10.107)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.45489, 48.5257, 5.6208)
 mesh = ExtResource("7_wjgra")
 
 [node name="MUSCLE" type="MeshInstance3D" parent="background"]
-transform = Transform3D(0.208589, -0.338473, -0.449363, 0.51028, 0.315616, -0.00086518, 0.236865, -0.381867, 0.397583, 5.02217, 60.2955, 7.67751)
+transform = Transform3D(-1.74846e-08, 0, -0.4, 0, 0.4, 0, 0.4, 0, -1.74846e-08, 0.979757, 57.8055, 3.11149)
 mesh = ExtResource("8_o3q3n")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="background"]
@@ -872,6 +867,10 @@ stream = ExtResource("1_ka1cd")
 pitch_scale = 1.5
 autoplay = true
 bus = &"Music"
+
+[node name="SushiV2Flex1" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.374903, 0, -0.139455, 0, 0.4, 0, 0.139455, 0, 0.374903, 6.36652, 56.5458, 4.42959)
+mesh = ExtResource("20_yfkw2")
 
 [connection signal="pressed" from="Control/MarginContainer/VBoxContainer/button_start" to="Control" method="_on_button_start_pressed"]
 [connection signal="pressed" from="Control/MarginContainer/VBoxContainer/button_score" to="Control" method="_on_button_score_pressed"]

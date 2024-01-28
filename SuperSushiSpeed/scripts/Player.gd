@@ -67,6 +67,9 @@ var can_slide = true
 var can_double_jump = true
 var jump_counter = 0
 
+var unlock_double_jump = true
+var unlock_slide = true
+
 @onready var slide_cooldown_timer = $slide_cooldown_timer
 
 func _physics_process(delta):
@@ -88,7 +91,7 @@ func _physics_process(delta):
 		else:
 			velocity.z = lerp(velocity.z, -SLIDE_SPEED, delta * lerp_speed)
 			SLIDE_SPEED -= 1
-	elif can_slide and Input.is_action_just_pressed("ui_shift"):
+	elif unlock_slide and can_slide and Input.is_action_just_pressed("ui_shift"):
 		start_slide()
 
 	if Input.is_action_just_pressed("ui_jump") and (is_on_floor() or can_double_jump):
@@ -96,7 +99,7 @@ func _physics_process(delta):
 			velocity.y = JUMP_VELOCITY
 			can_double_jump = true
 			jump_counter += 1
-		else:
+		elif unlock_double_jump:
 			velocity.y = JUMP_VELOCITY
 			can_double_jump = false
 	

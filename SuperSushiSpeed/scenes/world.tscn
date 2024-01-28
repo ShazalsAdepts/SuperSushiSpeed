@@ -36,6 +36,7 @@ fog_light_energy = 1.5
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_djgkl"]
 transparency = 1
 shading_mode = 0
+albedo_color = Color(0.996078, 0.882353, 0.866667, 0.466667)
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_8cnpb"]
 gravity = Vector3(0, 0, 2)
@@ -183,9 +184,9 @@ game_over = NodePath("../Camera/Death")
 speed_effect = NodePath("../Camera/SpeedEffect")
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="Player"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 material_override = SubResource("StandardMaterial3D_djgkl")
-amount = 500
+amount = 1000
 trail_lifetime = 0.01
 process_material = SubResource("ParticleProcessMaterial_8cnpb")
 draw_pass_1 = SubResource("SphereMesh_mfahn")

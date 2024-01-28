@@ -213,21 +213,21 @@ func handle_rythme():
 				SPEED = 100.0
 			# Logique pour mouvement en rythme
 			rythme = "ON TIME"
-			combo+=1
+			combo+=2
 			update_next_beat_player_index(1)
 		elif time_difference < -missed_beat_time and time_difference > -hors_rythme:
 			if SPEED < MAX_SPEED:
 				SPEED += 5
 			# Logique pour trop tôt
 			rythme = "TOO EARLY"
-			combo = 0
+			combo = 1
 			update_next_beat_player_index(1)
 		elif time_difference > missed_beat_time  and time_difference < hors_rythme:
 			if SPEED < MAX_SPEED:
 				SPEED += 5
 			# Logique pour trop tard
 			rythme = "TOO LATE"
-			combo = 0
+			combo = 1
 			update_next_beat_player_index(1)
 		else:
 			# Hors rythme

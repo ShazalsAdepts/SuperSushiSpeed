@@ -23,8 +23,13 @@ var consecutive_presses = 0
 @onready var hitbox = $PlayerHitbox
 
 var rythme = ""
-
+var last_rythme = ""
 var score = 0
+
+
+var combo = 0
+var last_combo = 0
+var best_combo = 0
 
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
@@ -34,7 +39,7 @@ const X_RIGHT = 2.0
 const step = 2.0
 
 var current_lane = X_CENTER
-var combo = 0
+
 var x_start = 100
 var x_end = 1074
 
@@ -178,6 +183,18 @@ func _physics_process(delta):
 	
 	score_label.text = str(score)
 	rythme_label.text = str(rythme)
+	if rythme != last_rythme:
+		last_rythme = rythme
+		if rythme == "NANI ?!" || rythme == "ON TIME":
+			get_node("title_rythme/AnimationPlayer").play("add_")
+		else:
+			get_node("title_rythme/AnimationPlayer").play("add")
+		
+	if combo != last_combo:
+		last_combo = combo
+		get_node("combo/AnimationPlayer").play("add")
+		if combo > best_combo:
+			best_combo = combo
 	get_node("combo").text = str(combo)
 	var speed_bar = get_node("SPEED")
 	speed_bar.size.x = 52 + (SPEED * 148)/100
@@ -341,9 +358,11 @@ func mutate(x):
 	update_score(x)
 	is_mutated = true
 	mutation_cooldown_timer.start()
+	get_node('greenwasabu/AnimationPlayer').play("comming")
 	find_child("Sushi").mesh = sushi_muscle
 
 func _on_mutation_cooldown_timer_timeout():
 	get_node("mutation_cooldown_timer").stop()
 	find_child("Sushi").mesh = sushi_normal
+	get_node('greenwasabu/AnimationPlayer').play("lest")
 	is_mutated = false

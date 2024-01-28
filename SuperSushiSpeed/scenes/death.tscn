@@ -1,6 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://bwcp2rq5elr51"]
+[gd_scene load_steps=10 format=3 uid="uid://bwcp2rq5elr51"]
 
 [ext_resource type="Script" path="res://scripts/Death.gd" id="1_xiyis"]
+[ext_resource type="Texture2D" uid="uid://u672a2fcnfg5" path="res://assets/ui/board.png" id="2_bn1ed"]
+[ext_resource type="FontFile" uid="uid://d0dwx42vlxds0" path="res://assets/ui/DJGROSS.ttf" id="3_a13i3"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ge3j7"]
+texture = ExtResource("2_bn1ed")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_deyhj"]
 
@@ -21,47 +26,31 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_xiyis")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
-layout_mode = 1
-anchors_preset = -1
-offset_right = 2560.0
-offset_bottom = 1440.0
-scale = Vector2(0.5, 0.5)
-theme_override_constants/margin_left = 462
-theme_override_constants/margin_top = 240
-theme_override_constants/margin_right = 462
-theme_override_constants/margin_bottom = 240
-
-[node name="ColorRect" type="ColorRect" parent="MarginContainer"]
+[node name="Panel" type="Panel" parent="."]
 layout_mode = 2
-color = Color(0.179556, 0.00963724, 0.0110899, 1)
+offset_top = 3.0
+offset_right = 1280.0
+offset_bottom = 720.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_ge3j7")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+[node name="lose" type="Label" parent="."]
 layout_mode = 2
-
-[node name="lose" type="Label" parent="MarginContainer/VBoxContainer"]
-layout_mode = 2
+offset_left = 280.0
+offset_top = 163.0
+offset_right = 987.0
+offset_bottom = 219.0
 size_flags_horizontal = 4
 size_flags_vertical = 0
-theme_override_font_sizes/font_size = 70
-text = "YOU LOSE"
+theme_override_fonts/font = ExtResource("3_a13i3")
+theme_override_font_sizes/font_size = 59
+text = "YOU'VE BEEN EATEN !"
 
-[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 80)
+[node name="Save" type="Button" parent="."]
 layout_mode = 2
-
-[node name="label_score" type="Label" parent="MarginContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 0
-theme_override_font_sizes/font_size = 50
-text = "  Score :"
-
-[node name="MarginContainer4" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 80)
-layout_mode = 2
-
-[node name="Save" type="Button" parent="MarginContainer/VBoxContainer"]
-layout_mode = 2
+offset_left = 224.0
+offset_top = 401.0
+offset_right = 536.0
+offset_bottom = 470.0
 size_flags_horizontal = 0
 theme_override_colors/font_pressed_color = Color(0.450508, 0.0576604, 0.0646823, 1)
 theme_override_colors/font_hover_color = Color(0.878431, 0.176471, 0.180392, 1)
@@ -71,18 +60,14 @@ theme_override_styles/hover = SubResource("StyleBoxEmpty_mb1vb")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_fsvxa")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_3pyo5")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_7i03n")
-text = "  Save Score !"
+text = "  Save Score "
 
-[node name="MarginContainer5" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 80)
+[node name="Restart" type="Button" parent="."]
 layout_mode = 2
-
-[node name="MarginContainer6" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 80)
-layout_mode = 2
-
-[node name="Restart" type="Button" parent="MarginContainer/VBoxContainer"]
-layout_mode = 2
+offset_left = 232.0
+offset_top = 460.0
+offset_right = 434.0
+offset_bottom = 529.0
 size_flags_horizontal = 0
 theme_override_colors/font_pressed_color = Color(0.450508, 0.0576604, 0.0646823, 1)
 theme_override_colors/font_hover_color = Color(0.878431, 0.176471, 0.180392, 1)
@@ -94,8 +79,12 @@ theme_override_styles/disabled = SubResource("StyleBoxEmpty_3pyo5")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_7i03n")
 text = "  Restart"
 
-[node name="Back" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="Back" type="Button" parent="."]
 layout_mode = 2
+offset_left = 232.0
+offset_top = 523.0
+offset_right = 728.0
+offset_bottom = 592.0
 size_flags_horizontal = 0
 theme_override_colors/font_pressed_color = Color(0.450508, 0.0576604, 0.0646823, 1)
 theme_override_colors/font_hover_color = Color(0.878431, 0.176471, 0.180392, 1)
@@ -107,6 +96,31 @@ theme_override_styles/disabled = SubResource("StyleBoxEmpty_3pyo5")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_7i03n")
 text = "  Back to main menu"
 
-[connection signal="pressed" from="MarginContainer/VBoxContainer/Save" to="." method="_on_save_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/Restart" to="." method="_on_restart_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/Back" to="." method="_on_back_pressed"]
+[node name="label_score" type="Label" parent="."]
+layout_mode = 2
+offset_left = 840.0
+offset_top = 289.0
+offset_right = 1004.0
+offset_bottom = 328.0
+size_flags_horizontal = 0
+theme_override_fonts/font = ExtResource("3_a13i3")
+theme_override_font_sizes/font_size = 30
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 690.0
+offset_top = 271.0
+offset_right = 826.0
+offset_bottom = 336.0
+theme_override_fonts/font = ExtResource("3_a13i3")
+theme_override_font_sizes/font_size = 30
+text = "score :"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="Save" to="." method="_on_save_pressed"]
+[connection signal="pressed" from="Restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="Back" to="." method="_on_back_pressed"]

@@ -10,6 +10,7 @@ var last_time = 25
 var last_beat = 0.0
 var time_tab = []
 var started = false
+var ping = 0
 
 func _ready():
 	init()
@@ -25,22 +26,25 @@ func _physics_process(delta):
 
 		label.text = str(int(temps_restant))
 		
-		if Input.is_action_just_pressed("ui_jump"):
+		if Input.is_action_just_pressed("ui_jump") and temps_restant < 20:
 			var time_pressed = temps_restant
 			var difference_to_last_beat = abs(last_beat - time_pressed)
 			var difference_to_next_beat = abs((last_beat + 1) - time_pressed) 
-
 			var closest_difference = min(difference_to_last_beat, difference_to_next_beat)
 			time_tab.append(closest_difference)
+			
 	elif started:
 		label.text = ""
 		label_ping.visible = true
 		label_ping_title.visible = true
 		if len(time_tab) != 0:
-			label_ping.text = str(sum(time_tab) / len(time_tab))
+			ping = sum(time_tab) / len(time_tab)
+			label_ping.text = str(ping)
 		started = false
 
 func _on_button_back_pressed():
+	if ping != 0 and ping != 25:
+		Global.ping = ping
 	get_tree().change_scene_to_file("res://scenes/menu.tscn")
 
 func _on_button_start_pressed():

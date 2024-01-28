@@ -20,6 +20,10 @@ run/stretch/mode="disabled"
 run/size/viewport_height=648
 run/size/viewport_width=1152
 
+[autoload]
+
+Global="*res://scripts/Global.gd"
+
 [display]
 
 window/size/viewport_width=1280

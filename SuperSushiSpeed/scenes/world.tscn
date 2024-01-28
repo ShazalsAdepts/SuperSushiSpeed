@@ -415,13 +415,13 @@ vertical_alignment = 1
 
 [node name="title_rythme" type="Label" parent="Player"]
 offset_left = 1145.0
-offset_top = 81.0
+offset_top = 65.0
 offset_right = 1278.0
 offset_bottom = 149.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("10_5corw")
 theme_override_font_sizes/font_size = 19
-text = "NANNI ?"
+text = "NANI ?"
 horizontal_alignment = 1
 vertical_alignment = 1
 

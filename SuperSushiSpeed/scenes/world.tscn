@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://ccv2ry3lkvg6p"]
+[gd_scene load_steps=34 format=3 uid="uid://ccv2ry3lkvg6p"]
 
 [ext_resource type="PackedScene" uid="uid://dhkq2ebp8keuh" path="res://scenes/terrain_controller.tscn" id="1_1mi36"]
 [ext_resource type="PackedScene" uid="uid://bwcp2rq5elr51" path="res://scenes/death.tscn" id="1_ltm6j"]
@@ -9,7 +9,11 @@
 [ext_resource type="AudioStream" uid="uid://caj84cpccqsnn" path="res://son/kick.mp3" id="4_pbjbu"]
 [ext_resource type="FontFile" uid="uid://bw25m5tuwa25g" path="res://assets/ui/Inter-VariableFont_slnt,wght.ttf" id="4_wqr7b"]
 [ext_resource type="AudioStream" uid="uid://dp7flf424tdqh" path="res://son/fuck_noel.mp3" id="4_wxao7"]
+[ext_resource type="Texture2D" uid="uid://jon5ifoyjvav" path="res://assets/ui/wasabi_ui.PNG" id="5_sibel"]
+[ext_resource type="Texture2D" uid="uid://c4uh4juc7r824" path="res://assets/ui/chopsticks_green_bar.png" id="6_i08lm"]
 [ext_resource type="Shader" path="res://scripts/SpeedEffect.gdshader" id="6_r1j7f"]
+[ext_resource type="Texture2D" uid="uid://bcrrcbuxf0bep" path="res://assets/ui/chopsticks_blue_bar.png" id="7_lepok"]
+[ext_resource type="Texture2D" uid="uid://bt0gavhbjomkk" path="res://assets/ui/chopsticks.PNG" id="9_ptidc"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_rv4pa"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -79,6 +83,20 @@ corner_radius_top_left = 50
 corner_radius_top_right = 50
 corner_radius_bottom_right = 50
 corner_radius_bottom_left = 50
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_c1hpv"]
+texture = ExtResource("5_sibel")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_g7yg4"]
+texture = ExtResource("9_ptidc")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_h1j8s"]
+texture = ExtResource("6_i08lm")
+region_rect = Rect2(0, 0, 322.5, 219)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_387ft"]
+texture = ExtResource("7_lepok")
+region_rect = Rect2(0, 0, 322.5, 219)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i3l7q"]
 bg_color = Color(0.164706, 0.164706, 0.164706, 1)
@@ -260,6 +278,34 @@ offset_right = 1135.0
 offset_bottom = 646.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_0m2mq")
 
+[node name="wasabi" type="Panel" parent="Player"]
+offset_left = 66.0
+offset_top = 29.0
+offset_right = 538.0
+offset_bottom = 167.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_c1hpv")
+
+[node name="Panel6" type="Panel" parent="Player"]
+offset_left = 66.0
+offset_top = 29.0
+offset_right = 538.0
+offset_bottom = 167.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_g7yg4")
+
+[node name="SPEED" type="Panel" parent="Player"]
+offset_left = 66.0
+offset_top = 29.0
+offset_right = 118.0
+offset_bottom = 167.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_h1j8s")
+
+[node name="DASH" type="Panel" parent="Player"]
+offset_left = 66.0
+offset_top = 29.0
+offset_right = 266.0
+offset_bottom = 167.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_387ft")
+
 [node name="Panel4" type="Panel" parent="Player"]
 anchors_preset = -1
 anchor_left = 0.697
@@ -328,6 +374,7 @@ script = ExtResource("3_eu6yv")
 player = NodePath("../Player")
 
 [node name="SpeedEffect" type="ColorRect" parent="Camera"]
+visible = false
 material = SubResource("ShaderMaterial_o18js")
 offset_right = 1280.0
 offset_bottom = 720.0

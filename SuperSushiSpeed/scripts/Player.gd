@@ -35,6 +35,10 @@ const step = 2.0
 
 var current_lane = X_CENTER
 
+var x_start = 100
+var x_end = 1074
+
+
 var last_click = -1.0
 var missed_beat_time = 0.2  # Le temps limite pour appuyer sur une touche pour trop tot / tard
 var hors_rythme = 0.4 # Le temps limite pour appuyer sur une touche
@@ -97,7 +101,35 @@ func _physics_process(delta):
 	move_and_slide()
 	handle_rythme()
 	handle_speed_effect(delta)
+	print("====")
+	var balls = [
+		get_node("ball"),
+		get_node("ball1"),
+		get_node("ball2"),
+		get_node("ball3"),
+		get_node("ball4"),
+		get_node("ball5"),
+		get_node("ball6")
+	]
+	var i = 0
+	for ball in balls:
+		ball.set_visible(false)
 	
+	var dif = 0
+	for income in range(2):
+		for rly_income in range(1, 23):
+			var beats_time = son.beats[rly_income]
+			var incoming_in = beats_time - (dif -  musique.get_playback_position() )
+			if incoming_in < 2 && incoming_in > 0:
+				balls[i].set_visible(true)
+				var x = ((2-incoming_in)*974)/2+100
+				balls[i].position.x = x
+				i = i +1
+		dif = 9.62
+	
+	
+		
+
 	if (player_camera and global_transform.origin.z > player_camera.global_transform.origin.z) or global_transform.origin.y < -1:
 		die()
 	
@@ -105,7 +137,7 @@ func _physics_process(delta):
 	speed_label.text = str(SPEED)
 	rythme_label.text = str(rythme)
 
-func get_foot_input():
+func get_foot_input(): 
 	if Input.is_action_just_pressed("ui_left"):
 		return "left"
 	elif Input.is_action_just_pressed("ui_right"):

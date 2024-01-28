@@ -1,41 +1,92 @@
-[gd_scene load_steps=3 format=3 uid="uid://540ehlltsvu8"]
+[gd_scene load_steps=15 format=3 uid="uid://cp8u2yrygme1v"]
 
 [ext_resource type="Script" path="res://scripts/CountDown.gd" id="1_8e4jt"]
 [ext_resource type="AudioStream" uid="uid://caj84cpccqsnn" path="res://son/kick.mp3" id="2_2xvde"]
+[ext_resource type="Texture2D" uid="uid://psbfhxgc2yp3" path="res://assets/ui/tuto.PNG" id="3_6gume"]
+[ext_resource type="Texture2D" uid="uid://c6dvrq5ns7057" path="res://assets/ui/one.PNG" id="4_0maj2"]
+[ext_resource type="Texture2D" uid="uid://btu6ft77fdtni" path="res://assets/ui/zero.PNG" id="5_vx61u"]
+[ext_resource type="Texture2D" uid="uid://cw405ay5ggct7" path="res://assets/ui/three.PNG" id="6_uoce5"]
+[ext_resource type="Texture2D" uid="uid://wlru6pk5cl8q" path="res://assets/ui/two.PNG" id="7_1jvw4"]
+[ext_resource type="Texture2D" uid="uid://tkggh2r8ytkx" path="res://assets/ui/four.PNG" id="8_suyp8"]
 
-[node name="CountDown" type="Control" node_paths=PackedStringArray("son", "label")]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vvkc2"]
+texture = ExtResource("3_6gume")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_uxxa5"]
+texture = ExtResource("4_0maj2")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_fmwmn"]
+texture = ExtResource("5_vx61u")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_uh38g"]
+texture = ExtResource("6_uoce5")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_se2vg"]
+texture = ExtResource("7_1jvw4")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_srfts"]
+texture = ExtResource("8_suyp8")
+
+[node name="CountDown" type="Control" node_paths=PackedStringArray("son")]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 1280.0
 offset_bottom = 720.0
 script = ExtResource("1_8e4jt")
 son = NodePath("Son")
-label = NodePath("Label")
-
-[node name="ColorRect" type="ColorRect" parent="."]
-layout_mode = 0
-offset_right = 1280.0
-offset_bottom = 720.0
-color = Color(0.179556, 0.00963724, 0.0110899, 1)
-
-[node name="Label" type="Label" parent="."]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -57.0
-offset_top = -136.5
-offset_right = 57.0
-offset_bottom = 136.5
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 200
-text = "5"
 
 [node name="Son" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_2xvde")
 volume_db = -5.0
 autoplay = true
 bus = &"SFX"
+
+[node name="bg" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 1280.0
+offset_bottom = 720.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_vvkc2")
+
+[node name="1" type="Panel" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 594.0
+offset_top = 198.0
+offset_right = 706.0
+offset_bottom = 385.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_uxxa5")
+
+[node name="0" type="Panel" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 594.0
+offset_top = 198.0
+offset_right = 709.0
+offset_bottom = 386.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_fmwmn")
+
+[node name="3" type="Panel" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 595.0
+offset_top = 200.0
+offset_right = 713.0
+offset_bottom = 381.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_uh38g")
+
+[node name="2" type="Panel" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 595.0
+offset_top = 202.0
+offset_right = 712.0
+offset_bottom = 386.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_se2vg")
+
+[node name="4" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 597.0
+offset_top = 196.0
+offset_right = 702.0
+offset_bottom = 382.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_srfts")

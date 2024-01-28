@@ -34,7 +34,7 @@ const X_RIGHT = 2.0
 const step = 2.0
 
 var current_lane = X_CENTER
-
+var combo = 0
 var x_start = 100
 var x_end = 1074
 
@@ -164,8 +164,8 @@ func _physics_process(delta):
 		die()
 	
 	score_label.text = str(score)
-	speed_label.text = str(SPEED)
 	rythme_label.text = str(rythme)
+	get_node("combo").text = str(combo)
 	var speed_bar = get_node("SPEED")
 	speed_bar.size.x = 52 + (SPEED * 148)/100
 	speed_bar["theme_override_styles/panel"].region_rect = Rect2(0,0,83.72 +(SPEED * 238.78)/100,219)
@@ -213,30 +213,35 @@ func handle_rythme():
 				SPEED = 100.0
 			# Logique pour mouvement en rythme
 			rythme = "ON TIME"
+			combo+=1
 			update_next_beat_player_index(1)
 		elif time_difference < -missed_beat_time and time_difference > -hors_rythme:
 			if SPEED < MAX_SPEED:
 				SPEED += 5
 			# Logique pour trop tôt
 			rythme = "TOO EARLY"
+			combo = 0
 			update_next_beat_player_index(1)
 		elif time_difference > missed_beat_time  and time_difference < hors_rythme:
 			if SPEED < MAX_SPEED:
 				SPEED += 5
 			# Logique pour trop tard
 			rythme = "TOO LATE"
+			combo = 0
 			update_next_beat_player_index(1)
 		else:
 			# Hors rythme
 			if current_beat_player != 0 and current_beat_player != 1:
 				SPEED = MIN_SPEED
 				rythme = "NANI ?!"
+				combo = 0
 
 	elif (current_position > (son.beats[current_beat_player] + hors_rythme)) and restarted:
 		# Beat manqué
 		if current_beat_player != 0 and current_beat_player != 1:
 			SPEED = MIN_SPEED
 			rythme = "MISSED !"
+			combo = 0
 		update_next_beat_player_index(0)
 
 func update_next_beat_player_index(x):

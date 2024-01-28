@@ -13,8 +13,6 @@
 [ext_resource type="Texture2D" uid="uid://psbfhxgc2yp3" path="res://assets/ui/tuto.PNG" id="9_tiung"]
 [ext_resource type="Script" path="res://scripts/ControlVideo.gd" id="10_c0xwu"]
 [ext_resource type="AudioStream" uid="uid://caj84cpccqsnn" path="res://son/kick.mp3" id="10_gb5uo"]
-[ext_resource type="PackedScene" uid="uid://d4ao3xixeb7k1" path="res://scenes/input_button.tscn" id="14_7gu46"]
-[ext_resource type="ArrayMesh" uid="uid://iy8jg3y16avr" path="res://assets/terrain/makiPlate3.obj" id="10_u7oxn"]
 [ext_resource type="PackedScene" path="res://scenes/input_button.tscn" id="14_7gu46"]
 [ext_resource type="Script" path="res://scripts/ControlControls.gd" id="14_ufsc4"]
 
@@ -204,7 +202,7 @@ size = Vector2i(1280, 720)
 render_target_update_mode = 4
 
 [node name="Camera3D" type="Camera3D" parent="background/SubViewportContainer/SubViewport"]
-transform = Transform3D(-0.89858, -0.150082, 0.412345, 7.17902e-09, 0.939693, 0.34202, -0.438809, 0.307333, -0.844389, 2.54511, 2.2189, -2.35581)
+transform = Transform3D(-0.89858, -0.150082, 0.412345, 7.17901e-09, 0.939693, 0.34202, -0.438809, 0.307333, -0.844389, 2.54511, 2.2189, -2.35581)
 current = true
 
 [node name="SpeedEffect" type="ColorRect" parent="."]

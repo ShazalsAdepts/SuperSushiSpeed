@@ -10,8 +10,10 @@ var leaderboard_http: HTTPRequest
 var player_id: String
 
 @onready var fumee = $"../background/Terrain_1/RectangleStanding_4/GPUParticles3D"
-
 @export var settings: Control
+
+var config_path = "res://usersave/config.cfg"
+@onready var config = ConfigFile.new()
 
 func _ready():
 	if FileAccess.file_exists("res://usersave/user_login.json"):
@@ -49,7 +51,20 @@ func _ready():
 		var popup = get_node("../Panel")
 		popup.set_visible(true)
 	
+	
+	
 	fumee.emitting = false
+
+func init_config():
+	config.set_value("VIDEO", "screen_id", 0)
+	config.set_value("AUDIO", "music", 0)
+	config.set_value("AUDIO", "sfx", 0)
+	config.set_value("PING", "ping", 0)
+	config.set_value("CONTROLS", "right", "Right")
+	config.set_value("CONTROLS", "left", "Left")
+	config.set_value("CONTROLS", "jump", "Jump")
+	config.set_value("CONTROLS", "dash", "Dash")
+	config.save(config_path)
 
 func _on_request_completed(result, response_code, headers, body):
 	var json = JSON.parse_string(body.get_string_from_utf8())

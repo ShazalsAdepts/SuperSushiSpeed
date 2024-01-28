@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://lodm6lx14y5x"]
+[gd_scene load_steps=10 format=3 uid="uid://q1f7lfcp0abg"]
 
 [ext_resource type="ArrayMesh" uid="uid://0mli2ysjcqyk" path="res://assets/terrain/belt.obj" id="1_mmhjt"]
 [ext_resource type="ArrayMesh" uid="uid://d0abtngy35ys1" path="res://assets/terrain/soySauceBottle.obj" id="3_p1ylo"]

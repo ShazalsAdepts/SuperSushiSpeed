@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://ccv2ry3lkvg6p"]
+[gd_scene load_steps=40 format=3 uid="uid://ccv2ry3lkvg6p"]
 
 [ext_resource type="PackedScene" uid="uid://dhkq2ebp8keuh" path="res://scenes/terrain_controller.tscn" id="1_1mi36"]
 [ext_resource type="PackedScene" uid="uid://bwcp2rq5elr51" path="res://scenes/death.tscn" id="1_ltm6j"]
@@ -33,17 +33,17 @@ fog_enabled = true
 fog_light_color = Color(0.921569, 0.431373, 0.0431373, 1)
 fog_light_energy = 1.5
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_djgkl"]
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_45ql7"]
+gravity = Vector3(0, 0, 0.2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4m7vh"]
 transparency = 1
-shading_mode = 0
-albedo_color = Color(0.996078, 0.882353, 0.866667, 0.466667)
+albedo_color = Color(0.996078, 0.882353, 0.866667, 0.341176)
 
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_8cnpb"]
-gravity = Vector3(0, 0, 2)
-
-[sub_resource type="SphereMesh" id="SphereMesh_mfahn"]
-radius = 0.065
-height = 0.127
+[sub_resource type="SphereMesh" id="SphereMesh_e112b"]
+material = SubResource("StandardMaterial3D_4m7vh")
+radius = 0.095
+height = 0.205
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_y6d5c"]
 
@@ -183,12 +183,10 @@ game_over = NodePath("../Camera/Death")
 speed_effect = NodePath("../Camera/SpeedEffect")
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="Player"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
-material_override = SubResource("StandardMaterial3D_djgkl")
-amount = 1000
-trail_lifetime = 0.01
-process_material = SubResource("ParticleProcessMaterial_8cnpb")
-draw_pass_1 = SubResource("SphereMesh_mfahn")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.175, 0)
+amount = 500
+process_material = SubResource("ParticleProcessMaterial_45ql7")
+draw_pass_1 = SubResource("SphereMesh_e112b")
 
 [node name="Sushi" type="MeshInstance3D" parent="Player"]
 transform = Transform3D(-1.09278e-08, 0, -0.25, 0, 0.25, 0, 0.25, 0, -1.09278e-08, 0, -0.0174069, 0)

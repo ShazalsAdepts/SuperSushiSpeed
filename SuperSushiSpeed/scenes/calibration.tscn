@@ -1,54 +1,122 @@
-[gd_scene load_steps=8 format=3 uid="uid://b15oavleu7oeh"]
+[gd_scene load_steps=8 format=3 uid="uid://cvh28jqujtw3v"]
 
 [ext_resource type="Script" path="res://scripts/calibration.gd" id="1_krvke"]
 [ext_resource type="AudioStream" uid="uid://caj84cpccqsnn" path="res://son/kick.mp3" id="2_ngcwv"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cip4g"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lyviv"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_av7pj"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_p06r1"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5fgdm"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_c6e5s"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_f1fp4"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0bah4"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_swi4w"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ahfgp"]
 
-[node name="Calibration" type="Node2D"]
+[node name="Control" type="Control" node_paths=PackedStringArray("son", "label", "label_ping")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_krvke")
+son = NodePath("Son")
+label = NodePath("MarginContainer/Label")
+label_ping = NodePath("MarginContainer/Label2")
 
-[node name="button_quit" type="Button" parent="."]
-offset_left = 98.0
-offset_top = 568.0
-offset_right = 198.0
-offset_bottom = 628.0
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.179556, 0.00963724, 0.0110899, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 64
+theme_override_constants/margin_top = 80
+theme_override_constants/margin_right = 64
+theme_override_constants/margin_bottom = 80
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="game_title" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 70
+text = "Calibration"
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 160)
+layout_mode = 2
+
+[node name="button_start" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
 size_flags_horizontal = 0
 theme_override_colors/font_pressed_color = Color(0.545098, 0.0784314, 0.0862745, 1)
 theme_override_colors/font_hover_color = Color(0.745098, 0.360784, 0.286275, 1)
 theme_override_font_sizes/font_size = 40
-theme_override_styles/normal = SubResource("StyleBoxEmpty_cip4g")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_av7pj")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_5fgdm")
-theme_override_styles/disabled = SubResource("StyleBoxEmpty_f1fp4")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_swi4w")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_lyviv")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_p06r1")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_c6e5s")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_0bah4")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ahfgp")
+text = "Start"
+
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 20
+text = "Press the space key in rhythm to calibrate"
+
+[node name="MarginContainer3" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+
+[node name="button_quit" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_colors/font_pressed_color = Color(0.545098, 0.0784314, 0.0862745, 1)
+theme_override_colors/font_hover_color = Color(0.745098, 0.360784, 0.286275, 1)
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxEmpty_lyviv")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_p06r1")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_c6e5s")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_0bah4")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ahfgp")
 text = "Back"
 
-[node name="button_start" type="Button" parent="."]
-offset_left = 573.0
-offset_top = 568.0
-offset_right = 700.0
-offset_bottom = 628.0
-size_flags_horizontal = 0
-theme_override_colors/font_pressed_color = Color(0.545098, 0.0784314, 0.0862745, 1)
-theme_override_colors/font_hover_color = Color(0.745098, 0.360784, 0.286275, 1)
+[node name="Label" type="Label" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 200
+text = "25"
+
+[node name="Label2" type="Label" parent="MarginContainer"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 40
-theme_override_styles/normal = SubResource("StyleBoxEmpty_cip4g")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_av7pj")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_5fgdm")
-theme_override_styles/disabled = SubResource("StyleBoxEmpty_f1fp4")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_swi4w")
-text = "Start"
+text = "25"
 
 [node name="Son" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_ngcwv")
+volume_db = -5.0
+autoplay = true
+bus = &"SFX"
 
-[connection signal="pressed" from="button_quit" to="." method="_on_button_back_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/button_start" to="." method="_on_button_start_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/button_quit" to="." method="_on_button_back_pressed"]

@@ -70,7 +70,7 @@ size = Vector3(2, 1.5, 6)
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_2ly4a"]
 points = PackedVector3Array(0.5, 1, -1, -0.5, 1, -1, 0.5, -0.5, -1, -0.5, -0.5, -1, 0.5, -0.5, 2.5, -0.5, -0.5, 2.5)
 
-[node name="Terrain_2" type="MeshInstance3D"]
+[node name="Terrain_3" type="MeshInstance3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.08, -4)
 mesh = SubResource("PlaneMesh_l00jt")
 
@@ -99,7 +99,7 @@ skeleton = NodePath("")
 libraries = {
 "": SubResource("AnimationLibrary_cbr5f")
 }
-autoplay = "RESET"
+autoplay = "wasabi"
 
 [node name="Bloc_0" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.08, -2.5)

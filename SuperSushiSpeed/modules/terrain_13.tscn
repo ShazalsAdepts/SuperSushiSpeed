@@ -19,7 +19,7 @@ size = Vector3(1, 2, 1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_lg8rs"]
 size = Vector3(2, 1.5, 6)
 
-[node name="Terrain_2" type="MeshInstance3D"]
+[node name="Terrain_3" type="MeshInstance3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.08, -4)
 mesh = SubResource("PlaneMesh_l00jt")
 

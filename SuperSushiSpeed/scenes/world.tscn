@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://ccv2ry3lkvg6p"]
+[gd_scene load_steps=41 format=3 uid="uid://ccv2ry3lkvg6p"]
 
 [ext_resource type="PackedScene" uid="uid://dhkq2ebp8keuh" path="res://scenes/terrain_controller.tscn" id="1_1mi36"]
 [ext_resource type="PackedScene" uid="uid://bwcp2rq5elr51" path="res://scenes/death.tscn" id="1_ltm6j"]
@@ -36,12 +36,19 @@ fog_light_energy = 1.5
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_45ql7"]
 gravity = Vector3(0, 0, 0.2)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4m7vh"]
-transparency = 1
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5wl7t"]
 albedo_color = Color(0.996078, 0.882353, 0.866667, 0.341176)
 
 [sub_resource type="SphereMesh" id="SphereMesh_e112b"]
-material = SubResource("StandardMaterial3D_4m7vh")
+material = SubResource("StandardMaterial3D_5wl7t")
+radius = 0.095
+height = 0.205
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ndjuj"]
+albedo_color = Color(0.996078, 0.521569, 0, 0.341176)
+
+[sub_resource type="SphereMesh" id="SphereMesh_jtsqe"]
+material = SubResource("StandardMaterial3D_ndjuj")
 radius = 0.095
 height = 0.205
 
@@ -187,6 +194,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.175, 0)
 amount = 500
 process_material = SubResource("ParticleProcessMaterial_45ql7")
 draw_pass_1 = SubResource("SphereMesh_e112b")
+
+[node name="TrailsSPEED" type="GPUParticles3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.175, 0)
+amount = 500
+process_material = SubResource("ParticleProcessMaterial_45ql7")
+draw_pass_1 = SubResource("SphereMesh_jtsqe")
 
 [node name="Sushi" type="MeshInstance3D" parent="Player"]
 transform = Transform3D(-1.09278e-08, 0, -0.25, 0, 0.25, 0, 0.25, 0, -1.09278e-08, 0, -0.0174069, 0)

@@ -128,9 +128,14 @@ func _physics_process(delta):
 		unlock_double_jump = false
 		multiply = 1
 		
-	if SPEED >= 100:
+	if SPEED >= 100 and is_mutated:
+		find_child("TrailsSPEED").visible = true
+		find_child("Trails").visible = false
+	elif SPEED >= 100 and not is_mutated:
+		find_child("TrailsSPEED").visible = false
 		find_child("Trails").visible = true
 	else:
+		find_child("TrailsSPEED").visible = false
 		find_child("Trails").visible = false
 
 	move_and_slide()

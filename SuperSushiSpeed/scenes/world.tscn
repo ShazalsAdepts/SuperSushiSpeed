@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://ccv2ry3lkvg6p"]
+[gd_scene load_steps=37 format=3 uid="uid://ccv2ry3lkvg6p"]
 
 [ext_resource type="PackedScene" uid="uid://dhkq2ebp8keuh" path="res://scenes/terrain_controller.tscn" id="1_1mi36"]
 [ext_resource type="PackedScene" uid="uid://bwcp2rq5elr51" path="res://scenes/death.tscn" id="1_ltm6j"]
@@ -13,7 +13,9 @@
 [ext_resource type="Texture2D" uid="uid://c4uh4juc7r824" path="res://assets/ui/chopsticks_green_bar.png" id="6_i08lm"]
 [ext_resource type="Shader" path="res://scripts/SpeedEffect.gdshader" id="6_r1j7f"]
 [ext_resource type="Texture2D" uid="uid://bcrrcbuxf0bep" path="res://assets/ui/chopsticks_blue_bar.png" id="7_lepok"]
+[ext_resource type="Texture2D" uid="uid://dos3rtfe3pjob" path="res://assets/ui/flags.PNG" id="9_opvvv"]
 [ext_resource type="Texture2D" uid="uid://bt0gavhbjomkk" path="res://assets/ui/chopsticks.PNG" id="9_ptidc"]
+[ext_resource type="FontFile" uid="uid://d0dwx42vlxds0" path="res://assets/ui/DJGROSS.ttf" id="10_5corw"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_rv4pa"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -120,6 +122,9 @@ corner_radius_bottom_left = 100
 shadow_color = Color(0, 0, 0, 0.372549)
 shadow_size = 8
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wxt43"]
+texture = ExtResource("9_opvvv")
+
 [sub_resource type="Gradient" id="Gradient_50w3l"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_seaa6"]
@@ -176,17 +181,6 @@ skeleton = NodePath("../../..")
 transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, -0.323741, 0.0396836)
 shape = SubResource("CapsuleShape3D_y6d5c")
 
-[node name="title_score" type="Label" parent="Player"]
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -25.5
-offset_right = 25.5
-offset_bottom = 23.0
-grow_horizontal = 2
-size_flags_horizontal = 4
-text = "SCORE"
-
 [node name="title_speed" type="Label" parent="Player"]
 offset_left = 1160.0
 offset_right = 1217.0
@@ -209,17 +203,6 @@ theme_override_colors/font_color = Color(0.980392, 0.980392, 0.980392, 0.360784)
 theme_override_fonts/font = ExtResource("4_wqr7b")
 theme_override_font_sizes/font_size = 16
 text = "SPEED"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="score" type="Label" parent="Player"]
-offset_left = 842.0
-offset_top = -21.0
-offset_right = 957.0
-offset_bottom = 59.0
-theme_override_fonts/font = ExtResource("4_wqr7b")
-theme_override_font_sizes/font_size = 31
-text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -368,6 +351,40 @@ offset_right = 226.0
 offset_bottom = 667.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_03oxg")
 
+[node name="Panel7" type="Panel" parent="Player"]
+offset_left = 702.0
+offset_right = 1280.0
+offset_bottom = 141.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_wxt43")
+
+[node name="score" type="Label" parent="Player"]
+offset_left = 712.0
+offset_top = 37.0
+offset_right = 901.0
+offset_bottom = 117.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("10_5corw")
+theme_override_font_sizes/font_size = 31
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="title_score" type="Label" parent="Player"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 72.0
+offset_top = 115.0
+offset_right = 259.0
+offset_bottom = 138.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0, 0, 0, 0.556863)
+theme_override_fonts/font = ExtResource("10_5corw")
+text = "SCORE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Camera" type="Camera3D" parent="." node_paths=PackedStringArray("player")]
 transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 3, 3)
 current = true
@@ -396,6 +413,29 @@ bus = &"SFX"
 script = ExtResource("2_nb0ul")
 musique = NodePath("../Musique")
 player = NodePath("../Player")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 901.0
+offset_top = 116.0
+offset_right = 1088.0
+offset_bottom = 139.0
+theme_override_colors/font_color = Color(0, 0, 0, 0.556863)
+theme_override_fonts/font = ExtResource("10_5corw")
+text = "Combo"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 902.0
+offset_top = 44.0
+offset_right = 1090.0
+offset_bottom = 116.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("10_5corw")
+theme_override_font_sizes/font_size = 40
+text = "14"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="timeout" from="Player/slide_cooldown_timer" to="Player" method="_on_slide_cooldown_timer_timeout"]
 [connection signal="timeout" from="Player/mutation_cooldown_timer" to="Player" method="_on_mutation_cooldown_timer_timeout"]

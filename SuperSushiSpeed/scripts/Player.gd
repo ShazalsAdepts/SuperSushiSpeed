@@ -129,14 +129,14 @@ func _physics_process(delta):
 		multiply = 1
 		
 	if SPEED >= 100 and is_mutated:
-		find_child("TrailsSPEED").visible = true
-		find_child("Trails").visible = false
+		find_child("TrailsSPEED").emitting = true
+		find_child("Trails").emitting = false
 	elif SPEED >= 100 and not is_mutated:
-		find_child("TrailsSPEED").visible = false
-		find_child("Trails").visible = true
+		find_child("TrailsSPEED").emitting = false
+		find_child("Trails").emitting = true
 	else:
-		find_child("TrailsSPEED").visible = false
-		find_child("Trails").visible = false
+		find_child("TrailsSPEED").emitting = false
+		find_child("Trails").emitting = false
 
 	move_and_slide()
 	handle_rythme()

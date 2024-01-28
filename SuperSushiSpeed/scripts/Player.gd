@@ -117,9 +117,12 @@ func _physics_process(delta):
 		translate(Vector3(0, 0, terrain_velocity/3 * delta))
 	
 	if is_mutated:
-		SPEED = MAX_SPEED +55
+		MAX_SPEED = 145.0
 		unlock_double_jump = true
 	else:
+		MAX_SPEED = 95.0
+		if SPEED > 100.0 :
+			SPEED = 100.0
 		unlock_double_jump = false
 
 	move_and_slide()
@@ -155,7 +158,7 @@ func _physics_process(delta):
 				balls[i].position.y = 576
 				i = i +1
 			
-		dif = 9.62 / musique.pitch_scale
+		dif = 9.62 # / musique.pitch_scale
 	
 	if (player_camera and global_transform.origin.z > player_camera.global_transform.origin.z) or global_transform.origin.y < -1:
 		die()

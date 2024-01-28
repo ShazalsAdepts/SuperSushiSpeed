@@ -122,7 +122,7 @@ func _physics_process(delta):
 			var incoming_in = beats_time - (dif -  musique.get_playback_position() )
 			if incoming_in < 2 && incoming_in > 0:
 				balls[i].set_visible(true)
-				var x = ((2-incoming_in)*974)/2+100
+				var x = ((incoming_in)*974)/2+100
 				balls[i].position.x = x
 				i = i +1
 		dif = 9.62

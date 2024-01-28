@@ -17,11 +17,11 @@ data = PackedVector3Array(3, 0, 4.5, -3, 0, 4.5, 3, 0, -4.5, -3, 0, 4.5, -3, 0, 
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_wyq6f"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_od2sa"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_stwky"]
 albedo_color = Color(0.301961, 0.768627, 0.156863, 1)
 
 [sub_resource type="SphereMesh" id="SphereMesh_xnvyy"]
-material = SubResource("StandardMaterial3D_od2sa")
+material = SubResource("StandardMaterial3D_stwky")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_fv1cu"]
 size = Vector3(2, 2, 2)

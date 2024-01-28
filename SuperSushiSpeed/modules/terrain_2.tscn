@@ -16,12 +16,12 @@ size = Vector3(1, 0.75, 1)
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_wo15s"]
 gravity = Vector3(-1, 1, 0)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lcwki"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2qfvw"]
 transparency = 1
 albedo_color = Color(1, 1, 1, 0.0705882)
 
 [sub_resource type="SphereMesh" id="SphereMesh_wp83x"]
-material = SubResource("StandardMaterial3D_lcwki")
+material = SubResource("StandardMaterial3D_2qfvw")
 radius = 1.1
 height = 1.11
 

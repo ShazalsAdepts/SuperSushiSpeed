@@ -122,7 +122,7 @@ func _on_leaderboard_request_completed(result, response_code, headers, body):
 	
 	# Print data
 	# Formatting as a leaderboard
-	var player = "You: "
+	var player = "You : "
 	var leaderboardFormatted = ""
 	for n in json.get_data().items.size():
 		leaderboardFormatted += str(json.get_data().items[n].rank)+str(". ")

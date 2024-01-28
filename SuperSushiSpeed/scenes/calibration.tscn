@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://b15oavleu7oeh"]
+[gd_scene load_steps=8 format=3 uid="uid://b15oavleu7oeh"]
 
 [ext_resource type="Script" path="res://scripts/calibration.gd" id="1_krvke"]
+[ext_resource type="AudioStream" uid="uid://caj84cpccqsnn" path="res://son/kick.mp3" id="2_ngcwv"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cip4g"]
 
@@ -30,5 +31,24 @@ theme_override_styles/pressed = SubResource("StyleBoxEmpty_5fgdm")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_f1fp4")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_swi4w")
 text = "Back"
+
+[node name="button_start" type="Button" parent="."]
+offset_left = 573.0
+offset_top = 568.0
+offset_right = 700.0
+offset_bottom = 628.0
+size_flags_horizontal = 0
+theme_override_colors/font_pressed_color = Color(0.545098, 0.0784314, 0.0862745, 1)
+theme_override_colors/font_hover_color = Color(0.745098, 0.360784, 0.286275, 1)
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxEmpty_cip4g")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_av7pj")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_5fgdm")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_f1fp4")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_swi4w")
+text = "Start"
+
+[node name="Son" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_ngcwv")
 
 [connection signal="pressed" from="button_quit" to="." method="_on_button_back_pressed"]

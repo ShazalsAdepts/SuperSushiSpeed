@@ -85,7 +85,7 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
 
-	var target_x = current_lane
+	var target_x = float(int(current_lane))
 	var position_player = self.transform.origin
 	position_player.x = lerp(position_player.x, target_x, delta * lerp_speed) # Mouv horizontal
 	self.transform.origin = position_player

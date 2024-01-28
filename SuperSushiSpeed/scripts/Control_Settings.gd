@@ -4,6 +4,7 @@ extends Control
 @export var video: Control
 @export var audio: Control
 @export var controls: Control
+@onready var input_button_scene = preload("res://default_bus_layout.tres")
 
 func _on_button_audio_pressed():
 	self.set_visible(false)

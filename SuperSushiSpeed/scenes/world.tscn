@@ -191,13 +191,13 @@ speed_effect = NodePath("../Camera/SpeedEffect")
 
 [node name="Trails" type="GPUParticles3D" parent="Player"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.175, 0)
-amount = 500
+amount = 100
 process_material = SubResource("ParticleProcessMaterial_45ql7")
 draw_pass_1 = SubResource("SphereMesh_e112b")
 
 [node name="TrailsSPEED" type="GPUParticles3D" parent="Player"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.175, 0)
-amount = 500
+amount = 100
 process_material = SubResource("ParticleProcessMaterial_45ql7")
 draw_pass_1 = SubResource("SphereMesh_jtsqe")
 

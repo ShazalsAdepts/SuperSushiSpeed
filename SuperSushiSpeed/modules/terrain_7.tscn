@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://ehrbom3gsq6p"]
+[gd_scene load_steps=14 format=3 uid="uid://ehrbom3gsq6p"]
 
 [ext_resource type="ArrayMesh" uid="uid://0mli2ysjcqyk" path="res://assets/terrain/belt.obj" id="1_0etjy"]
 [ext_resource type="ArrayMesh" uid="uid://dirbdys16vcdw" path="res://assets/terrain/soySauceBottleSUCRE.obj" id="3_mvgwa"]
@@ -20,6 +20,18 @@ points = PackedVector3Array(0.5, 0.5, -1, -0.5, 0.5, -1, 0.5, -0.5, -1, -0.5, -0
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8ldl2"]
 size = Vector3(2, 1.8, 2)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_kxokl"]
+gravity = Vector3(-1, 1, 0)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_owqr7"]
+transparency = 1
+albedo_color = Color(1, 1, 1, 0.0705882)
+
+[sub_resource type="SphereMesh" id="SphereMesh_sv1pd"]
+material = SubResource("StandardMaterial3D_owqr7")
+radius = 1.1
+height = 1.11
 
 [node name="Terrain_0" type="MeshInstance3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.08, -4)
@@ -78,3 +90,10 @@ shape = SubResource("BoxShape3D_8ldl2")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.58, -1)
 mesh = ExtResource("5_r8wdp")
 skeleton = NodePath("../..")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="RectangleStanding_4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.25286, 1.92332, -0.915522)
+amount = 3
+lifetime = 2.0
+process_material = SubResource("ParticleProcessMaterial_kxokl")
+draw_pass_1 = SubResource("SphereMesh_sv1pd")

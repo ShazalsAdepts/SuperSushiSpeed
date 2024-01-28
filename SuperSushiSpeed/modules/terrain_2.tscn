@@ -51,8 +51,8 @@ skeleton = NodePath("../..")
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="teaCup"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.488663, 2.38389, 0)
-amount = 5
-lifetime = 1.51
+amount = 3
+lifetime = 2.0
 process_material = SubResource("ParticleProcessMaterial_wo15s")
 draw_pass_1 = SubResource("SphereMesh_wp83x")
 

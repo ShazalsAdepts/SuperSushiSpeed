@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://5s3j72vwjsq2"]
+[gd_scene load_steps=14 format=3 uid="uid://5s3j72vwjsq2"]
 
 [ext_resource type="ArrayMesh" uid="uid://0mli2ysjcqyk" path="res://assets/terrain/belt.obj" id="1_kqwd5"]
 [ext_resource type="ArrayMesh" uid="uid://bbhirsqpkk8fj" path="res://assets/terrain/stairs.obj" id="1_ms7dh"]
@@ -20,6 +20,18 @@ size = Vector3(2, 3, 4)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_j662v"]
 size = Vector3(2, 1.8, 2)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_bblyd"]
+gravity = Vector3(-1, 1, 0)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fhj55"]
+transparency = 1
+albedo_color = Color(1, 1, 1, 0.0705882)
+
+[sub_resource type="SphereMesh" id="SphereMesh_xkblp"]
+material = SubResource("StandardMaterial3D_fhj55")
+radius = 1.1
+height = 1.11
 
 [node name="Terrain_1" type="MeshInstance3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.08, -4)
@@ -67,6 +79,13 @@ shape = SubResource("BoxShape3D_j662v")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.58, -1)
 mesh = ExtResource("3_p25yu")
 skeleton = NodePath("../..")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="RectangleStanding_4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.21897, 2.0638, -0.768721)
+amount = 3
+lifetime = 2.0
+process_material = SubResource("ParticleProcessMaterial_bblyd")
+draw_pass_1 = SubResource("SphereMesh_xkblp")
 
 [node name="Belt" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.08, 0)

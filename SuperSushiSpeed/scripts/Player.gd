@@ -88,6 +88,7 @@ func _physics_process(delta):
 	var target_x = current_lane
 	var position_player = self.transform.origin
 	position_player.x = lerp(position_player.x, target_x, delta * lerp_speed) # Mouv horizontal
+	position_player.x = lerp(position_player.x, final_target_x, delta * final_lerp_speed) # Mouv horizontal
 	self.transform.origin = position_player
 	
 	if terrain_controller: # Le terrain déplace le joueur
@@ -165,8 +166,10 @@ func handle_foot_movement(foot, delta):
 		if consecutive_presses == 2.0:
 			if foot == "left" and current_lane != X_LEFT:
 				current_lane -= step
+				current_lane = float(int(current_lane))
 			elif foot == "right" and current_lane != X_RIGHT:
 				current_lane += step
+				current_lane = float(int(current_lane))
 			consecutive_presses = 0.0
 	else:
 		consecutive_presses = 1.0

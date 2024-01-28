@@ -201,7 +201,7 @@ mesh = ExtResource("20_yfkw2")
 skeleton = NodePath("../..")
 
 [node name="Sushi" type="MeshInstance3D" parent="background"]
-transform = Transform3D(-1.74846e-08, 0, -0.4, 0, 0.4, 0, 0.4, 0, -1.74846e-08, 0.964139, 58.6234, 4.93847)
+transform = Transform3D(-1.74846e-08, 0, -0.4, 0, 0.4, 0, 0.4, 0, -1.74846e-08, 0.964139, 58.5487, 4.93847)
 mesh = ExtResource("1_xyix8")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="background"]

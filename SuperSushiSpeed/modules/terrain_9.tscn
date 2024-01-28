@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://bnq6h6yh6s84f"]
+[gd_scene load_steps=12 format=3 uid="uid://bnq6h6yh6s84f"]
 
 [ext_resource type="ArrayMesh" uid="uid://0mli2ysjcqyk" path="res://assets/terrain/belt.obj" id="1_f87h3"]
 [ext_resource type="ArrayMesh" uid="uid://yw08bnjt2uf8" path="res://assets/terrain/makiPlate.obj" id="2_br2oo"]
 [ext_resource type="ArrayMesh" uid="uid://d0abtngy35ys1" path="res://assets/terrain/soySauceBottle.obj" id="3_6u4r1"]
+[ext_resource type="ArrayMesh" uid="uid://dbvg8gi5u7r8t" path="res://assets/terrain/riceBowl.obj" id="4_2uctx"]
 [ext_resource type="ArrayMesh" uid="uid://dirbdys16vcdw" path="res://assets/terrain/soySauceBottleSUCRE.obj" id="4_jtsy4"]
 [ext_resource type="ArrayMesh" uid="uid://dwsq6sg7m7pai" path="res://assets/terrain/teaCup.obj" id="5_msdwy"]
 
@@ -19,7 +20,7 @@ size = Vector3(2, 3, 4)
 size = Vector3(1, 2, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_st31d"]
-size = Vector3(1, 2, 1)
+size = Vector3(2, 1.8, 2)
 
 [node name="Terrain_0" type="MeshInstance3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.08, -4)
@@ -68,19 +69,6 @@ shape = SubResource("BoxShape3D_wb5lw")
 mesh = ExtResource("2_br2oo")
 skeleton = NodePath("")
 
-[node name="RectangleStanding_2" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1, -1.5)
-metadata/_edit_group_ = true
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="RectangleStanding_2"]
-transform = Transform3D(1.4, 0, 0, 0, 1.4, 0, 0, 0, 1.4, 0, 0.4, 0)
-shape = SubResource("BoxShape3D_5i15b")
-
-[node name="SoySauceBottle" type="MeshInstance3D" parent="RectangleStanding_2"]
-transform = Transform3D(0.127707, 0, 0.32587, 0, 0.35, 0, -0.32587, 0, 0.127707, 0, -1, 0)
-mesh = ExtResource("3_6u4r1")
-skeleton = NodePath("../..")
-
 [node name="RectangleStanding_3" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 1, -1.5)
 metadata/_edit_group_ = true
@@ -99,12 +87,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -1.5)
 metadata/_edit_group_ = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RectangleStanding_4"]
-transform = Transform3D(1.4, 0, 0, 0, 1.4, 0, 0, 0, 1.4, 0, 0.4, 0)
+transform = Transform3D(1.8, 0, 0, 0, 1.8, 0, 0, 0, 1.8, 1, 0.2, -1)
 shape = SubResource("BoxShape3D_st31d")
 
-[node name="SoySauceBottle" type="MeshInstance3D" parent="RectangleStanding_4"]
-transform = Transform3D(-0.204239, 0, 0.284229, 0, 0.35, 0, -0.284229, 0, -0.204239, 0, -1, 0)
-mesh = ExtResource("4_jtsy4")
+[node name="RiceBowl" type="MeshInstance3D" parent="RectangleStanding_4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.58, -1)
+mesh = ExtResource("4_2uctx")
 skeleton = NodePath("../..")
 
 [node name="SoySauceBottleSucre" type="MeshInstance3D" parent="."]

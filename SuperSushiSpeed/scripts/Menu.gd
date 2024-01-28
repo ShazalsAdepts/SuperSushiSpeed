@@ -9,6 +9,8 @@ var getsession: HTTPRequest
 var leaderboard_http: HTTPRequest
 var player_id: String
 
+@onready var fumee = $"../background/Terrain_1/RectangleStanding_4/GPUParticles3D"
+
 @export var settings: Control
 
 func _ready():
@@ -46,7 +48,9 @@ func _ready():
 		de.close()
 		var popup = get_node("../Panel")
 		popup.set_visible(true)
-		
+	
+	fumee.emitting = false
+
 func _on_request_completed(result, response_code, headers, body):
 	var json = JSON.parse_string(body.get_string_from_utf8())
 	print(json)

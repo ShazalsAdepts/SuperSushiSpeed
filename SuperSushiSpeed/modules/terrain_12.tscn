@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cmj2bfymwthro"]
+[gd_scene load_steps=19 format=3 uid="uid://cmj2bfymwthro"]
 
 [ext_resource type="ArrayMesh" uid="uid://0mli2ysjcqyk" path="res://assets/terrain/belt.obj" id="1_e4exx"]
 [ext_resource type="Script" path="res://scripts/Wasabi.gd" id="2_1powd"]
@@ -22,6 +22,44 @@ albedo_color = Color(0.301961, 0.768627, 0.156863, 1)
 
 [sub_resource type="SphereMesh" id="SphereMesh_xnvyy"]
 material = SubResource("StandardMaterial3D_stwky")
+
+[sub_resource type="Animation" id="Animation_a784x"]
+resource_name = "wasabi"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2, 4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0.5, -2.5), Vector3(0, 1, -2.5), Vector3(0, 0.5, -2.5)]
+}
+
+[sub_resource type="Animation" id="Animation_5u7ly"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 1.25, -2.5)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cbr5f"]
+_data = {
+"RESET": SubResource("Animation_5u7ly"),
+"wasabi": SubResource("Animation_a784x")
+}
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_fv1cu"]
 size = Vector3(2, 2, 2)
@@ -47,7 +85,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.08, 0)
 mesh = ExtResource("1_e4exx")
 
 [node name="WASABI" type="Area3D" parent="."]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 1, -2.5)
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 1.25, -2.5)
 script = ExtResource("2_1powd")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="WASABI"]
@@ -56,6 +94,11 @@ shape = SubResource("SphereShape3D_wyq6f")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="WASABI"]
 mesh = SubResource("SphereMesh_xnvyy")
 skeleton = NodePath("")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="WASABI"]
+libraries = {
+"": SubResource("AnimationLibrary_cbr5f")
+}
 
 [node name="Bloc_0" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.08, -2.5)

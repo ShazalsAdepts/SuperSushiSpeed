@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://1puqdg7y4q0o"]
+[gd_scene load_steps=19 format=3 uid="uid://1puqdg7y4q0o"]
 
 [ext_resource type="ArrayMesh" uid="uid://0mli2ysjcqyk" path="res://assets/terrain/belt.obj" id="1_d8gqd"]
 [ext_resource type="Script" path="res://scripts/Wasabi.gd" id="2_c2u2w"]
@@ -25,6 +25,44 @@ albedo_color = Color(0.301961, 0.768627, 0.156863, 1)
 
 [sub_resource type="SphereMesh" id="SphereMesh_ov2gw"]
 material = SubResource("StandardMaterial3D_q0kc3")
+
+[sub_resource type="Animation" id="Animation_wl4li"]
+resource_name = "wasabi"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2, 4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(-2, 4, -2.5), Vector3(-2, 4.5, -2.5), Vector3(-2, 4, -2.5)]
+}
+
+[sub_resource type="Animation" id="Animation_pytoj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-2, 4, -2.5)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3fyfv"]
+_data = {
+"RESET": SubResource("Animation_pytoj"),
+"wasabi": SubResource("Animation_wl4li")
+}
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_mfn37"]
 size = Vector3(1, 2, 1)
@@ -63,6 +101,11 @@ shape = SubResource("SphereShape3D_7msg8")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="WASABI"]
 mesh = SubResource("SphereMesh_ov2gw")
 skeleton = NodePath("")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="WASABI"]
+libraries = {
+"": SubResource("AnimationLibrary_3fyfv")
+}
 
 [node name="RectangleStanding_1" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 1, -2.5)

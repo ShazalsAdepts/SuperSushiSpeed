@@ -24,6 +24,7 @@ func _on_back_pressed():
 
 func set_score(x,y,on_time,late,not_late,mist):
 	score = x
+	#DEDE
 	get_node("combo").text = str(y)
 	get_node("label_score").text = str(x)
 	get_node("beatsmiss").text = str(mist+late+not_late)

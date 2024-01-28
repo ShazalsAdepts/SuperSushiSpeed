@@ -233,7 +233,6 @@ text = "Perfect Beats  :
 "
 
 [node name="Panel2" type="Panel" parent="."]
-visible = false
 modulate = Color(1, 1, 1, 0.227451)
 layout_mode = 0
 offset_left = 199.0

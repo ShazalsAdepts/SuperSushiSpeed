@@ -1,8 +1,8 @@
 [gd_scene load_steps=39 format=3 uid="uid://cvutgrnmmm4kf"]
 
 [ext_resource type="Script" path="res://scripts/Menu.gd" id="1_idp3p"]
-[ext_resource type="ArrayMesh" uid="uid://chos5nhjs7sa6" path="res://assets/sushi/sushi.obj" id="1_ifvn5"]
 [ext_resource type="AudioStream" uid="uid://dp7flf424tdqh" path="res://son/fuck_noel.mp3" id="1_ka1cd"]
+[ext_resource type="ArrayMesh" uid="uid://dnjuf26dvei18" path="res://assets/sushi/sushiV2.obj" id="1_xyix8"]
 [ext_resource type="Script" path="res://scripts/Panel.gd" id="3_7in1f"]
 [ext_resource type="ArrayMesh" uid="uid://d0abtngy35ys1" path="res://assets/terrain/soySauceBottle.obj" id="4_lre6r"]
 [ext_resource type="ArrayMesh" uid="uid://dirbdys16vcdw" path="res://assets/terrain/soySauceBottleSUCRE.obj" id="4_tgpom"]
@@ -146,9 +146,9 @@ _data = {
 
 [node name="background" type="Node3D" parent="."]
 
-[node name="Sushi" type="MeshInstance3D" parent="background"]
-transform = Transform3D(-0.280324, 0, -0.285339, 0, 0.4, 0, 0.285339, 0, -0.280324, -0.0770888, 0, 0.450738)
-mesh = ExtResource("1_ifvn5")
+[node name="SushiV2" type="MeshInstance3D" parent="background"]
+transform = Transform3D(-0.280324, 0, -0.285339, 0, 0.4, 0, 0.285339, 0, -0.280324, -0.0770888, 1.73305, 0.450738)
+mesh = ExtResource("1_xyix8")
 skeleton = NodePath("../..")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="background"]

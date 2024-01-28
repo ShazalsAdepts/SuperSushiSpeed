@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://dnjuf26dvei18"
+path="res://.godot/imported/sushiV2.obj-615c7fbc7fac9e1e152daeb1b8c5ac52.mesh"
+
+[deps]
+
+files=["res://.godot/imported/sushiV2.obj-615c7fbc7fac9e1e152daeb1b8c5ac52.mesh"]
+
+source_file="res://assets/sushi/sushiV2.obj"
+dest_files=["res://.godot/imported/sushiV2.obj-615c7fbc7fac9e1e152daeb1b8c5ac52.mesh", "res://.godot/imported/sushiV2.obj-615c7fbc7fac9e1e152daeb1b8c5ac52.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

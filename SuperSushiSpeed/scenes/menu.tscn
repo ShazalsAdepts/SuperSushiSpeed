@@ -13,7 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://psbfhxgc2yp3" path="res://assets/ui/tuto.PNG" id="9_tiung"]
 [ext_resource type="Script" path="res://scripts/ControlVideo.gd" id="10_c0xwu"]
 [ext_resource type="AudioStream" uid="uid://caj84cpccqsnn" path="res://son/kick.mp3" id="10_gb5uo"]
-[ext_resource type="PackedScene" path="res://scenes/input_button.tscn" id="14_7gu46"]
+[ext_resource type="PackedScene" uid="uid://d4ao3xixeb7k1" path="res://scenes/input_button.tscn" id="14_7gu46"]
 [ext_resource type="Script" path="res://scripts/ControlControls.gd" id="14_ufsc4"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_kwyje"]
@@ -120,7 +120,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 2, 4, 6, 8, 10),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector3(2.54511, 59.8994, -1.26521), Vector3(0.249439, 58.7218, -2.51892), Vector3(2.3415, 58.4383, -0.341639), Vector3(-0.141341, 59.0395, -0.816092), Vector3(1.09078, 57.6978, -0.236159), Vector3(2.545, 59.899, -1.265)]
+"values": [Vector3(0.403376, 56.4088, -2.68303), Vector3(-0.415146, 57.2497, -1.18493), Vector3(-0.415146, 57.2497, 0.725214), Vector3(1.42804, 56.962, 0.725214), Vector3(1.42804, 55.5519, -1.49194), Vector3(0.403376, 56.4088, -2.68303)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -132,7 +132,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 2, 4, 6, 8, 10),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector3(-0.450214, 2.66587, 0.0550479), Vector3(-0.349066, 2.5012, 7.63975e-09), Vector3(-0.349066, 2.72781, 1.7151e-08), Vector3(-0.349066, 3.1381, 0), Vector3(-0.143117, 2.60403, 0.0122173), Vector3(-0.450295, 2.66512, 0.0558505)]
+"values": [Vector3(-0.162316, -2.70701, 0), Vector3(-0.162316, -2.62719, 0), Vector3(-0.10821, -2.37888, 0), Vector3(-0.0471239, -2.84576, 2.03535e-09), Vector3(-0.0471239, -2.84576, 5.3643e-09), Vector3(-0.162316, -2.70701, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_a20fb"]
@@ -154,19 +154,19 @@ skeleton = NodePath("../..")
 mesh = SubResource("PlaneMesh_kwyje")
 
 [node name="Wall1" type="MeshInstance3D" parent="background"]
-transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 50, 50, 0)
+transform = Transform3D(-8.74228e-08, -1, 0, 2, -4.37114e-08, 0, 0, 0, 1, 50, 50, 0)
 mesh = SubResource("PlaneMesh_kwyje")
 
 [node name="Wall2" type="MeshInstance3D" parent="background"]
-transform = Transform3D(1.91069e-15, 4.37114e-08, -1, 1, -4.37114e-08, 0, -4.37114e-08, -1, -4.37114e-08, 0, 50, 50)
+transform = Transform3D(3.82138e-15, 8.74228e-08, -2, 2, -8.74228e-08, 7.19978e-21, -8.74228e-08, -2, -8.74228e-08, 0, 50, 50)
 mesh = SubResource("PlaneMesh_kwyje")
 
 [node name="Wall3" type="MeshInstance3D" parent="background"]
-transform = Transform3D(4.37114e-08, 1, 8.74228e-08, 1, -4.37114e-08, 0, 3.82137e-15, 8.74228e-08, -1, -50, 50, 0)
+transform = Transform3D(8.74228e-08, 1, 1.50996e-07, 2, -4.37114e-08, -2.5411e-21, 1.32005e-14, 1.50996e-07, -1, -50, 50, 0)
 mesh = SubResource("PlaneMesh_kwyje")
 
 [node name="Wall4" type="MeshInstance3D" parent="background"]
-transform = Transform3D(1.91069e-15, 4.37114e-08, 1, 1, -4.37114e-08, 0, 4.37114e-08, 1, -4.37114e-08, 0, 50, -50)
+transform = Transform3D(3.82138e-15, 4.37114e-08, 1, 2, -4.37114e-08, -3.59989e-21, 8.74228e-08, 1, -4.37114e-08, 0, 50, -50)
 mesh = SubResource("PlaneMesh_kwyje")
 
 [node name="Terrain_0" parent="background" instance=ExtResource("2_3yrtf")]
@@ -202,7 +202,7 @@ size = Vector2i(1280, 720)
 render_target_update_mode = 4
 
 [node name="Camera3D" type="Camera3D" parent="background/SubViewportContainer/SubViewport"]
-transform = Transform3D(-0.89858, -0.150082, 0.412345, 7.17901e-09, 0.939693, 0.34202, -0.438809, 0.307333, -0.844389, 2.54511, 2.2189, -2.35581)
+transform = Transform3D(-0.89858, -0.150082, 0.412345, 7.17902e-09, 0.939693, 0.34202, -0.438809, 0.307333, -0.844389, 2.54511, 2.2189, -2.35581)
 current = true
 
 [node name="SpeedEffect" type="ColorRect" parent="."]

@@ -142,7 +142,8 @@ func _physics_process(delta):
 	else:
 		find_child("TrailsSPEED").emitting = false
 		find_child("Trails").emitting = false
-
+	
+	check_lane(delta)
 	move_and_slide()
 	handle_rythme()
 	handle_speed_effect(delta)
@@ -217,15 +218,26 @@ func _physics_process(delta):
 	else:
 		wasabi.size.x = (mutation.get_time_left() *515)/5
 		wasabi["theme_override_styles/panel"].region_rect = Rect2(0,0,(mutation.get_time_left()*929)/5,259)
+
+func check_lane(delta):
+	var position_player = self.transform.origin
+	var target_x = float(current_lane)
+	var tmp = lerp(position_player.x, target_x, delta * 0.01)
+	position_player.x = round_to_dec(tmp, 2) # Mouv horizontal
 		
-		
+	self.transform.origin = position_player
+	print(position_player.x, " ", target_x)
+
+func round_to_dec(num, digit):
+	return round(num * pow(10.0, digit)) / pow(10.0, digit)
+
 func get_foot_input(): 
 	if Input.is_action_just_pressed("ui_left"):
 		return "left"
 	elif Input.is_action_just_pressed("ui_right"):
 		return "right"
 	return ""
-	
+
 func _on_AnimationPlayer_animation_finished(anim_name):
 	get_node("Panel3/AnimationPlayer").pause("beats_up")
 

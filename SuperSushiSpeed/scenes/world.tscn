@@ -170,7 +170,7 @@ shadow_enabled = true
 [node name="TerrainController" parent="." node_paths=PackedStringArray("player") instance=ExtResource("1_1mi36")]
 player = NodePath("../Player")
 
-[node name="Player" type="CharacterBody3D" parent="." node_paths=PackedStringArray("terrain_controller", "player_camera", "musique", "son", "score_label", "speed_label", "rythme_label", "game_over", "speed_effect")]
+[node name="Player" type="CharacterBody3D" parent="." node_paths=PackedStringArray("terrain_controller", "player_camera", "musique", "son", "score_label", "rythme_label", "game_over", "speed_effect")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3, -2)
 script = ExtResource("2_53c47")
 terrain_controller = NodePath("../TerrainController")
@@ -178,7 +178,6 @@ player_camera = NodePath("../Camera")
 musique = NodePath("../Musique")
 son = NodePath("../Son")
 score_label = NodePath("score")
-speed_label = NodePath("")
 rythme_label = NodePath("title_rythme")
 game_over = NodePath("../Camera/Death")
 speed_effect = NodePath("../Camera/SpeedEffect")
@@ -199,12 +198,6 @@ skeleton = NodePath("../../..")
 [node name="PlayerHitbox" type="CollisionShape3D" parent="Player"]
 transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, -0.323741, 0.0396836)
 shape = SubResource("CapsuleShape3D_y6d5c")
-
-[node name="title_rythme" type="Label" parent="Player"]
-offset_left = 6.0
-offset_top = 6.0
-offset_right = 46.0
-offset_bottom = 29.0
 
 [node name="slide_cooldown_timer" type="Timer" parent="Player"]
 wait_time = 5.0
@@ -406,6 +399,18 @@ offset_bottom = 152.0
 theme_override_colors/font_color = Color(0, 0, 0, 0.556863)
 theme_override_fonts/font = ExtResource("10_5corw")
 text = "Combo"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="title_rythme" type="Label" parent="Player"]
+offset_left = 1145.0
+offset_top = 81.0
+offset_right = 1278.0
+offset_bottom = 149.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("10_5corw")
+theme_override_font_sizes/font_size = 19
+text = "NANNI ?"
 horizontal_alignment = 1
 vertical_alignment = 1
 

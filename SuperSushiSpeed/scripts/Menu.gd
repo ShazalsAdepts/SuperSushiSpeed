@@ -88,6 +88,7 @@ func _on_button_start_pressed():
 	get_tree().change_scene_to_file("res://scenes/count_down.tscn")
 
 func _on_button_score_pressed():
+	get_node("HowToPlay").set_visible(false)
 	get_node("LeaderBoard").set_visible(true)
 	var getlearder = get_node("LeaderBoard/RichTextLabel");
 	if session_token == "":
@@ -145,4 +146,8 @@ func _on_close_pressed():
 	get_node("LeaderBoard").set_visible(false)
 
 func _on_button_credits_pressed():
-	pass
+	get_node("HowToPlay").set_visible(true)
+	get_node("LeaderBoard").set_visible(false)
+
+func _on_close_htplay_pressed():
+	get_node("HowToPlay").set_visible(false)

@@ -56,7 +56,6 @@ func _init_blocks(number_of_blocks: int) -> void:
 			_append_to_far_edge(terrain_belt[block_index-1], block)
 		add_child(block)
 		terrain_belt.append(block)
-	print(Global.ping)
 
 func _progress_terrain(delta: float) -> void:
 	

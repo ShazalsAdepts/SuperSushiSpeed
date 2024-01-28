@@ -12,9 +12,6 @@ func _ready():
 		get_node("3"),
 		get_node("4")
 	]
-	
-	
-
 
 func _physics_process(delta):
 	if temps_restant > 0:

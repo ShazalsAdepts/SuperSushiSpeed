@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://cvutgrnmmm4kf"]
+[gd_scene load_steps=40 format=3 uid="uid://cvutgrnmmm4kf"]
 
 [ext_resource type="Script" path="res://scripts/Menu.gd" id="1_idp3p"]
 [ext_resource type="AudioStream" uid="uid://dp7flf424tdqh" path="res://son/fuck_noel.mp3" id="1_ka1cd"]
@@ -11,6 +11,7 @@
 [ext_resource type="Script" path="res://scripts/Control_Settings.gd" id="8_0edwy"]
 [ext_resource type="Script" path="res://scripts/Control_Audio.gd" id="9_o8mhk"]
 [ext_resource type="ArrayMesh" uid="uid://yw08bnjt2uf8" path="res://assets/terrain/makiPlate.obj" id="9_ra113"]
+[ext_resource type="Texture2D" uid="uid://psbfhxgc2yp3" path="res://assets/ui/tuto.PNG" id="9_tiung"]
 [ext_resource type="Script" path="res://scripts/ControlVideo.gd" id="10_c0xwu"]
 [ext_resource type="AudioStream" uid="uid://caj84cpccqsnn" path="res://son/kick.mp3" id="10_gb5uo"]
 [ext_resource type="ArrayMesh" uid="uid://iy8jg3y16avr" path="res://assets/terrain/makiPlate3.obj" id="10_u7oxn"]
@@ -310,7 +311,7 @@ theme_override_styles/hover = SubResource("StyleBoxEmpty_d5vs0")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_acfrt")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_wxttn")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_o5etb")
-text = "Credits"
+text = "How to play"
 
 [node name="MarginContainer2" type="MarginContainer" parent="Control/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 80)
@@ -378,6 +379,44 @@ offset_right = 448.0
 offset_bottom = 536.0
 theme_override_colors/font_color = Color(0.898039, 0.862745, 0.501961, 1)
 theme_override_font_sizes/font_size = 35
+
+[node name="HowToPlay" type="Panel" parent="Control"]
+visible = false
+layout_mode = 2
+offset_left = 469.0
+offset_top = 180.0
+offset_right = 1236.0
+offset_bottom = 640.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_hrek5")
+
+[node name="Sprite2D" type="Sprite2D" parent="Control/HowToPlay"]
+position = Vector2(359, 184)
+scale = Vector2(0.315878, 0.318981)
+texture = ExtResource("9_tiung")
+
+[node name="close_htplay" type="Button" parent="Control/HowToPlay"]
+layout_mode = 0
+offset_left = 711.0
+offset_right = 767.0
+offset_bottom = 45.0
+theme_override_font_sizes/font_size = 27
+theme_override_styles/normal = SubResource("StyleBoxEmpty_xww2m")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_bwj0s")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_taomd")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_ku4yt")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_o63dg")
+text = "X"
+
+[node name="Label" type="Label" parent="Control/HowToPlay"]
+layout_mode = 0
+offset_left = 15.0
+offset_top = 360.0
+offset_right = 756.0
+offset_bottom = 450.0
+theme_override_font_sizes/font_size = 20
+text = "Help the mutant sushi to escape!
+Alternate left and right in rhythm to move forward (and jump or dash). 
+Eat wasabi to mutate even more and gain speed (unlocks the double jump)!"
 
 [node name="Pseudo" type="Label" parent="Control"]
 layout_mode = 2
@@ -834,8 +873,10 @@ bus = &"Music"
 [connection signal="pressed" from="Control/MarginContainer/VBoxContainer/button_start" to="Control" method="_on_button_start_pressed"]
 [connection signal="pressed" from="Control/MarginContainer/VBoxContainer/button_score" to="Control" method="_on_button_score_pressed"]
 [connection signal="pressed" from="Control/MarginContainer/VBoxContainer/button_settings" to="Control" method="_on_button_settings_pressed"]
+[connection signal="pressed" from="Control/MarginContainer/VBoxContainer/button_credits" to="Control" method="_on_button_credits_pressed"]
 [connection signal="pressed" from="Control/MarginContainer/VBoxContainer/button_quit" to="Control" method="_on_button_quit_pressed"]
 [connection signal="pressed" from="Control/LeaderBoard/close" to="Control" method="_on_close_pressed"]
+[connection signal="pressed" from="Control/HowToPlay/close_htplay" to="Control" method="_on_close_htplay_pressed"]
 [connection signal="pressed" from="ControlSettings/MarginContainer/VBoxContainer/button_Audio" to="ControlSettings" method="_on_button_audio_pressed"]
 [connection signal="pressed" from="ControlSettings/MarginContainer/VBoxContainer/button_Video" to="ControlSettings" method="_on_button_video_pressed"]
 [connection signal="pressed" from="ControlSettings/MarginContainer/VBoxContainer/button_Controls" to="ControlSettings" method="_on_button_controls_pressed"]

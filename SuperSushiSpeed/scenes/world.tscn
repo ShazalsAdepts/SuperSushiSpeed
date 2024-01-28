@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://ccv2ry3lkvg6p"]
+[gd_scene load_steps=39 format=3 uid="uid://ccv2ry3lkvg6p"]
 
 [ext_resource type="PackedScene" uid="uid://dhkq2ebp8keuh" path="res://scenes/terrain_controller.tscn" id="1_1mi36"]
 [ext_resource type="PackedScene" uid="uid://bwcp2rq5elr51" path="res://scenes/death.tscn" id="1_ltm6j"]

@@ -70,6 +70,7 @@ var unlock_double_jump = true
 var unlock_slide = true
 
 var is_mutated = false
+var multiply = 1
 
 @onready var slide_cooldown_timer = $slide_cooldown_timer
 @onready var mutation_cooldown_timer = $mutation_cooldown_timer
@@ -119,11 +120,13 @@ func _physics_process(delta):
 	if is_mutated:
 		MAX_SPEED = 145.0
 		unlock_double_jump = true
+		multiply = 2
 	else:
 		MAX_SPEED = 95.0
 		if SPEED > 100.0 :
 			SPEED = 100.0
 		unlock_double_jump = false
+		multiply = 1
 
 	move_and_slide()
 	handle_rythme()
@@ -208,7 +211,7 @@ func handle_rythme():
 		
 		if abs(time_difference) <= missed_beat_time:
 			if SPEED < MAX_SPEED:
-				SPEED += 10
+				SPEED += 10 * multiply
 			elif SPEED == 95:
 				SPEED = 100.0
 			# Logique pour mouvement en rythme
@@ -217,17 +220,17 @@ func handle_rythme():
 			update_next_beat_player_index(1)
 		elif time_difference < -missed_beat_time and time_difference > -hors_rythme:
 			if SPEED < MAX_SPEED:
-				SPEED += 5
+				SPEED += 5 * multiply
 			# Logique pour trop tôt
 			rythme = "TOO EARLY"
-			combo = 1
+			combo += 1
 			update_next_beat_player_index(1)
 		elif time_difference > missed_beat_time  and time_difference < hors_rythme:
 			if SPEED < MAX_SPEED:
-				SPEED += 5
+				SPEED += 5 * multiply
 			# Logique pour trop tard
 			rythme = "TOO LATE"
-			combo = 1
+			combo += 1
 			update_next_beat_player_index(1)
 		else:
 			# Hors rythme

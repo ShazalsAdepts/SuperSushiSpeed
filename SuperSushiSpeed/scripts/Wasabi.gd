@@ -1,5 +1,8 @@
 extends Area3D
 
+@onready var player = $"../../../Player"
 
 func _on_body_entered(body):
-	queue_free()
+	if player :
+		player.update_score(500)
+		queue_free()

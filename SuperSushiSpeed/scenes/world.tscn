@@ -419,7 +419,6 @@ script = ExtResource("3_eu6yv")
 player = NodePath("../Player")
 
 [node name="SpeedEffect" type="ColorRect" parent="Camera"]
-visible = false
 material = SubResource("ShaderMaterial_o18js")
 offset_right = 1280.0
 offset_bottom = 720.0

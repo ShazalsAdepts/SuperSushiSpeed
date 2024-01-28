@@ -1,20 +1,18 @@
 extends Control
 
-var temps_restant = 25
 @export var son: AudioStreamPlayer
 @export var label: Label
 @export var label_ping: Label
+@export var label_ping_title: Label
 
-var last_time = 26
-
+var temps_restant = 25
+var last_time = 25
 var last_beat = 0.0
-
 var time_tab = []
-
 var started = false
 
 func _ready():
-	label.text = str(temps_restant)
+	init()
 
 func _physics_process(delta):
 	if temps_restant > 0 and started:
@@ -37,14 +35,27 @@ func _physics_process(delta):
 	elif started:
 		label.text = ""
 		label_ping.visible = true
-		label_ping.text = str(sum(time_tab) / len(time_tab))
+		label_ping_title.visible = true
+		if len(time_tab) != 0:
+			label_ping.text = str(sum(time_tab) / len(time_tab))
 		started = false
 
 func _on_button_back_pressed():
 	get_tree().change_scene_to_file("res://scenes/menu.tscn")
 
 func _on_button_start_pressed():
+	init()
 	started = true
+
+func init():
+	temps_restant = 25
+	last_time = 25
+	last_beat = 0.0
+	time_tab = []
+	started = false
+	label_ping.visible = false
+	label_ping_title.visible = false
+	label.text = str(temps_restant)
 
 func sum(arr:Array):
 	var result = 0

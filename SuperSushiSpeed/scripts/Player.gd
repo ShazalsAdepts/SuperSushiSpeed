@@ -73,7 +73,7 @@ var is_mutated = false
 
 @onready var slide_cooldown_timer = $slide_cooldown_timer
 @onready var mutation_cooldown_timer = $mutation_cooldown_timer
-@onready var sushi_muscle = load("res://assets/sushi/sushi.obj")
+@onready var sushi_muscle = load("res://assets/sushi/sushiV2MOOSCLES.obj")
 @onready var sushi_normal = load("res://assets/sushi/sushiV2.obj")
 
 func _physics_process(delta):
@@ -117,7 +117,7 @@ func _physics_process(delta):
 		translate(Vector3(0, 0, terrain_velocity/3 * delta))
 	
 	if is_mutated:
-		SPEED = MAX_SPEED
+		SPEED = MAX_SPEED +55
 		unlock_double_jump = true
 	else:
 		unlock_double_jump = false

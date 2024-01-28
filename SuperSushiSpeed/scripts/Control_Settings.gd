@@ -22,3 +22,6 @@ func _on_button_video_pressed():
 func _on_button_controls_pressed():
 	self.set_visible(false)
 	controls.set_visible(true)
+	
+func _on_button_calibration_pressed():
+	get_tree().change_scene_to_file("res://scenes/calibration.tscn")

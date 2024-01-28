@@ -838,6 +838,7 @@ bus = &"Music"
 [connection signal="pressed" from="ControlSettings/MarginContainer/VBoxContainer/button_Audio" to="ControlSettings" method="_on_button_audio_pressed"]
 [connection signal="pressed" from="ControlSettings/MarginContainer/VBoxContainer/button_Video" to="ControlSettings" method="_on_button_video_pressed"]
 [connection signal="pressed" from="ControlSettings/MarginContainer/VBoxContainer/button_Controls" to="ControlSettings" method="_on_button_controls_pressed"]
+[connection signal="pressed" from="ControlSettings/MarginContainer/VBoxContainer/button_Calibration" to="ControlSettings" method="_on_button_calibration_pressed"]
 [connection signal="pressed" from="ControlSettings/MarginContainer/VBoxContainer/button_quit" to="ControlSettings" method="_on_button_quit_pressed"]
 [connection signal="item_selected" from="ControlVideo/MarginContainer/VBoxContainer/HBoxContainer/OptionButton" to="ControlVideo" method="_on_option_button_item_selected"]
 [connection signal="pressed" from="ControlVideo/MarginContainer/VBoxContainer/button_quit" to="ControlVideo" method="_on_button_quit_pressed"]

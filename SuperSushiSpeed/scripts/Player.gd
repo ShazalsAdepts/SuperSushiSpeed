@@ -64,11 +64,16 @@ var sliding = false
 var slide_timer = SLIDE_TIME
 var can_slide = true
 
+var can_double_jump = true
+var jump_counter = 0
+
 @onready var slide_cooldown_timer = $slide_cooldown_timer
 
 func _physics_process(delta):
 	if not is_on_floor():
 		velocity.y -= gravity * 2 * delta
+	else:
+		jump_counter = 0
 	
 	var foot_input = get_foot_input()
 	if foot_input != "":
@@ -86,9 +91,15 @@ func _physics_process(delta):
 	elif can_slide and Input.is_action_just_pressed("ui_shift"):
 		start_slide()
 
-	if Input.is_action_just_pressed("ui_jump") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
-
+	if Input.is_action_just_pressed("ui_jump") and (is_on_floor() or can_double_jump):
+		if jump_counter == 0:
+			velocity.y = JUMP_VELOCITY
+			can_double_jump = true
+			jump_counter += 1
+		else:
+			velocity.y = JUMP_VELOCITY
+			can_double_jump = false
+	
 	var target_x = float(int(current_lane))
 	var position_player = self.transform.origin
 	position_player.x = lerp(position_player.x, target_x, delta * lerp_speed) # Mouv horizontal
@@ -127,9 +138,6 @@ func _physics_process(delta):
 				balls[i].position.y = 576
 				i = i +1
 		dif = 9.62
-	
-	
-		
 
 	if (player_camera and global_transform.origin.z > player_camera.global_transform.origin.z) or global_transform.origin.y < -1:
 		die()
@@ -176,7 +184,7 @@ func handle_rythme():
 			# Hors rythme
 			if current_beat_player != 0 and current_beat_player != 1:
 				SPEED = MIN_SPEED
-				rythme = "WUT ?!"
+				rythme = "NANI ?!"
 
 	elif (current_position > (son.beats[current_beat_player] + hors_rythme)) and restarted:
 		# Beat manqué

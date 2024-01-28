@@ -3,6 +3,7 @@ extends AudioStreamPlayer
 var next_beat_index = 0
 
 var beats = []
+
 @export var musique: AudioStreamPlayer
 @export var player: CharacterBody3D
 
@@ -28,11 +29,11 @@ func _physics_process(delta):
 	if next_beat_index < beats.size() and current_position >= beats[next_beat_index]:
 		self.play()  # Jouez le son "TAC"	
 		next_beat_index += 1
-		
+	
 	# Réinitialiser les beats lorsque la musique boucle
 	if current_position < beats[next_beat_index - 1] and next_beat_index != 0:
 		next_beat_index = 0
 		player.restarted = true
-
+	
 	# Si vous voulez augmenter le pitch de la musique progressivement
 	musique.pitch_scale += 0.003 * delta

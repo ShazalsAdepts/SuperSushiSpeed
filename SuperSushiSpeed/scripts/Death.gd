@@ -4,6 +4,7 @@ var submit_score_http =  HTTPRequest.new()
 var leaderboard_key = "19943"
 var score : int
 var API_KEY = "prod_4135c08094c1428cbe83647654cf6a81"
+var session_token: String
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -11,7 +12,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	get_node("Label5/AnimationPlayer").play("wow")
 
 
 func _on_restart_pressed():
@@ -21,9 +22,12 @@ func _on_restart_pressed():
 func _on_back_pressed():
 	get_tree().change_scene_to_file("res://scenes/menu.tscn")
 
-func set_score(x):
+func set_score(x,y,on_time,late,not_late,mist):
 	score = x
+	get_node("combo").text = str(y)
 	get_node("label_score").text = str(x)
+	get_node("beatsmiss").text = str(mist+late+not_late)
+	get_node("perfect").text = str(on_time)
 
 func _on_save_pressed():
 	var de = FileAccess.open("res://usersave/user_login.json", FileAccess.READ)
@@ -47,7 +51,7 @@ func _on_save_pressed():
 
 func _on_request_completed(result, response_code, headers, body):
 	var json = JSON.parse_string(body.get_string_from_utf8())
-	var session_token = json["session_token"]
+	session_token = json["session_token"]
 	var player_id = json["player_id"]
 	var player_name = json["player_name"]
 	var data = { "score": str(score), "member_id":player_name, "matadata": player_id}

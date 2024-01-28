@@ -52,6 +52,12 @@ var current_beat_player = 0.0
 var restarted = true
 var can_miss = true
 
+var on_time = 0
+var late = 0
+var not_late = 0
+var mist = 0
+
+
 var can_score = true
 
 var target_fov = 75.0
@@ -266,6 +272,7 @@ func handle_rythme():
 				SPEED = 100.0
 			# Logique pour mouvement en rythme
 			rythme = "ON TIME"
+			on_time += 1
 			combo+=2
 			update_next_beat_player_index(1)
 		elif time_difference < -missed_beat_time and time_difference > -hors_rythme:
@@ -273,6 +280,7 @@ func handle_rythme():
 				SPEED += 5 * multiply
 			# Logique pour trop tôt
 			rythme = "TOO EARLY"
+			not_late += 1
 			combo += 1
 			update_next_beat_player_index(1)
 		elif time_difference > missed_beat_time  and time_difference < hors_rythme:
@@ -280,6 +288,7 @@ func handle_rythme():
 				SPEED += 5 * multiply
 			# Logique pour trop tard
 			rythme = "TOO LATE"
+			late += 1
 			combo += 1
 			update_next_beat_player_index(1)
 		else:
@@ -287,6 +296,7 @@ func handle_rythme():
 			if current_beat_player != 0 and current_beat_player != 1:
 				SPEED = MIN_SPEED
 				rythme = "NANI ?!"
+				mist += 1
 				combo = 0
 
 	elif (current_position > (son.beats[current_beat_player] + hors_rythme)) and restarted:
@@ -331,7 +341,7 @@ func handle_foot_movement(foot, delta):
 
 func die():
 	can_score = false
-	game_over.set_score(score)
+	game_over.set_score(score, best_combo,on_time,late,not_late,mist)
 	await get_tree().create_timer(0.4).timeout
 	game_over.visible = true
 	gravity = 0

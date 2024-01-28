@@ -222,14 +222,20 @@ func _physics_process(delta):
 func check_lane(delta):
 	var position_player = self.transform.origin
 	var target_x = float(current_lane)
-	var tmp = lerp(position_player.x, target_x, delta * 0.01)
-	position_player.x = round_to_dec(tmp, 2) # Mouv horizontal
-		
-	self.transform.origin = position_player
-	print(position_player.x, " ", target_x)
 
-func round_to_dec(num, digit):
-	return round(num * pow(10.0, digit)) / pow(10.0, digit)
+	if position_player.x == target_x:
+		return
+	
+	var lerp_factor = delta * 0.1 
+	var tmp = lerp(position_player.x, target_x, lerp_factor)
+	self.transform.origin.x = tmp
+
+	if abs(self.transform.origin.x - target_x) < 0.1:
+		self.transform.origin.x = target_x
+	elif position_player.x < target_x:
+		self.transform.origin.x += 0.05
+	elif position_player.x > target_x:
+		self.transform.origin.x -= 0.05
 
 func get_foot_input(): 
 	if Input.is_action_just_pressed("ui_left"):

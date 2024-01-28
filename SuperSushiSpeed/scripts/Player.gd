@@ -158,7 +158,7 @@ func _physics_process(delta):
 				balls[i].position.y = 576
 				i = i +1
 			
-		dif = 9.62 # / musique.pitch_scale
+		dif = 9.62
 	
 	if (player_camera and global_transform.origin.z > player_camera.global_transform.origin.z) or global_transform.origin.y < -1:
 		die()
@@ -166,7 +166,19 @@ func _physics_process(delta):
 	score_label.text = str(score)
 	speed_label.text = str(SPEED)
 	rythme_label.text = str(rythme)
-
+	var speed_bar = get_node("SPEED")
+	speed_bar.size.x = 52 + (SPEED * 148)/100
+	speed_bar["theme_override_styles/panel"].region_rect = Rect2(0,0,83.72 +(SPEED * 238.78)/100,219)
+	
+	var dash = get_node("DASH")
+	var timer = get_node("slide_cooldown_timer")
+	if timer.is_stopped():
+		dash.size.x = 52 + (100 * 148)/100
+		dash["theme_override_styles/panel"].region_rect = Rect2(0,0,83.72 +(100 * 238.78)/100,219)
+	else:
+		dash.size.x = 52 + ((5-timer.get_time_left()) * 148)/5
+		dash["theme_override_styles/panel"].region_rect = Rect2(0,0,83.72 +((5 -timer.get_time_left()) * 238.78)/5,219)
+	
 func get_foot_input(): 
 	if Input.is_action_just_pressed("ui_left"):
 		return "left"
@@ -175,7 +187,6 @@ func get_foot_input():
 	return ""
 	
 func _on_AnimationPlayer_animation_finished(anim_name):
-	print("wut ?")
 	get_node("Panel3/AnimationPlayer").pause("beats_up")
 
 func handle_rythme():
@@ -296,6 +307,7 @@ func end_slide():
 
 func _on_slide_cooldown_timer_timeout():
 	can_slide = true
+	get_node("slide_cooldown_timer").stop()
 
 func mutate(x):
 	update_score(x)

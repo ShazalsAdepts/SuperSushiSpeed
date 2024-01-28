@@ -19,9 +19,14 @@ ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
 sky_material = SubResource("ProceduralSkyMaterial_rv4pa")
 
 [sub_resource type="Environment" id="Environment_vj3ns"]
-background_mode = 2
+background_mode = 1
+background_color = Color(0.996078, 0.882353, 0.866667, 1)
+background_energy_multiplier = 0.95
 sky = SubResource("Sky_8qb5r")
 tonemap_mode = 2
+fog_enabled = true
+fog_light_color = Color(0.921569, 0.431373, 0.0431373, 1)
+fog_light_energy = 1.5
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_y6d5c"]
 
@@ -108,7 +113,7 @@ noise = SubResource("FastNoiseLite_seaa6")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_o18js"]
 shader = ExtResource("6_r1j7f")
-shader_parameter/line_color = Color(0.74902, 1, 0.988235, 1)
+shader_parameter/line_color = Color(0, 0, 0, 1)
 shader_parameter/line_count = 2.0
 shader_parameter/line_density = 0.06
 shader_parameter/line_faloff = 0.587

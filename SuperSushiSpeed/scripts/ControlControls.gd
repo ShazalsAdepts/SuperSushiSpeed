@@ -12,7 +12,7 @@ var input_actions = {
 	"ui_right": "Move right",
 	"ui_left": "Move left",
 	"ui_shift": "Dash",
-	"ui_accept": "Jump",
+	"ui_jump": "Jump",
 }
 
 func _ready():

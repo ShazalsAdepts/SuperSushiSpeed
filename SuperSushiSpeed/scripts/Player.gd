@@ -223,24 +223,19 @@ func check_lane(delta):
 	var position_player = self.transform.origin
 	var target_x = float(current_lane)
 
-	# Si la position du joueur est déjà à la current_lane, sortez de la fonction
 	if position_player.x == target_x:
 		return
-
-	# Ajustez ce facteur pour changer la vitesse de lerp
-	var lerp_factor = delta * 0.1  # Ajuster cette valeur selon les besoins
-
-	# Lerp vers la cible
+	
+	var lerp_factor = delta * 0.1 
 	var tmp = lerp(position_player.x, target_x, lerp_factor)
 	self.transform.origin.x = tmp
 
-	# Stabilisation - Si proche de la cible, arrondissez à la valeur la plus proche
-	if abs(self.transform.origin.x - target_x) < 0.1:  # Seuil ajustable
+	if abs(self.transform.origin.x - target_x) < 0.1:
 		self.transform.origin.x = target_x
-
-	print(self.transform.origin.x, " ", target_x)
-
-
+	elif position_player.x < target_x:
+		self.transform.origin.x += 0.05
+	elif position_player.x > target_x:
+		self.transform.origin.x -= 0.05
 
 func get_foot_input(): 
 	if Input.is_action_just_pressed("ui_left"):

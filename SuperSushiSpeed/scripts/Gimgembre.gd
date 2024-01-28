@@ -4,5 +4,5 @@ extends Area3D
 
 func _on_body_entered(body):
 	if player :
-		player.update_score(500)
+		player.mutate(500)
 		queue_free()

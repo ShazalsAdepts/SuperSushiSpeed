@@ -207,6 +207,9 @@ vertical_alignment = 1
 [node name="slide_cooldown_timer" type="Timer" parent="Player"]
 wait_time = 5.0
 
+[node name="mutation_cooldown_timer" type="Timer" parent="Player"]
+wait_time = 5.0
+
 [node name="Panel" type="Panel" parent="Player"]
 offset_left = 130.0
 offset_top = 592.0
@@ -347,3 +350,4 @@ musique = NodePath("../Musique")
 player = NodePath("../Player")
 
 [connection signal="timeout" from="Player/slide_cooldown_timer" to="Player" method="_on_slide_cooldown_timer_timeout"]
+[connection signal="timeout" from="Player/mutation_cooldown_timer" to="Player" method="_on_mutation_cooldown_timer_timeout"]

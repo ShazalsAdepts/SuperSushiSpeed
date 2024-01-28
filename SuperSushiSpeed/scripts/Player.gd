@@ -38,7 +38,6 @@ var current_lane = X_CENTER
 var x_start = 100
 var x_end = 1074
 
-
 var last_click = -1.0
 var missed_beat_time = 0.2  # Le temps limite pour appuyer sur une touche pour trop tot / tard
 var hors_rythme = 0.4 # Le temps limite pour appuyer sur une touche
@@ -70,7 +69,12 @@ var jump_counter = 0
 var unlock_double_jump = true
 var unlock_slide = true
 
+var is_mutated = false
+
 @onready var slide_cooldown_timer = $slide_cooldown_timer
+@onready var mutation_cooldown_timer = $mutation_cooldown_timer
+@onready var sushi_muscle = load("res://assets/sushi/sushi.obj")
+@onready var sushi_normal = load("res://assets/sushi/sushiV2.obj")
 
 func _physics_process(delta):
 	if not is_on_floor():
@@ -111,6 +115,12 @@ func _physics_process(delta):
 	if terrain_controller: # Le terrain déplace le joueur
 		var terrain_velocity = terrain_controller.terrain_velocity
 		translate(Vector3(0, 0, terrain_velocity/3 * delta))
+	
+	if is_mutated:
+		SPEED = MAX_SPEED
+		unlock_double_jump = true
+	else:
+		unlock_double_jump = false
 
 	move_and_slide()
 	handle_rythme()
@@ -283,3 +293,13 @@ func end_slide():
 
 func _on_slide_cooldown_timer_timeout():
 	can_slide = true
+
+func mutate(x):
+	update_score(x)
+	is_mutated = true
+	mutation_cooldown_timer.start()
+	find_child("Sushi").mesh = sushi_muscle
+
+func _on_mutation_cooldown_timer_timeout():
+	find_child("Sushi").mesh = sushi_normal
+	is_mutated = false

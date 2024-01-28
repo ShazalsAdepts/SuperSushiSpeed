@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bt0gavhbjomkk"
-path="res://.godot/imported/chopsticks.PNG-b3220c87984fe26fecf5441d1b208692.ctex"
+uid="uid://jon5ifoyjvav"
+path="res://.godot/imported/wasabi_ui.PNG-f08965efb031901b9d9a31de55842bb9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/ui/chopsticks.PNG"
-dest_files=["res://.godot/imported/chopsticks.PNG-b3220c87984fe26fecf5441d1b208692.ctex"]
+source_file="res://assets/ui/wasabi_ui.PNG"
+dest_files=["res://.godot/imported/wasabi_ui.PNG-f08965efb031901b9d9a31de55842bb9.ctex"]
 
 [params]
 

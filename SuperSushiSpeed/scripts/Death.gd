@@ -25,7 +25,6 @@ func set_score(x):
 	score = x
 	$MarginContainer/VBoxContainer/label_score.text = "  Score: " + str(x)
 
-
 func _on_save_pressed():
 	var de = FileAccess.open("res://usersave/user_login.json", FileAccess.READ)
 	var data = JSON.parse_string(de.get_as_text())

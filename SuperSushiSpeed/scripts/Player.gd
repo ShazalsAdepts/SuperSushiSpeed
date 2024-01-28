@@ -257,7 +257,7 @@ func handle_rythme():
 
 	if (Input.is_action_just_pressed("ui_left") or Input.is_action_just_pressed("ui_right")):
 		var beat_time = son.beats[current_beat_player]
-		var time_difference = current_position - beat_time
+		var time_difference = current_position - Global.ping - beat_time
 		
 		if abs(time_difference) <= missed_beat_time:
 			if SPEED < MAX_SPEED:

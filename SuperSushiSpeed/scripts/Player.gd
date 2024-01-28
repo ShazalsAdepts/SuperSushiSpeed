@@ -124,6 +124,7 @@ func _physics_process(delta):
 				balls[i].set_visible(true)
 				var x = ((incoming_in)*974)/2+100
 				balls[i].position.x = x
+				balls[i].position.y = 576
 				i = i +1
 		dif = 9.62
 	

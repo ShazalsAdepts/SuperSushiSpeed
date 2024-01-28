@@ -147,8 +147,6 @@ func _physics_process(delta):
 			
 		dif = 9.62 / musique.pitch_scale
 	
-		
-
 	if (player_camera and global_transform.origin.z > player_camera.global_transform.origin.z) or global_transform.origin.y < -1:
 		die()
 	

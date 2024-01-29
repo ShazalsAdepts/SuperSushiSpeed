@@ -13,7 +13,7 @@
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ahfgp"]
 
-[node name="Control" type="Control" node_paths=PackedStringArray("son", "label", "label_ping", "label_ping_title")]
+[node name="Control" type="Control" node_paths=PackedStringArray("son", "label", "label_ping", "label_ping_title", "label_last_ping_title")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -25,6 +25,7 @@ son = NodePath("Son")
 label = NodePath("MarginContainer/Label")
 label_ping = NodePath("MarginContainer/Label2")
 label_ping_title = NodePath("MarginContainer/VBoxContainer/LabelPing")
+label_last_ping_title = NodePath("MarginContainer/Label3")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
@@ -119,6 +120,20 @@ layout_mode = 2
 size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 40
 text = "25"
+
+[node name="Label3" type="Label" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_font_sizes/font_size = 40
+text = "25"
+
+[node name="Label4" type="Label" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_font_sizes/font_size = 30
+text = "
+
+Last ping"
 
 [node name="Son" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_ngcwv")

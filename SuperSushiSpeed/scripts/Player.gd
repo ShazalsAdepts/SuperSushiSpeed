@@ -413,5 +413,5 @@ func mutate(x):
 func _on_mutation_cooldown_timer_timeout():
 	get_node("mutation_cooldown_timer").stop()
 	find_child("Sushi").mesh = sushi_normal
-	get_node('greenwasabu/AnimationPlayer').play("lest")
+	get_node('greenwasabu/AnimationPlayer').play("leave")
 	is_mutated = false

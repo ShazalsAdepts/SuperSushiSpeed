@@ -1,0 +1,68 @@
+[gd_scene load_steps=10 format=3 uid="uid://uipvb5xbi8q5"]
+
+[ext_resource type="ArrayMesh" uid="uid://0mli2ysjcqyk" path="res://assets/terrain/belt.obj" id="1_k1flk"]
+[ext_resource type="ArrayMesh" uid="uid://c22vmpeitcfdu" path="res://assets/terrain/makiPlate1.obj" id="2_26a3w"]
+[ext_resource type="ArrayMesh" uid="uid://d0abtngy35ys1" path="res://assets/terrain/soySauceBottle.obj" id="3_isbiv"]
+[ext_resource type="ArrayMesh" uid="uid://dwsq6sg7m7pai" path="res://assets/terrain/teaCup.obj" id="4_t61gh"]
+[ext_resource type="ArrayMesh" uid="uid://yqsrtn28p2ml" path="res://assets/sushi/sushiV2MOOSCLES.obj" id="5_rryla"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_l00jt"]
+lightmap_size_hint = Vector2i(32, 47)
+size = Vector2(6, 9)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_vqfyf"]
+data = PackedVector3Array(3, 0, 4.5, -3, 0, 4.5, 3, 0, -4.5, -3, 0, 4.5, -3, 0, -4.5, 3, 0, -4.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qh8up"]
+size = Vector3(1, 2, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_cmg1c"]
+size = Vector3(2, 2, 2)
+
+[node name="Terrain_2" type="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.08, -4)
+mesh = SubResource("PlaneMesh_l00jt")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.08, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_vqfyf")
+
+[node name="Belt" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.08, 0)
+mesh = ExtResource("1_k1flk")
+
+[node name="RectangleStanding_1" type="StaticBody3D" parent="."]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 1.5, 1, 3)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RectangleStanding_1"]
+transform = Transform3D(1.4, 0, 0, 0, 1.4, 0, 0, 0, 1.4, 0, 0.4, 0)
+shape = SubResource("BoxShape3D_qh8up")
+
+[node name="SoySauceBottle" type="MeshInstance3D" parent="RectangleStanding_1"]
+transform = Transform3D(0.127707, 0, 0.32587, 0, 0.35, 0, -0.32587, 0, 0.127707, 0, -1, 0)
+mesh = ExtResource("3_isbiv")
+skeleton = NodePath("../..")
+
+[node name="Bloc_2" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0.08, -2.5)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Bloc_2"]
+transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 0, 0.5, 0)
+shape = SubResource("BoxShape3D_cmg1c")
+
+[node name="MakiPlate1" type="MeshInstance3D" parent="Bloc_2"]
+transform = Transform3D(-3.93403e-08, 0, 0.9, 0, 0.9, 0, -0.9, 0, -3.93403e-08, 0, 0, 0)
+mesh = ExtResource("2_26a3w")
+skeleton = NodePath("../..")
+
+[node name="TeaCup" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -4, 1, 3.82585)
+mesh = ExtResource("4_t61gh")
+
+[node name="SushiV2mooscles" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.267736, 0, 0.135343, 0, 0.3, 0, -0.135343, 0, -0.267736, -4.7219, 3.30783, 3.53405)
+mesh = ExtResource("5_rryla")

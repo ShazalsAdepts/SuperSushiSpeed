@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://cvutgrnmmm4kf"]
+[gd_scene load_steps=43 format=3 uid="uid://cvutgrnmmm4kf"]
 
 [ext_resource type="Script" path="res://scripts/Menu.gd" id="1_idp3p"]
 [ext_resource type="AudioStream" uid="uid://dp7flf424tdqh" path="res://son/fuck_noel.mp3" id="1_ka1cd"]
@@ -16,9 +16,10 @@
 [ext_resource type="Texture2D" uid="uid://psbfhxgc2yp3" path="res://assets/ui/tuto.PNG" id="9_tiung"]
 [ext_resource type="Script" path="res://scripts/ControlVideo.gd" id="10_c0xwu"]
 [ext_resource type="AudioStream" uid="uid://caj84cpccqsnn" path="res://son/kick.mp3" id="10_gb5uo"]
-[ext_resource type="PackedScene" uid="uid://d4ao3xixeb7k1" path="res://scenes/input_button.tscn" id="14_7gu46"]
+[ext_resource type="PackedScene" uid="uid://3traybu0cw1i" path="res://scenes/input_button.tscn" id="14_7gu46"]
 [ext_resource type="Script" path="res://scripts/ControlControls.gd" id="14_ufsc4"]
-[ext_resource type="ArrayMesh" uid="uid://vhrnfebypa6g" path="res://assets/sushi/sushiV2Flex1.obj" id="20_yfkw2"]
+[ext_resource type="ArrayMesh" uid="uid://bxmqkmha8ucx7" path="res://assets/terrain/can.obj" id="20_jlv78"]
+[ext_resource type="ArrayMesh" uid="uid://o8ai3o0jbtcc" path="res://assets/sushi/sushiV2Flex1.obj" id="20_yfkw2"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_kwyje"]
 size = Vector2(100, 100)
@@ -873,6 +874,10 @@ stream = ExtResource("1_ka1cd")
 pitch_scale = 1.5
 autoplay = true
 bus = &"Music"
+
+[node name="Can" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.67569, 54.5814, 10.9736)
+mesh = ExtResource("20_jlv78")
 
 [connection signal="pressed" from="Control/MarginContainer/VBoxContainer/button_start" to="Control" method="_on_button_start_pressed"]
 [connection signal="pressed" from="Control/MarginContainer/VBoxContainer/button_score" to="Control" method="_on_button_score_pressed"]

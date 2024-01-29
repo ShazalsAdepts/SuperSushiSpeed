@@ -93,7 +93,6 @@ var multiply = 1
 @onready var sushi_muscle_right = load("res://assets/sushi/sushiV2MOOSCLESRight.obj")
 @onready var sushi_muscle_left = load("res://assets/sushi/sushiV2MOOSCLESLeft.obj")
 
-
 func _physics_process(delta):
 	if not is_on_floor():
 		velocity.y -= gravity * 2 * delta
@@ -111,8 +110,6 @@ func _physics_process(delta):
 		if slide_timer <= 0:
 			end_slide()
 		else:
-			if is_mutated:
-				find_child("Sushi").mesh = sushi_muscle_slide
 			velocity.z = lerp(velocity.z, -SLIDE_SPEED, delta * lerp_speed)
 			SLIDE_SPEED -= 1
 	elif unlock_slide and can_slide and Input.is_action_just_pressed("ui_shift"):
@@ -323,6 +320,8 @@ func handle_foot_movement(foot, delta):
 		if consecutive_presses == 2.0:
 			if !is_mutated:
 				find_child("Sushi").mesh = sushi_normal
+			else:
+				find_child("Sushi").mesh = sushi_muscle
 			if foot == "left" and current_lane != X_LEFT:
 				current_lane -= step
 				current_lane = float(int(current_lane))

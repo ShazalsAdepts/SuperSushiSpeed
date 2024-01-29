@@ -16,7 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://psbfhxgc2yp3" path="res://assets/ui/tuto.PNG" id="9_tiung"]
 [ext_resource type="Script" path="res://scripts/ControlVideo.gd" id="10_c0xwu"]
 [ext_resource type="AudioStream" uid="uid://caj84cpccqsnn" path="res://son/kick.mp3" id="10_gb5uo"]
-[ext_resource type="PackedScene" uid="uid://3traybu0cw1i" path="res://scenes/input_button.tscn" id="14_7gu46"]
+[ext_resource type="PackedScene" uid="uid://d4ao3xixeb7k1" path="res://scenes/input_button.tscn" id="14_7gu46"]
 [ext_resource type="Script" path="res://scripts/ControlControls.gd" id="14_ufsc4"]
 [ext_resource type="ArrayMesh" uid="uid://bxmqkmha8ucx7" path="res://assets/terrain/can.obj" id="20_jlv78"]
 [ext_resource type="ArrayMesh" uid="uid://o8ai3o0jbtcc" path="res://assets/sushi/sushiV2Flex1.obj" id="20_yfkw2"]

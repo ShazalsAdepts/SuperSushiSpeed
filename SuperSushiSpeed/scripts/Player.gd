@@ -159,7 +159,9 @@ func _physics_process(delta):
 				balls[i].position.x = x
 				balls[i].position.y = 576
 				i = i +1
-		dif = 9.62
+		var scale = 1 - musique.pitch_scale
+		
+		dif = musique.stream.get_length() * scale
 	
 	if (player_camera and global_transform.origin.z > player_camera.global_transform.origin.z + 0.3) or global_transform.origin.y < -1:
 		die()
@@ -363,7 +365,7 @@ func handle_foot_movement(foot, delta):
 func die():
 	can_score = false
 	game_over.set_score(score, best_combo,on_time,late,not_late,mist)
-	await get_tree().create_timer(0.4).timeout
+	await get_tree().create_timer(0.1).timeout
 	game_over.visible = true
 	gravity = 0
 

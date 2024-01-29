@@ -5,7 +5,7 @@
 [ext_resource type="ArrayMesh" uid="uid://c22vmpeitcfdu" path="res://assets/terrain/makiPlate1.obj" id="3_icw7c"]
 [ext_resource type="ArrayMesh" uid="uid://iy8jg3y16avr" path="res://assets/terrain/makiPlate3.obj" id="4_je800"]
 [ext_resource type="ArrayMesh" uid="uid://d0abtngy35ys1" path="res://assets/terrain/soySauceBottle.obj" id="5_678nl"]
-[ext_resource type="ArrayMesh" uid="uid://dirbdys16vcdw" path="res://assets/terrain/soySauceBottleSUCRE.obj" id="6_pgnio"]
+[ext_resource type="ArrayMesh" uid="uid://bxmqkmha8ucx7" path="res://assets/terrain/can.obj" id="7_6qn4v"]
 [ext_resource type="ArrayMesh" uid="uid://bbhirsqpkk8fj" path="res://assets/terrain/stairs.obj" id="7_qpaqo"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_l00jt"]
@@ -141,10 +141,6 @@ mesh = ExtResource("4_je800")
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -4, 0.9, -0.788158)
 mesh = ExtResource("5_678nl")
 
-[node name="SoySauceBottleSucre" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 4, 0.9, 3.04962)
-mesh = ExtResource("6_pgnio")
-
 [node name="Triangle_2" type="StaticBody3D" parent="."]
 transform = Transform3D(-5.68248e-08, 0, -1.3, 0, 1.3, 0, 1.3, 0, -5.68248e-08, -2, 0.659066, 0.952357)
 metadata/_edit_group_ = true
@@ -170,5 +166,9 @@ shape = SubResource("ConvexPolygonShape3D_2ly4a")
 transform = Transform3D(-3.93403e-08, 0, 0.9, 0, 1.2, 0, -0.9, 0, -3.93403e-08, 0.677699, -0.683021, -2.38419e-07)
 mesh = ExtResource("7_qpaqo")
 skeleton = NodePath("../..")
+
+[node name="Can" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.145951, 0, 0.372422, 0, 0.4, 0, -0.372422, 0, 0.145951, 4.28835, 0.95634, 3.20437)
+mesh = ExtResource("7_6qn4v")
 
 [connection signal="body_entered" from="WASABI" to="WASABI" method="_on_body_entered"]

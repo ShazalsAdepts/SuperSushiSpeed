@@ -129,7 +129,7 @@ func _physics_process(delta):
 	move_and_slide()
 	handle_rythme()
 	handle_speed_effect(delta)
-	
+	"""
 	var balls = [
 		get_node("ball"),
 		get_node("ball1"),
@@ -142,12 +142,14 @@ func _physics_process(delta):
 	var i = 0
 	for ball in balls:
 		ball.set_visible(false)
+	"""
 	
 	for ballss in son.beats:
 		var inco = ballss- musique.get_playback_position()
 		if inco < 0.1 && inco > 0:
 				get_node("Panel3/AnimationPlayer").play("beats_up")
 	
+	"""
 	var dif = 0
 	for income in range(2):
 		for rly_income in range(1, 23):
@@ -160,7 +162,7 @@ func _physics_process(delta):
 				balls[i].position.y = 576
 				i = i +1
 		dif = musique.stream.get_length() #* 1 / musique.pitch_scale
-	
+	"""
 	if (player_camera and global_transform.origin.z > player_camera.global_transform.origin.z + 0.3) or global_transform.origin.y < -1:
 		die()
 	

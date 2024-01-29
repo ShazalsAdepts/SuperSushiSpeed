@@ -538,6 +538,7 @@ expand_mode = 1
 libraries = {
 "": SubResource("AnimationLibrary_1ii0q")
 }
+autoplay = "RESET"
 speed_scale = 2.0
 
 [node name="greenwasabu_ui" type="TextureRect" parent="Player"]

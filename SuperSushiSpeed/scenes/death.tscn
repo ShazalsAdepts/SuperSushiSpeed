@@ -8,6 +8,9 @@
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ge3j7"]
 texture = ExtResource("2_bn1ed")
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_w0jhi"]
+texture = ExtResource("4_1r22u")
+
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_deyhj"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mb1vb"]
@@ -62,9 +65,6 @@ _data = {
 "wow": SubResource("Animation_01257")
 }
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_w0jhi"]
-texture = ExtResource("4_1r22u")
-
 [node name="Death" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -92,6 +92,15 @@ size_flags_vertical = 0
 theme_override_fonts/font = ExtResource("3_a13i3")
 theme_override_font_sizes/font_size = 59
 text = "YOU'VE BEEN EATEN !"
+
+[node name="Panel2" type="Panel" parent="."]
+modulate = Color(1, 1, 1, 0.227451)
+layout_mode = 0
+offset_left = 199.0
+offset_top = 237.0
+offset_right = 677.0
+offset_bottom = 533.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_w0jhi")
 
 [node name="Restart" type="Button" parent="."]
 layout_mode = 2
@@ -199,6 +208,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="best" type="Label" parent="."]
+visible = false
 layout_mode = 0
 offset_left = 472.0
 offset_top = 310.0
@@ -231,15 +241,6 @@ theme_override_fonts/font = ExtResource("3_a13i3")
 theme_override_font_sizes/font_size = 26
 text = "Perfect Beats  :
 "
-
-[node name="Panel2" type="Panel" parent="."]
-modulate = Color(1, 1, 1, 0.227451)
-layout_mode = 0
-offset_left = 199.0
-offset_top = 237.0
-offset_right = 677.0
-offset_bottom = 533.0
-theme_override_styles/panel = SubResource("StyleBoxTexture_w0jhi")
 
 [node name="perfect" type="Label" parent="."]
 layout_mode = 0

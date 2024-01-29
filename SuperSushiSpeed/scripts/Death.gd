@@ -17,7 +17,7 @@ func _ready():
 
 
 func _process(delta):
-	if play_anim:
+	if play_anim == true:
 		get_node("best/AnimationPlayer").play("wow")
 
 

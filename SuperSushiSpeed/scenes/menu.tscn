@@ -1,5 +1,6 @@
 [gd_scene load_steps=43 format=3 uid="uid://cvutgrnmmm4kf"]
 
+[ext_resource type="PackedScene" uid="uid://buls6rsiwdm5m" path="res://modules/terrain_3.tscn" id="1_cuosd"]
 [ext_resource type="Script" path="res://scripts/Menu.gd" id="1_idp3p"]
 [ext_resource type="AudioStream" uid="uid://dp7flf424tdqh" path="res://son/fuck_noel.mp3" id="1_ka1cd"]
 [ext_resource type="ArrayMesh" uid="uid://dnjuf26dvei18" path="res://assets/sushi/sushiV2.obj" id="1_xyix8"]
@@ -7,15 +8,14 @@
 [ext_resource type="PackedScene" uid="uid://bnq6h6yh6s84f" path="res://modules/terrain_9.tscn" id="3_5viik"]
 [ext_resource type="Script" path="res://scripts/Panel.gd" id="3_7in1f"]
 [ext_resource type="PackedScene" uid="uid://c1cxi8641ljnp" path="res://modules/terrain_0.tscn" id="4_q87e3"]
-[ext_resource type="PackedScene" uid="uid://c0o5wxjchpn2" path="res://modules/terrain_10.tscn" id="5_ju7aw"]
 [ext_resource type="Shader" path="res://scripts/SpeedEffect.gdshader" id="6_00kbi"]
-[ext_resource type="PackedScene" uid="uid://cmj2bfymwthro" path="res://modules/terrain_12.tscn" id="6_p14ig"]
 [ext_resource type="ArrayMesh" uid="uid://d0abtngy35ys1" path="res://assets/terrain/soySauceBottle.obj" id="7_wjgra"]
 [ext_resource type="Script" path="res://scripts/Control_Settings.gd" id="8_0edwy"]
 [ext_resource type="Script" path="res://scripts/Control_Audio.gd" id="9_o8mhk"]
 [ext_resource type="Texture2D" uid="uid://psbfhxgc2yp3" path="res://assets/ui/tuto.PNG" id="9_tiung"]
 [ext_resource type="Script" path="res://scripts/ControlVideo.gd" id="10_c0xwu"]
 [ext_resource type="AudioStream" uid="uid://caj84cpccqsnn" path="res://son/kick.mp3" id="10_gb5uo"]
+[ext_resource type="Texture2D" uid="uid://brl6n743ymr62" path="res://assets/brand/logo.PNG" id="11_yefj4"]
 [ext_resource type="PackedScene" uid="uid://d4ao3xixeb7k1" path="res://scenes/input_button.tscn" id="14_7gu46"]
 [ext_resource type="Script" path="res://scripts/ControlControls.gd" id="14_ufsc4"]
 [ext_resource type="ArrayMesh" uid="uid://bxmqkmha8ucx7" path="res://assets/terrain/can.obj" id="20_jlv78"]
@@ -169,6 +169,10 @@ mesh = SubResource("PlaneMesh_kwyje")
 transform = Transform3D(3.82138e-15, 4.37114e-08, 1, 2, -4.37114e-08, -3.59989e-21, 8.74228e-08, 1, -4.37114e-08, 0, 50, -50)
 mesh = SubResource("PlaneMesh_kwyje")
 
+[node name="Terrain_5" parent="background" instance=ExtResource("1_cuosd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00248444, 53.6278, 42.6734)
+skeleton = NodePath("../..")
+
 [node name="Terrain_0" parent="background" instance=ExtResource("2_3yrtf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 53.628, 16.2902)
 
@@ -180,12 +184,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 53.628, -1.63)
 
 [node name="Terrain_3" parent="background" instance=ExtResource("4_q87e3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 53.628, 25.0784)
-
-[node name="Terrain_4" parent="background" instance=ExtResource("5_ju7aw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 53.628, 33.746)
-
-[node name="Terrain_5" parent="background" instance=ExtResource("6_p14ig")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 53.628, 42.3607)
 
 [node name="SOYSAUCESAMERE" type="MeshInstance3D" parent="background"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.45489, 48.5257, 5.6208)
@@ -221,7 +219,7 @@ size = Vector2i(1280, 720)
 render_target_update_mode = 4
 
 [node name="Camera3D" type="Camera3D" parent="background/SubViewportContainer/SubViewport"]
-transform = Transform3D(-0.907046, 0.0680405, -0.415497, 0, 0.986856, 0.161604, 0.421032, 0.146582, -0.895123, 0.403376, 56.4088, -2.68303)
+transform = Transform3D(-0.907046, 0.0680405, -0.415498, 0, 0.986856, 0.161604, 0.421032, 0.146582, -0.895123, 0.403376, 56.4088, -2.68303)
 current = true
 
 [node name="SpeedEffect" type="ColorRect" parent="."]
@@ -254,14 +252,8 @@ theme_override_constants/margin_bottom = 80
 [node name="VBoxContainer" type="VBoxContainer" parent="Control/MarginContainer"]
 layout_mode = 2
 
-[node name="game_title" type="Label" parent="Control/MarginContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 0
-theme_override_font_sizes/font_size = 70
-text = "SUPER SUSHI SPEED"
-
 [node name="MarginContainer" type="MarginContainer" parent="Control/MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 80)
+custom_minimum_size = Vector2(0, 180)
 layout_mode = 2
 
 [node name="button_start" type="Button" parent="Control/MarginContainer/VBoxContainer"]
@@ -334,6 +326,11 @@ theme_override_styles/disabled = SubResource("StyleBoxEmpty_wxttn")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_o5etb")
 text = "Quit
 "
+
+[node name="Sprite2D" type="Sprite2D" parent="Control/MarginContainer/VBoxContainer"]
+position = Vector2(144, 62)
+scale = Vector2(0.10365, 0.103649)
+texture = ExtResource("11_yefj4")
 
 [node name="LeaderBoard" type="Panel" parent="Control"]
 visible = false
@@ -518,14 +515,13 @@ theme_override_constants/margin_bottom = 80
 [node name="VBoxContainer" type="VBoxContainer" parent="ControlSettings/MarginContainer"]
 layout_mode = 2
 
-[node name="game_title" type="Label" parent="ControlSettings/MarginContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 0
-theme_override_font_sizes/font_size = 70
-text = "SUPER SUSHI SPEED"
+[node name="Sprite2D2" type="Sprite2D" parent="ControlSettings/MarginContainer/VBoxContainer"]
+position = Vector2(144, 62)
+scale = Vector2(0.10365, 0.103649)
+texture = ExtResource("11_yefj4")
 
 [node name="MarginContainer" type="MarginContainer" parent="ControlSettings/MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 80)
+custom_minimum_size = Vector2(0, 180)
 layout_mode = 2
 
 [node name="button_Audio" type="Button" parent="ControlSettings/MarginContainer/VBoxContainer"]
@@ -624,14 +620,13 @@ theme_override_constants/margin_bottom = 80
 [node name="VBoxContainer" type="VBoxContainer" parent="ControlVideo/MarginContainer"]
 layout_mode = 2
 
-[node name="game_title" type="Label" parent="ControlVideo/MarginContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 0
-theme_override_font_sizes/font_size = 70
-text = "SUPER SUSHI SPEED"
+[node name="Sprite2D3" type="Sprite2D" parent="ControlVideo/MarginContainer/VBoxContainer"]
+position = Vector2(144, 62)
+scale = Vector2(0.10365, 0.103649)
+texture = ExtResource("11_yefj4")
 
 [node name="MarginContainer" type="MarginContainer" parent="ControlVideo/MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 80)
+custom_minimum_size = Vector2(0, 180)
 layout_mode = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="ControlVideo/MarginContainer/VBoxContainer"]
@@ -705,18 +700,18 @@ theme_override_constants/margin_bottom = 80
 [node name="GridContainer" type="GridContainer" parent="ControlAudio/MarginContainer"]
 layout_mode = 2
 
-[node name="game_title" type="Label" parent="ControlAudio/MarginContainer/GridContainer"]
-layout_mode = 2
-size_flags_horizontal = 0
-theme_override_font_sizes/font_size = 70
-text = "SUPER SUSHI SPEED"
+[node name="Sprite2D4" type="Sprite2D" parent="ControlAudio/MarginContainer/GridContainer"]
+position = Vector2(144, 62)
+scale = Vector2(0.10365, 0.103649)
+texture = ExtResource("11_yefj4")
 
 [node name="MarginContainer" type="MarginContainer" parent="ControlAudio/MarginContainer/GridContainer"]
-custom_minimum_size = Vector2(0, 80)
+custom_minimum_size = Vector2(0, 180)
 layout_mode = 2
 
 [node name="MusicSetting" type="VBoxContainer" parent="ControlAudio/MarginContainer/GridContainer"]
 layout_mode = 2
+size_flags_horizontal = 3
 
 [node name="Label" type="Label" parent="ControlAudio/MarginContainer/GridContainer/MusicSetting"]
 layout_mode = 2
@@ -731,9 +726,11 @@ max_value = 24.0
 [node name="MarginContainer3" type="MarginContainer" parent="ControlAudio/MarginContainer/GridContainer"]
 custom_minimum_size = Vector2(0, 2)
 layout_mode = 2
+size_flags_horizontal = 3
 
 [node name="SFXSetting" type="VBoxContainer" parent="ControlAudio/MarginContainer/GridContainer"]
 layout_mode = 2
+size_flags_horizontal = 3
 
 [node name="Label2" type="Label" parent="ControlAudio/MarginContainer/GridContainer/SFXSetting"]
 layout_mode = 2
@@ -772,6 +769,7 @@ layout_mode = 2
 [node name="MarginContainer2" type="MarginContainer" parent="ControlAudio/MarginContainer/GridContainer"]
 custom_minimum_size = Vector2(0, 81)
 layout_mode = 2
+size_flags_horizontal = 3
 
 [node name="button_quit" type="Button" parent="ControlAudio/MarginContainer/GridContainer"]
 layout_mode = 2
@@ -821,14 +819,13 @@ theme_override_constants/margin_bottom = 80
 [node name="VBoxContainer" type="VBoxContainer" parent="ControlControls/MarginContainer"]
 layout_mode = 2
 
-[node name="game_title" type="Label" parent="ControlControls/MarginContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 0
-theme_override_font_sizes/font_size = 70
-text = "SUPER SUSHI SPEED"
+[node name="Sprite2D5" type="Sprite2D" parent="ControlControls/MarginContainer/VBoxContainer"]
+position = Vector2(144, 62)
+scale = Vector2(0.10365, 0.103649)
+texture = ExtResource("11_yefj4")
 
 [node name="MarginContainer" type="MarginContainer" parent="ControlControls/MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 80)
+custom_minimum_size = Vector2(0, 180)
 layout_mode = 2
 
 [node name="ScrollContainer" type="ScrollContainer" parent="ControlControls/MarginContainer/VBoxContainer"]
@@ -937,6 +934,9 @@ bus = &"Music"
 [node name="Can" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.67569, 54.5814, 10.9736)
 mesh = ExtResource("20_jlv78")
+
+[node name="Terrain_1" parent="." instance=ExtResource("2_3yrtf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00671744, 53.6592, 34.1313)
 
 [connection signal="pressed" from="Control/MarginContainer/VBoxContainer/button_start" to="Control" method="_on_button_start_pressed"]
 [connection signal="pressed" from="Control/MarginContainer/VBoxContainer/button_score" to="Control" method="_on_button_score_pressed"]

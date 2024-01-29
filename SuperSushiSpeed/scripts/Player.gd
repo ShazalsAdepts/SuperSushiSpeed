@@ -159,7 +159,7 @@ func _physics_process(delta):
 				balls[i].position.x = x
 				balls[i].position.y = 576
 				i = i +1
-		var scale = 1 - musique.pitch_scale
+		var scale = 1 
 		
 		dif = musique.stream.get_length() * scale
 	

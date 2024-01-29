@@ -24,7 +24,7 @@ func _ready():
 		elif window_size[index] == "Borderless":
 			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
 		
-		btn.selected = int(index)
+		btn.selected = index
 
 func _on_button_quit_pressed():
 	config.set_value("VIDEO", "screen_id", index)

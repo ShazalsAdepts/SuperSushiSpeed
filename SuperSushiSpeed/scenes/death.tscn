@@ -198,7 +198,7 @@ text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Label5" type="Label" parent="."]
+[node name="best" type="Label" parent="."]
 layout_mode = 0
 offset_left = 472.0
 offset_top = 310.0
@@ -214,7 +214,7 @@ SCORE"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Label5"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="best"]
 libraries = {
 "": SubResource("AnimationLibrary_s74x6")
 }

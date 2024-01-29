@@ -3,7 +3,7 @@ var API_KEY = "prod_4135c08094c1428cbe83647654cf6a81"
 var player_identifier: String
 var connectCurrent = HTTPRequest.new()
 
-var leaderboard_key = "19943"
+var leaderboard_key = "20069"
 var session_token: String = ""
 var getsession: HTTPRequest
 var leaderboard_http: HTTPRequest

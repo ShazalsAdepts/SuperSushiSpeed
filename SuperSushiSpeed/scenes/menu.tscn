@@ -422,13 +422,24 @@ text = "Help the mutant sushi to escape!
 Alternate left and right in rhythm to move forward (and jump or dash). 
 Eat wasabi to mutate even more and gain speed (unlocks the double jump)!"
 
-[node name="Pseudo" type="Label" parent="Control"]
-layout_mode = 2
+[node name="deco" type="Button" parent="Control"]
+visible = false
+layout_mode = 0
 offset_left = 1168.0
 offset_top = 680.0
-offset_right = 1272.0
+offset_right = 1259.0
+offset_bottom = 711.0
+text = "Disconnect"
+
+[node name="Pseudo" type="Label" parent="Control"]
+visible = false
+layout_mode = 2
+offset_left = 1064.0
+offset_top = 680.0
+offset_right = 1168.0
 offset_bottom = 711.0
 theme_override_font_sizes/font_size = 21
+text = "Andinox"
 
 [node name="ControlSettings" type="Control" parent="." node_paths=PackedStringArray("menu", "video", "audio", "controls")]
 visible = false
@@ -886,6 +897,7 @@ mesh = ExtResource("20_jlv78")
 [connection signal="pressed" from="Control/MarginContainer/VBoxContainer/button_quit" to="Control" method="_on_button_quit_pressed"]
 [connection signal="pressed" from="Control/LeaderBoard/close" to="Control" method="_on_close_pressed"]
 [connection signal="pressed" from="Control/HowToPlay/close_htplay" to="Control" method="_on_close_htplay_pressed"]
+[connection signal="pressed" from="Control/deco" to="Control" method="_on_deco_pressed"]
 [connection signal="pressed" from="ControlSettings/MarginContainer/VBoxContainer/button_Audio" to="ControlSettings" method="_on_button_audio_pressed"]
 [connection signal="pressed" from="ControlSettings/MarginContainer/VBoxContainer/button_Video" to="ControlSettings" method="_on_button_video_pressed"]
 [connection signal="pressed" from="ControlSettings/MarginContainer/VBoxContainer/button_Controls" to="ControlSettings" method="_on_button_controls_pressed"]

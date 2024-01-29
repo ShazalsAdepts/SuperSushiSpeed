@@ -1,6 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://feskj2gsc8r3"]
+[gd_scene load_steps=11 format=3 uid="uid://feskj2gsc8r3"]
 
 [ext_resource type="ArrayMesh" uid="uid://0mli2ysjcqyk" path="res://assets/terrain/belt.obj" id="1_na23c"]
+[ext_resource type="Material" uid="uid://g4n6f6ld7vg2" path="res://assets/terrain_0.tres" id="1_xvfgl"]
 [ext_resource type="ArrayMesh" uid="uid://d0abtngy35ys1" path="res://assets/terrain/soySauceBottle.obj" id="2_dd51y"]
 [ext_resource type="ArrayMesh" uid="uid://yw08bnjt2uf8" path="res://assets/terrain/makiPlate.obj" id="3_hvgpd"]
 [ext_resource type="ArrayMesh" uid="uid://dirbdys16vcdw" path="res://assets/terrain/soySauceBottleSUCRE.obj" id="4_lvij3"]
@@ -21,6 +22,7 @@ size = Vector3(1, 2, 1)
 
 [node name="Terrain_1" type="MeshInstance3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.08, -4)
+material_override = ExtResource("1_xvfgl")
 mesh = SubResource("PlaneMesh_l00jt")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]

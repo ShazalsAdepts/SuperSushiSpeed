@@ -3,7 +3,7 @@ var API_KEY = "prod_4135c08094c1428cbe83647654cf6a81"
 var player_identifier: String
 var connectCurrent = HTTPRequest.new()
 
-var leaderboard_key = "19943"
+var leaderboard_key = "20069"
 var session_token: String = ""
 var getsession: HTTPRequest
 var leaderboard_http: HTTPRequest
@@ -28,6 +28,7 @@ func _ready():
 		else:
 			popup.set_visible(false)
 			pseudo.set_visible(true)
+			get_node("deco").set_visible(true)
 			player_identifier = data["player_identifier"]
 			var hearders = PackedStringArray(["Content-Type: application/json"])
 			var game = JSON.new().stringify({
@@ -202,3 +203,12 @@ func _on_button_credits_pressed():
 
 func _on_close_htplay_pressed():
 	get_node("HowToPlay").set_visible(false)
+
+
+func _on_deco_pressed():
+	var de = FileAccess.open("res://usersave/user_login.json", FileAccess.WRITE)
+	de.store_string(JSON.new().stringify({"player_identifier":null}))
+	de.close()
+	get_node("deco").set_visible(false)
+	get_node("Pseudo").set_visible(false)
+	get_node("../Panel").set_visible(true)

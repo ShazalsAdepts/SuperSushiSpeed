@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://b7em5nclcedhd"]
+[gd_scene load_steps=11 format=3 uid="uid://b7em5nclcedhd"]
 
 [ext_resource type="ArrayMesh" uid="uid://0mli2ysjcqyk" path="res://assets/terrain/belt.obj" id="1_c0amg"]
+[ext_resource type="Material" uid="uid://g4n6f6ld7vg2" path="res://assets/terrain_0.tres" id="1_doprf"]
 [ext_resource type="ArrayMesh" uid="uid://d0abtngy35ys1" path="res://assets/terrain/soySauceBottle.obj" id="2_gpk6q"]
-[ext_resource type="ArrayMesh" uid="uid://dirbdys16vcdw" path="res://assets/terrain/soySauceBottleSUCRE.obj" id="3_0en6i"]
+[ext_resource type="ArrayMesh" uid="uid://bxmqkmha8ucx7" path="res://assets/terrain/can.obj" id="4_7r7jl"]
 [ext_resource type="ArrayMesh" uid="uid://bbhirsqpkk8fj" path="res://assets/terrain/stairs.obj" id="4_qcfry"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_l00jt"]
@@ -17,8 +18,12 @@ size = Vector3(1, 2, 1)
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_5rgjg"]
 points = PackedVector3Array(0.5, 1, -1, -0.5, 1, -1, 0.5, -0.5, -1, -0.5, -0.5, -1, 0.5, -0.5, 2.5, -0.5, -0.5, 2.5)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_dykp0"]
+size = Vector3(1, 2, 1)
+
 [node name="Terrain_1" type="MeshInstance3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.08, -4)
+material_override = ExtResource("1_doprf")
 mesh = SubResource("PlaneMesh_l00jt")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
@@ -42,19 +47,6 @@ shape = SubResource("BoxShape3D_80mdc")
 [node name="SoySauceBottle" type="MeshInstance3D" parent="RectangleStanding_2"]
 transform = Transform3D(0.127707, 0, 0.32587, 0, 0.35, 0, -0.32587, 0, 0.127707, 0, -1, 0)
 mesh = ExtResource("2_gpk6q")
-skeleton = NodePath("../..")
-
-[node name="RectangleStanding_3" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 1, 0)
-metadata/_edit_group_ = true
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="RectangleStanding_3"]
-transform = Transform3D(1.4, 0, 0, 0, 1.4, 0, 0, 0, 1.4, 0, 0.4, 0)
-shape = SubResource("BoxShape3D_80mdc")
-
-[node name="SoySauceBottle" type="MeshInstance3D" parent="RectangleStanding_3"]
-transform = Transform3D(-0.204239, 0, 0.284229, 0, 0.35, 0, -0.284229, 0, -0.204239, 0, -1, 0)
-mesh = ExtResource("3_0en6i")
 skeleton = NodePath("../..")
 
 [node name="SoySauceBottle" type="MeshInstance3D" parent="."]
@@ -85,4 +77,17 @@ shape = SubResource("ConvexPolygonShape3D_5rgjg")
 [node name="Stairs" type="MeshInstance3D" parent="Triangle_5"]
 transform = Transform3D(-3.93403e-08, 0, 0.9, 0, 1.2, 0, -0.9, 0, -3.93403e-08, 0.677699, -0.683021, -2.38419e-07)
 mesh = ExtResource("4_qcfry")
+skeleton = NodePath("../..")
+
+[node name="RectangleStanding_4" type="StaticBody3D" parent="."]
+transform = Transform3D(1.8, 0, 0, 0, 1.8, 0, 0, 0, 1.8, -1.92352, 1, 0.173984)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RectangleStanding_4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.00642633, 0)
+shape = SubResource("BoxShape3D_dykp0")
+
+[node name="Can" type="MeshInstance3D" parent="RectangleStanding_4"]
+transform = Transform3D(0.127707, 0, 0.32587, 0, 0.35, 0, -0.32587, 0, 0.127707, -0.046955, -0.489713, 0)
+mesh = ExtResource("4_7r7jl")
 skeleton = NodePath("../..")

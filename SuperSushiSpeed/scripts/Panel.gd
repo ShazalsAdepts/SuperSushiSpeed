@@ -3,7 +3,7 @@ var GAME_KEY = "prod_4135c08094c1428cbe83647654cf6a81"
 var pseudo = "newbie"
 @export var session_token: String
 @export var player_identifier: String
-var leaderboard_id = 19943
+var leaderboard_id = 20069
 var saveRequest = HTTPRequest.new()
 var rename = HTTPRequest.new()
 # Called when the node enters the scene tree for the first time.
@@ -61,3 +61,4 @@ func on_rename_completed(result, response_code, headers, body):
 	var de = FileAccess.open("res://usersave/user_login.json", FileAccess.WRITE)
 	de.store_string(JSON.new().stringify({"player_identifier":player_identifier}))
 	get_node(".").set_visible(false)
+	get_node("../Control/deco").set_visible(true)

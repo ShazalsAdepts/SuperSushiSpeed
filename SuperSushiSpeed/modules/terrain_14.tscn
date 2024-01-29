@@ -1,8 +1,9 @@
-[gd_scene load_steps=19 format=3 uid="uid://5npp4jf25mfy"]
+[gd_scene load_steps=20 format=3 uid="uid://5npp4jf25mfy"]
 
+[ext_resource type="Material" uid="uid://g4n6f6ld7vg2" path="res://assets/terrain_0.tres" id="1_6w0eq"]
 [ext_resource type="ArrayMesh" uid="uid://0mli2ysjcqyk" path="res://assets/terrain/belt.obj" id="1_d8gqd"]
 [ext_resource type="Script" path="res://scripts/Wasabi.gd" id="2_c2u2w"]
-[ext_resource type="ArrayMesh" uid="uid://4byvbcj6m5fv" path="res://assets/sushi/sushiV2Flex1.obj" id="2_syjni"]
+[ext_resource type="ArrayMesh" uid="uid://vhrnfebypa6g" path="res://assets/sushi/sushiV2Flex1.obj" id="2_syjni"]
 [ext_resource type="ArrayMesh" uid="uid://d0abtngy35ys1" path="res://assets/terrain/soySauceBottle.obj" id="3_1plqa"]
 [ext_resource type="ArrayMesh" uid="uid://iy8jg3y16avr" path="res://assets/terrain/makiPlate3.obj" id="3_styis"]
 [ext_resource type="ArrayMesh" uid="uid://yw08bnjt2uf8" path="res://assets/terrain/makiPlate.obj" id="5_yanmk"]
@@ -72,6 +73,7 @@ size = Vector3(2, 1.5, 6)
 
 [node name="Terrain_2" type="MeshInstance3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.08, -4)
+material_override = ExtResource("1_6w0eq")
 mesh = SubResource("PlaneMesh_l00jt")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]

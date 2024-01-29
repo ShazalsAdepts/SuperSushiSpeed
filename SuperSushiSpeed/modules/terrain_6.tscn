@@ -1,5 +1,6 @@
-[gd_scene load_steps=14 format=3 uid="uid://5s3j72vwjsq2"]
+[gd_scene load_steps=15 format=3 uid="uid://5s3j72vwjsq2"]
 
+[ext_resource type="Material" uid="uid://g4n6f6ld7vg2" path="res://assets/terrain_0.tres" id="1_21j8e"]
 [ext_resource type="ArrayMesh" uid="uid://0mli2ysjcqyk" path="res://assets/terrain/belt.obj" id="1_kqwd5"]
 [ext_resource type="ArrayMesh" uid="uid://bbhirsqpkk8fj" path="res://assets/terrain/stairs.obj" id="1_ms7dh"]
 [ext_resource type="ArrayMesh" uid="uid://dbvg8gi5u7r8t" path="res://assets/terrain/riceBowl.obj" id="3_p25yu"]
@@ -35,6 +36,7 @@ height = 1.11
 
 [node name="Terrain_1" type="MeshInstance3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.08, -4)
+material_override = ExtResource("1_21j8e")
 mesh = SubResource("PlaneMesh_l00jt")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]

@@ -1,3 +1,4 @@
 # Godot 4+ specific ignores
 .godot/
 /usersave/user_login.json
+/usersave/config.cfg

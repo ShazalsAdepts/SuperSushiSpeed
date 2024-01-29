@@ -4,6 +4,7 @@ extends Control
 @export var label: Label
 @export var label_ping: Label
 @export var label_ping_title: Label
+@export var label_last_ping_title: Label
 
 var temps_restant = 25
 var last_time = 25
@@ -12,7 +13,19 @@ var time_tab = []
 var started = false
 var ping = 0
 
+var config_path = "res://usersave/config.cfg"
+@onready var config = ConfigFile.new()
+
 func _ready():
+	var err = config.load(config_path)
+	var test_number = 0
+	while test_number < 5 and err != OK:
+		err = config.load(config_path)
+		test_number += 1
+	
+	if err == OK:
+		Global.ping = config.get_value("PING","ping")
+	label_last_ping_title.text = str(Global.ping)
 	init()
 
 func _physics_process(delta):
@@ -32,6 +45,7 @@ func _physics_process(delta):
 			var difference_to_next_beat = abs((last_beat + 1) - time_pressed) 
 			var closest_difference = min(difference_to_last_beat, difference_to_next_beat)
 			time_tab.append(closest_difference)
+			label_last_ping_title.text = str(closest_difference)
 			
 	elif started:
 		label.text = ""
@@ -40,10 +54,13 @@ func _physics_process(delta):
 		if len(time_tab) != 0:
 			ping = sum(time_tab) / len(time_tab)
 			label_ping.text = str(ping)
+			label_last_ping_title.text = str(ping)
 		started = false
 
 func _on_button_back_pressed():
 	if ping != 0 and ping != 25:
+		config.set_value("PING", "ping", ping)
+		config.save(config_path)
 		Global.ping = ping
 	get_tree().change_scene_to_file("res://scenes/menu.tscn")
 

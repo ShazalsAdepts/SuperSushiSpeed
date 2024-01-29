@@ -11,7 +11,7 @@ var acceleration: float = 0.02
 var max_speed: float = 20.0
 var terrain_velocity: float = 0.8
 var num_terrain_blocks = 15
-var terrian_blocks_path = "res://modules"
+var terrian_blocks_path = "modules"
 var some_threshold = 60.0
 
 var spawn_height = -10.0

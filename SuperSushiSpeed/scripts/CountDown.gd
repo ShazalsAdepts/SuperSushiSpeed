@@ -21,7 +21,7 @@ func _physics_process(delta):
 			last_time = int(temps_restant)
 		update()
 	else:
-		SceneTransition.change_scene("res://scenes/world.tscn")  # Changer de scène
+		SceneTransition.change_scene("scenes/world.tscn")  # Changer de scène
 
 func update():
 	for l in labels:

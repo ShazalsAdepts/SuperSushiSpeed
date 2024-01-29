@@ -2,7 +2,7 @@
 
 [ext_resource type="ArrayMesh" uid="uid://0mli2ysjcqyk" path="res://assets/terrain/belt.obj" id="1_0evqt"]
 [ext_resource type="ArrayMesh" uid="uid://d0abtngy35ys1" path="res://assets/terrain/soySauceBottle.obj" id="1_25n06"]
-[ext_resource type="Material" uid="uid://g4n6f6ld7vg2" path="res://assets/terrain_0.tres" id="1_78u4r"]
+[ext_resource type="Material" path="res://assets/terrain_0.tres" id="1_78u4r"]
 [ext_resource type="ArrayMesh" uid="uid://c22vmpeitcfdu" path="res://assets/terrain/makiPlate1.obj" id="3_akv1c"]
 [ext_resource type="ArrayMesh" uid="uid://chos5nhjs7sa6" path="res://assets/sushi/sushi.obj" id="4_27nyv"]
 
@@ -18,7 +18,7 @@ size = Vector3(1, 2, 1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_n5y33"]
 size = Vector3(2, 2, 2)
 
-[node name="Terrain_0" type="MeshInstance3D"]
+[node name="Terrain_4" type="MeshInstance3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.08, -4)
 material_override = ExtResource("1_78u4r")
 mesh = SubResource("PlaneMesh_l00jt")

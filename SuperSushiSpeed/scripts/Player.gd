@@ -85,13 +85,13 @@ var multiply = 1
 
 @onready var slide_cooldown_timer = $slide_cooldown_timer
 @onready var mutation_cooldown_timer = $mutation_cooldown_timer
-@onready var sushi_muscle = load("res://assets/sushi/sushiV2MOOSCLES.obj")
-@onready var sushi_muscle_slide = load("res://assets/sushi/sushiV2Flex1.obj")
-@onready var sushi_normal = load("res://assets/sushi/sushiV2.obj")
-@onready var sushi_normal_right = load("res://assets/sushi/sushiV2Right.obj")
-@onready var sushi_normal_left = load("res://assets/sushi/sushiV2Left.obj")
-@onready var sushi_muscle_right = load("res://assets/sushi/sushiV2MOOSCLESRight.obj")
-@onready var sushi_muscle_left = load("res://assets/sushi/sushiV2MOOSCLESLeft.obj")
+@onready var sushi_muscle = load("assets/sushi/sushiV2MOOSCLES.obj")
+@onready var sushi_muscle_slide = load("assets/sushi/sushiV2Flex1.obj")
+@onready var sushi_normal = load("assets/sushi/sushiV2.obj")
+@onready var sushi_normal_right = load("assets/sushi/sushiV2Right.obj")
+@onready var sushi_normal_left = load("assets/sushi/sushiV2Left.obj")
+@onready var sushi_muscle_right = load("assets/sushi/sushiV2MOOSCLESRight.obj")
+@onready var sushi_muscle_left = load("assets/sushi/sushiV2MOOSCLESLeft.obj")
 
 func _physics_process(delta):
 	if not is_on_floor():

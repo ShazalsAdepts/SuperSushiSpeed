@@ -1,7 +1,7 @@
 [gd_scene load_steps=20 format=3 uid="uid://cmj2bfymwthro"]
 
 [ext_resource type="ArrayMesh" uid="uid://0mli2ysjcqyk" path="res://assets/terrain/belt.obj" id="1_e4exx"]
-[ext_resource type="Material" uid="uid://g4n6f6ld7vg2" path="res://assets/terrain_0.tres" id="1_ufqc8"]
+[ext_resource type="Material" path="res://assets/terrain_0.tres" id="1_ufqc8"]
 [ext_resource type="Script" path="res://scripts/Wasabi.gd" id="2_1powd"]
 [ext_resource type="ArrayMesh" uid="uid://c22vmpeitcfdu" path="res://assets/terrain/makiPlate1.obj" id="3_icw7c"]
 [ext_resource type="ArrayMesh" uid="uid://iy8jg3y16avr" path="res://assets/terrain/makiPlate3.obj" id="4_je800"]
@@ -71,7 +71,7 @@ size = Vector3(2, 1.5, 6)
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_2ly4a"]
 points = PackedVector3Array(0.5, 1, -1, -0.5, 1, -1, 0.5, -0.5, -1, -0.5, -0.5, -1, 0.5, -0.5, 2.5, -0.5, -0.5, 2.5)
 
-[node name="Terrain_3" type="MeshInstance3D"]
+[node name="Terrain_12" type="MeshInstance3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.08, -4)
 material_override = ExtResource("1_ufqc8")
 mesh = SubResource("PlaneMesh_l00jt")

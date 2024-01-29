@@ -1,6 +1,6 @@
 [gd_scene load_steps=19 format=3 uid="uid://c0o5wxjchpn2"]
 
-[ext_resource type="Material" uid="uid://g4n6f6ld7vg2" path="res://assets/terrain_0.tres" id="1_4xd05"]
+[ext_resource type="Material" path="res://assets/terrain_0.tres" id="1_4xd05"]
 [ext_resource type="ArrayMesh" uid="uid://0mli2ysjcqyk" path="res://assets/terrain/belt.obj" id="1_s4njb"]
 [ext_resource type="ArrayMesh" uid="uid://dirbdys16vcdw" path="res://assets/terrain/soySauceBottleSUCRE.obj" id="2_rbfcm"]
 [ext_resource type="ArrayMesh" uid="uid://bxmqkmha8ucx7" path="res://assets/terrain/can.obj" id="3_h4axp"]
@@ -68,7 +68,7 @@ _data = {
 "RESET": SubResource("Animation_hep75")
 }
 
-[node name="Terrain_0" type="MeshInstance3D"]
+[node name="Terrain_10" type="MeshInstance3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.08, -4)
 material_override = ExtResource("1_4xd05")
 mesh = SubResource("PlaneMesh_l00jt")

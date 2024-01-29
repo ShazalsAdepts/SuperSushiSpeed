@@ -1,6 +1,6 @@
 [gd_scene load_steps=14 format=3 uid="uid://baio3r8n16fy8"]
 
-[ext_resource type="Material" uid="uid://g4n6f6ld7vg2" path="res://assets/terrain_0.tres" id="1_0qorm"]
+[ext_resource type="Material" path="res://assets/terrain_0.tres" id="1_0qorm"]
 [ext_resource type="ArrayMesh" uid="uid://0mli2ysjcqyk" path="res://assets/terrain/belt.obj" id="1_y50a3"]
 [ext_resource type="ArrayMesh" uid="uid://bbhirsqpkk8fj" path="res://assets/terrain/stairs.obj" id="2_yifkh"]
 [ext_resource type="ArrayMesh" uid="uid://dbvg8gi5u7r8t" path="res://assets/terrain/riceBowl.obj" id="3_3evd8"]
@@ -34,7 +34,7 @@ height = 1.11
 [sub_resource type="BoxShape3D" id="BoxShape3D_gp8xq"]
 size = Vector3(2, 2, 2)
 
-[node name="Terrain_2" type="MeshInstance3D"]
+[node name="Terrain_19" type="MeshInstance3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.08, -4)
 material_override = ExtResource("1_0qorm")
 mesh = SubResource("PlaneMesh_l00jt")

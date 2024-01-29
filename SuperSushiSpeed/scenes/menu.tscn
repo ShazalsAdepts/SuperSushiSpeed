@@ -537,7 +537,7 @@ theme_override_styles/disabled = SubResource("StyleBoxEmpty_wxttn")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_o5etb")
 text = "Back"
 
-[node name="ControlVideo" type="Control" parent="." node_paths=PackedStringArray("settings")]
+[node name="ControlVideo" type="Control" parent="." node_paths=PackedStringArray("settings", "btn")]
 visible = false
 layout_mode = 3
 anchors_preset = 15
@@ -547,6 +547,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("10_c0xwu")
 settings = NodePath("../ControlSettings")
+btn = NodePath("MarginContainer/VBoxContainer/HBoxContainer/OptionButton")
 
 [node name="MarginContainer" type="MarginContainer" parent="ControlVideo"]
 layout_mode = 1
@@ -593,7 +594,7 @@ item_count = 3
 selected = 0
 popup/item_0/text = "Windowed"
 popup/item_0/id = 0
-popup/item_1/text = "FullScreen"
+popup/item_1/text = "Fullscreen"
 popup/item_1/id = 1
 popup/item_2/text = "Borderless"
 popup/item_2/id = 2

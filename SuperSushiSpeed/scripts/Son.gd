@@ -27,7 +27,8 @@ func _physics_process(delta):
 	var current_position = musique.get_playback_position()
 	
 	if next_beat_index < beats.size() and current_position >= beats[next_beat_index]:
-		self.play()  # Jouez le son "TAC"	
+		if next_beat_index != 0:
+			self.play()  # Jouez le son "TAC"	
 		next_beat_index += 1
 	
 	# Réinitialiser les beats lorsque la musique boucle

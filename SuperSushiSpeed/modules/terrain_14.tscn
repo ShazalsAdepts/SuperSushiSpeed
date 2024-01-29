@@ -2,7 +2,7 @@
 
 [ext_resource type="ArrayMesh" uid="uid://0mli2ysjcqyk" path="res://assets/terrain/belt.obj" id="1_d8gqd"]
 [ext_resource type="Script" path="res://scripts/Wasabi.gd" id="2_c2u2w"]
-[ext_resource type="ArrayMesh" uid="uid://vhrnfebypa6g" path="res://assets/sushi/sushiV2Flex1.obj" id="2_syjni"]
+[ext_resource type="ArrayMesh" uid="uid://4byvbcj6m5fv" path="res://assets/sushi/sushiV2Flex1.obj" id="2_syjni"]
 [ext_resource type="ArrayMesh" uid="uid://d0abtngy35ys1" path="res://assets/terrain/soySauceBottle.obj" id="3_1plqa"]
 [ext_resource type="ArrayMesh" uid="uid://iy8jg3y16avr" path="res://assets/terrain/makiPlate3.obj" id="3_styis"]
 [ext_resource type="ArrayMesh" uid="uid://yw08bnjt2uf8" path="res://assets/terrain/makiPlate.obj" id="5_yanmk"]

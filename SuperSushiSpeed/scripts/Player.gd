@@ -90,6 +90,8 @@ var multiply = 1
 @onready var sushi_normal = load("res://assets/sushi/sushiV2.obj")
 @onready var sushi_normal_right = load("res://assets/sushi/sushiV2Right.obj")
 @onready var sushi_normal_left = load("res://assets/sushi/sushiV2Left.obj")
+@onready var sushi_muscle_right = load("res://assets/sushi/sushiV2MOOSCLESRight.obj")
+@onready var sushi_muscle_left = load("res://assets/sushi/sushiV2MOOSCLESLeft.obj")
 
 func _physics_process(delta):
 	if not is_on_floor():
@@ -328,10 +330,16 @@ func handle_foot_movement(foot, delta):
 				current_lane = float(int(current_lane))
 			consecutive_presses = 0.0
 	else:
-		if foot == "left" and !is_mutated:
-			find_child("Sushi").mesh = sushi_normal_left
-		elif !is_mutated:
-			find_child("Sushi").mesh = sushi_normal_right
+		if foot == "left":
+			if !is_mutated:
+				find_child("Sushi").mesh = sushi_normal_left
+			else:
+				find_child("Sushi").mesh = sushi_muscle_left
+		else: 
+			if !is_mutated:
+				find_child("Sushi").mesh = sushi_normal_right
+			else:
+				find_child("Sushi").mesh = sushi_muscle_right
 		consecutive_presses = 1.0
 		if can_score :
 			velocity.z = lerp(velocity.z, -SPEED, delta * lerp_speed)

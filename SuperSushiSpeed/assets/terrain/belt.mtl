@@ -2,14 +2,14 @@
 # www.blender.org
 
 newmtl Material
-Ns 250.000000
-Ka 1.000000 1.000000 1.000000
+Ns 446.466949
+Ka 0.640909 0.640909 0.640909
 Ks 0.500000 0.500000 0.500000
 Ke 0.000000 0.000000 0.000000
 Ni 1.450000
 d 1.000000
-illum 2
-map_Kd Material Base Color.png
+illum 3
+map_Kd belt2.png
 
 newmtl Material.001
 Ns 250.000000
@@ -22,34 +22,34 @@ illum 2
 map_Kd woodLeft.png
 
 newmtl Material.002
-Ns 250.000000
-Ka 1.000000 1.000000 1.000000
+Ns 446.466949
+Ka 0.640909 0.640909 0.640909
 Ks 0.500000 0.500000 0.500000
 Ke 0.000000 0.000000 0.000000
 Ni 1.450000
 d 1.000000
-illum 2
-map_Kd Material.002 Base Color.png
+illum 3
+map_Kd belt3.png
 
 newmtl Material.003
-Ns 250.000000
-Ka 1.000000 1.000000 1.000000
+Ns 446.466949
+Ka 0.640909 0.640909 0.640909
 Ks 0.500000 0.500000 0.500000
 Ke 0.000000 0.000000 0.000000
 Ni 1.450000
 d 1.000000
-illum 2
-map_Kd Material.003 Base Color.png
+illum 3
+map_Kd belt1.png
 
 newmtl Material.004
-Ns 250.000000
-Ka 1.000000 1.000000 1.000000
+Ns 446.466949
+Ka 0.640909 0.640909 0.640909
 Ks 0.500000 0.500000 0.500000
 Ke 0.000000 0.000000 0.000000
 Ni 1.450000
 d 1.000000
-illum 2
-map_Kd BaseColor.png
+illum 3
+map_Kd belt4.png
 
 newmtl Material.005
 Ns 250.000000

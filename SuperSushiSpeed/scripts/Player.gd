@@ -159,9 +159,7 @@ func _physics_process(delta):
 				balls[i].position.x = x
 				balls[i].position.y = 576
 				i = i +1
-		var scale = 1 
-		
-		dif = musique.stream.get_length() * scale
+		dif = musique.stream.get_length() #* 1 / musique.pitch_scale
 	
 	if (player_camera and global_transform.origin.z > player_camera.global_transform.origin.z + 0.3) or global_transform.origin.y < -1:
 		die()

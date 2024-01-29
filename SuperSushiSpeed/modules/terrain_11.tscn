@@ -2,7 +2,7 @@
 
 [ext_resource type="ArrayMesh" uid="uid://0mli2ysjcqyk" path="res://assets/terrain/belt.obj" id="1_83is7"]
 [ext_resource type="ArrayMesh" uid="uid://dirbdys16vcdw" path="res://assets/terrain/soySauceBottleSUCRE.obj" id="2_ou83m"]
-[ext_resource type="ArrayMesh" uid="uid://d0abtngy35ys1" path="res://assets/terrain/soySauceBottle.obj" id="3_mebto"]
+[ext_resource type="ArrayMesh" uid="uid://bxmqkmha8ucx7" path="res://assets/terrain/can.obj" id="3_nidhm"]
 [ext_resource type="ArrayMesh" uid="uid://dwsq6sg7m7pai" path="res://assets/terrain/teaCup.obj" id="4_wa80d"]
 [ext_resource type="ArrayMesh" uid="uid://c22vmpeitcfdu" path="res://assets/terrain/makiPlate1.obj" id="5_60em3"]
 [ext_resource type="ArrayMesh" uid="uid://yw08bnjt2uf8" path="res://assets/terrain/makiPlate.obj" id="6_kisgl"]
@@ -17,7 +17,7 @@ data = PackedVector3Array(3, 0, 4.5, -3, 0, 4.5, 3, 0, -4.5, -3, 0, 4.5, -3, 0, 
 [sub_resource type="BoxShape3D" id="BoxShape3D_k3ujj"]
 size = Vector3(1, 2, 1)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_mwk6s"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_ccpok"]
 size = Vector3(1, 2, 1)
 
 [node name="Terrain_1" type="MeshInstance3D"]
@@ -47,17 +47,17 @@ transform = Transform3D(-0.204239, 0, 0.284229, 0, 0.35, 0, -0.284229, 0, -0.204
 mesh = ExtResource("2_ou83m")
 skeleton = NodePath("../..")
 
-[node name="RectangleStanding_1" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 1, -3)
+[node name="RectangleStanding_2" type="StaticBody3D" parent="."]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -1.80695, 1, -3)
 metadata/_edit_group_ = true
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="RectangleStanding_1"]
-transform = Transform3D(1.4, 0, 0, 0, 1.4, 0, 0, 0, 1.4, 0, 0.4, 0)
-shape = SubResource("BoxShape3D_mwk6s")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RectangleStanding_2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.02, 0)
+shape = SubResource("BoxShape3D_ccpok")
 
-[node name="SoySauceBottle" type="MeshInstance3D" parent="RectangleStanding_1"]
-transform = Transform3D(0.127707, 0, 0.32587, 0, 0.35, 0, -0.32587, 0, 0.127707, 0, -1, 0)
-mesh = ExtResource("3_mebto")
+[node name="Can" type="MeshInstance3D" parent="RectangleStanding_2"]
+transform = Transform3D(0.127707, 0, 0.32587, 0, 0.35, 0, -0.32587, 0, 0.127707, -0.046955, -0.489713, 0)
+mesh = ExtResource("3_nidhm")
 skeleton = NodePath("../..")
 
 [node name="TeaCup" type="MeshInstance3D" parent="."]

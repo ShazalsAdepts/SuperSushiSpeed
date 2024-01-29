@@ -104,30 +104,10 @@ func _physics_process(delta):
 		handle_foot_movement(foot_input, delta)
 	else:
 		velocity.z = lerp(velocity.z, 0.0, delta * lerp_speed)
-
-	if sliding:
-		slide_timer -= delta
-		if slide_timer <= 0:
-			end_slide()
-		else:
-			velocity.z = lerp(velocity.z, -SLIDE_SPEED, delta * lerp_speed)
-			SLIDE_SPEED -= 1
-	elif unlock_slide and can_slide and Input.is_action_just_pressed("ui_shift"):
-		start_slide()
-
-	if Input.is_action_just_pressed("ui_jump") and (is_on_floor() or can_double_jump):
-		if jump_counter == 0:
-			velocity.y = JUMP_VELOCITY
-			can_double_jump = true
-			jump_counter += 1
-		elif unlock_double_jump:
-			velocity.y = JUMP_VELOCITY
-			can_double_jump = false
 	
-	var target_x = float(int(current_lane))
-	var position_player = self.transform.origin
-	position_player.x = lerp(position_player.x, target_x, delta * lerp_speed) # Mouv horizontal
-	self.transform.origin = position_player
+	handle_slide(delta)
+	handle_jump()
+	handle_lane_position(delta)
 	
 	if terrain_controller: # Le terrain déplace le joueur
 		var terrain_velocity = terrain_controller.terrain_velocity
@@ -144,20 +124,12 @@ func _physics_process(delta):
 		unlock_double_jump = false
 		multiply = 1
 		
-	if SPEED >= 100 and is_mutated:
-		find_child("TrailsSPEED").emitting = true
-		find_child("Trails").emitting = false
-	elif SPEED >= 100 and not is_mutated:
-		find_child("TrailsSPEED").emitting = false
-		find_child("Trails").emitting = true
-	else:
-		find_child("TrailsSPEED").emitting = false
-		find_child("Trails").emitting = false
-	
+	handle_trail()
 	check_lane(delta)
 	move_and_slide()
 	handle_rythme()
 	handle_speed_effect(delta)
+	
 	var balls = [
 		get_node("ball"),
 		get_node("ball1"),
@@ -187,14 +159,17 @@ func _physics_process(delta):
 				balls[i].position.x = x
 				balls[i].position.y = 576
 				i = i +1
-			
 		dif = 9.62
 	
-	if (player_camera and global_transform.origin.z > player_camera.global_transform.origin.z) or global_transform.origin.y < -1:
+	if (player_camera and global_transform.origin.z > player_camera.global_transform.origin.z + 0.3) or global_transform.origin.y < -1:
 		die()
 	
+	handle_ui()
+
+func handle_ui():
 	score_label.text = str(score)
 	rythme_label.text = str(rythme)
+	
 	if rythme != last_rythme:
 		last_rythme = rythme
 		if rythme == "NANI ?!" || rythme == "ON TIME":
@@ -229,6 +204,44 @@ func _physics_process(delta):
 	else:
 		wasabi.size.x = (mutation.get_time_left() *515)/5
 		wasabi["theme_override_styles/panel"].region_rect = Rect2(0,0,(mutation.get_time_left()*929)/5,259)
+
+func handle_lane_position(delta):
+	var target_x = float(int(current_lane))
+	var position_player = self.transform.origin
+	position_player.x = lerp(position_player.x, target_x, delta * lerp_speed) # Mouv horizontal
+	self.transform.origin = position_player
+
+func handle_slide(delta):
+	if sliding:
+		slide_timer -= delta
+		if slide_timer <= 0:
+			end_slide()
+		else:
+			velocity.z = lerp(velocity.z, -SLIDE_SPEED, delta * lerp_speed)
+			SLIDE_SPEED -= 1
+	elif unlock_slide and can_slide and Input.is_action_just_pressed("ui_shift"):
+		start_slide()
+
+func handle_jump():
+	if Input.is_action_just_pressed("ui_jump") and (is_on_floor() or can_double_jump):
+		if jump_counter == 0:
+			velocity.y = JUMP_VELOCITY
+			can_double_jump = true
+			jump_counter += 1
+		elif unlock_double_jump:
+			velocity.y = JUMP_VELOCITY
+			can_double_jump = false
+
+func handle_trail():
+	if SPEED >= 100 and is_mutated:
+		find_child("TrailsSPEED").emitting = true
+		find_child("Trails").emitting = false
+	elif SPEED >= 100 and not is_mutated:
+		find_child("TrailsSPEED").emitting = false
+		find_child("Trails").emitting = true
+	else:
+		find_child("TrailsSPEED").emitting = false
+		find_child("Trails").emitting = false
 
 func check_lane(delta):
 	var position_player = self.transform.origin

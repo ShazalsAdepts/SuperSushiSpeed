@@ -129,6 +129,7 @@ func _physics_process(delta):
 	move_and_slide()
 	handle_rythme()
 	handle_speed_effect(delta)
+	
 	"""
 	var balls = [
 		get_node("ball"),
@@ -163,6 +164,7 @@ func _physics_process(delta):
 				i = i +1
 		dif = musique.stream.get_length() #* 1 / musique.pitch_scale
 	"""
+	
 	if (player_camera and global_transform.origin.z > player_camera.global_transform.origin.z + 0.3) or global_transform.origin.y < -1:
 		die()
 	
@@ -420,9 +422,10 @@ func _on_slide_cooldown_timer_timeout():
 
 func mutate(x):
 	update_score(x)
+	if !is_mutated:
+		get_node('greenwasabu/AnimationPlayer').play("comming")
 	is_mutated = true
 	mutation_cooldown_timer.start()
-	get_node('greenwasabu/AnimationPlayer').play("comming")
 	find_child("Sushi").mesh = sushi_muscle
 
 func _on_mutation_cooldown_timer_timeout():

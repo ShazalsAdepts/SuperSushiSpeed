@@ -83,3 +83,8 @@ func sum(arr:Array):
 	for i in arr:
 		result+=i
 	return result
+
+func _on_button_reset_pressed():
+	Global.ping = 0
+	ping = 0
+	label_last_ping_title.text = str(ping)

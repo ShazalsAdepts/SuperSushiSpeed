@@ -81,9 +81,18 @@ theme_override_styles/disabled = SubResource("StyleBoxEmpty_0bah4")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_ahfgp")
 text = "Start"
 
-[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 80)
+[node name="button_reset" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 0
+theme_override_colors/font_pressed_color = Color(0.545098, 0.0784314, 0.0862745, 1)
+theme_override_colors/font_hover_color = Color(0.745098, 0.360784, 0.286275, 1)
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxEmpty_lyviv")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_p06r1")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_c6e5s")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_0bah4")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ahfgp")
+text = "Reset"
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -141,4 +150,5 @@ volume_db = -5.0
 bus = &"SFX"
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/button_start" to="." method="_on_button_start_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/button_reset" to="." method="_on_button_reset_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/button_quit" to="." method="_on_button_back_pressed"]

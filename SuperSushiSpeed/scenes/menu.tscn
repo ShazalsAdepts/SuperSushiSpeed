@@ -16,10 +16,10 @@
 [ext_resource type="Texture2D" uid="uid://psbfhxgc2yp3" path="res://assets/ui/tuto.PNG" id="9_tiung"]
 [ext_resource type="Script" path="res://scripts/ControlVideo.gd" id="10_c0xwu"]
 [ext_resource type="AudioStream" uid="uid://caj84cpccqsnn" path="res://son/kick.mp3" id="10_gb5uo"]
-[ext_resource type="PackedScene" uid="uid://3traybu0cw1i" path="res://scenes/input_button.tscn" id="14_7gu46"]
+[ext_resource type="PackedScene" uid="uid://d4ao3xixeb7k1" path="res://scenes/input_button.tscn" id="14_7gu46"]
 [ext_resource type="Script" path="res://scripts/ControlControls.gd" id="14_ufsc4"]
 [ext_resource type="ArrayMesh" uid="uid://bxmqkmha8ucx7" path="res://assets/terrain/can.obj" id="20_jlv78"]
-[ext_resource type="ArrayMesh" uid="uid://o8ai3o0jbtcc" path="res://assets/sushi/sushiV2Flex1.obj" id="20_yfkw2"]
+[ext_resource type="ArrayMesh" uid="uid://vhrnfebypa6g" path="res://assets/sushi/sushiV2Flex1.obj" id="20_yfkw2"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_kwyje"]
 size = Vector2(100, 100)
@@ -96,7 +96,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(2.54511, 2.2189, -2.35581)]
+"values": [Vector3(0.403376, 56.4088, -2.68303)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -108,7 +108,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(-0.349066, 2.68732, 7.63975e-09)]
+"values": [Vector3(-0.162316, -2.70701, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_hachs"]
@@ -221,7 +221,7 @@ size = Vector2i(1280, 720)
 render_target_update_mode = 4
 
 [node name="Camera3D" type="Camera3D" parent="background/SubViewportContainer/SubViewport"]
-transform = Transform3D(-0.89858, -0.150082, 0.412345, 7.17901e-09, 0.939693, 0.34202, -0.438809, 0.307333, -0.844389, 2.54511, 2.2189, -2.35581)
+transform = Transform3D(-0.907046, 0.0680405, -0.415497, 0, 0.986856, 0.161604, 0.421032, 0.146582, -0.895123, 0.403376, 56.4088, -2.68303)
 current = true
 
 [node name="SpeedEffect" type="ColorRect" parent="."]
@@ -440,6 +440,54 @@ offset_right = 1168.0
 offset_bottom = 711.0
 theme_override_font_sizes/font_size = 21
 text = "Andinox"
+
+[node name="LinkAndinox" type="LinkButton" parent="Control"]
+layout_mode = 0
+offset_left = 1135.0
+offset_right = 1263.0
+offset_bottom = 42.0
+theme_override_colors/font_color = Color(0.976471, 0.976471, 0.976471, 1)
+theme_override_colors/font_hover_color = Color(0.878431, 0.176471, 0.180392, 1)
+theme_override_font_sizes/font_size = 30
+text = "Andinox"
+underline = 1
+uri = "https://github.com/andinox"
+
+[node name="LinkDarkelik" type="LinkButton" parent="Control"]
+layout_mode = 0
+offset_left = 736.0
+offset_right = 864.0
+offset_bottom = 42.0
+theme_override_colors/font_color = Color(0.976471, 0.976471, 0.976471, 1)
+theme_override_colors/font_hover_color = Color(0.878431, 0.176471, 0.180392, 1)
+theme_override_font_sizes/font_size = 30
+text = "Darkelik"
+underline = 1
+uri = "https://www.instagram.com/darkelik/"
+
+[node name="LinkKomixa" type="LinkButton" parent="Control"]
+layout_mode = 0
+offset_left = 879.0
+offset_right = 995.0
+offset_bottom = 42.0
+theme_override_colors/font_color = Color(0.976471, 0.976471, 0.976471, 1)
+theme_override_colors/font_hover_color = Color(0.878431, 0.176471, 0.180392, 1)
+theme_override_font_sizes/font_size = 30
+text = "Komixa"
+underline = 1
+uri = "https://www.instagram.com/toto_mtoketchup/"
+
+[node name="LinkRosago" type="LinkButton" parent="Control"]
+layout_mode = 0
+offset_left = 1011.0
+offset_right = 1124.0
+offset_bottom = 42.0
+theme_override_colors/font_color = Color(0.976471, 0.976471, 0.976471, 1)
+theme_override_colors/font_hover_color = Color(0.878431, 0.176471, 0.180392, 1)
+theme_override_font_sizes/font_size = 30
+text = "Rosago"
+underline = 1
+uri = "https://www.instagram.com/marius_piris/"
 
 [node name="ControlSettings" type="Control" parent="." node_paths=PackedStringArray("menu", "video", "audio", "controls")]
 visible = false

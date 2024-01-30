@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://bin074aernrdp"]
 
-[ext_resource type="Material" path="res://assets/terrain_0.tres" id="1_42jiq"]
+[ext_resource type="Material" uid="uid://g4n6f6ld7vg2" path="res://assets/terrain_0.tres" id="1_42jiq"]
 [ext_resource type="ArrayMesh" uid="uid://0mli2ysjcqyk" path="res://assets/terrain/belt.obj" id="1_ivmxp"]
 [ext_resource type="ArrayMesh" uid="uid://c22vmpeitcfdu" path="res://assets/terrain/makiPlate1.obj" id="3_pe5h5"]
 [ext_resource type="ArrayMesh" uid="uid://dbvg8gi5u7r8t" path="res://assets/terrain/riceBowl.obj" id="4_025jp"]

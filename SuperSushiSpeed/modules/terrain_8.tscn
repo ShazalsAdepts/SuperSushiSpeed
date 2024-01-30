@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=3 uid="uid://b7em5nclcedhd"]
 
 [ext_resource type="ArrayMesh" uid="uid://0mli2ysjcqyk" path="res://assets/terrain/belt.obj" id="1_c0amg"]
-[ext_resource type="Material" path="res://assets/terrain_0.tres" id="1_doprf"]
+[ext_resource type="Material" uid="uid://g4n6f6ld7vg2" path="res://assets/terrain_0.tres" id="1_doprf"]
 [ext_resource type="ArrayMesh" uid="uid://d0abtngy35ys1" path="res://assets/terrain/soySauceBottle.obj" id="2_gpk6q"]
 [ext_resource type="ArrayMesh" uid="uid://bxmqkmha8ucx7" path="res://assets/terrain/can.obj" id="4_7r7jl"]
 [ext_resource type="ArrayMesh" uid="uid://bbhirsqpkk8fj" path="res://assets/terrain/stairs.obj" id="4_qcfry"]

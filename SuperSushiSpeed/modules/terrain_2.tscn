@@ -2,7 +2,7 @@
 
 [ext_resource type="ArrayMesh" uid="uid://dwsq6sg7m7pai" path="res://assets/terrain/teaCup.obj" id="1_3nn0g"]
 [ext_resource type="ArrayMesh" uid="uid://0mli2ysjcqyk" path="res://assets/terrain/belt.obj" id="1_q1csq"]
-[ext_resource type="Material" path="res://assets/terrain_0.tres" id="1_rgwxq"]
+[ext_resource type="Material" uid="uid://g4n6f6ld7vg2" path="res://assets/terrain_0.tres" id="1_rgwxq"]
 [ext_resource type="ArrayMesh" uid="uid://yw08bnjt2uf8" path="res://assets/terrain/makiPlate.obj" id="3_haagt"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_l00jt"]

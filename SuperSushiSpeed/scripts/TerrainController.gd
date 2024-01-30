@@ -46,6 +46,8 @@ func _increase_speed(delta: float) -> void:
 		terrain_velocity += acceleration * delta
 
 func _init_blocks(number_of_blocks: int) -> void:
+	if TerrainBlocks[0] == null:
+		_load_terrain_scenes(terrian_blocks_path)
 	for block_index in number_of_blocks:
 		var block
 		if block_index == 0:
@@ -78,6 +80,6 @@ func _append_to_far_edge(target_block: MeshInstance3D, appending_block: MeshInst
 func _load_terrain_scenes(target_path: String) -> void:
 	var dir = DirAccess.open(target_path)
 	for i in range(20):
-		print("modules/terrain_"+str(i)+".tscn")
-		var r = ResourceLoader.load("modules/terrain_"+str(i)+".tscn")
+		print("res://modules/terrain_"+str(i)+".tscn")
+		var r = ResourceLoader.load("res://modules/terrain_"+str(i)+".tscn")
 		TerrainBlocks.append(r)

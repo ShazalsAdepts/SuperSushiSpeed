@@ -4,7 +4,7 @@ extends Control
 @export var btn: OptionButton
 var window_size = ["Widowed", "FullScreen", "Borderless"]
 var index = 0
-var config_path = "res://usersave/config.cfg"
+var config_path = "user://usersave/config.cfg"
 @onready var config = ConfigFile.new()
 
 func _ready():

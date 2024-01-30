@@ -12,24 +12,24 @@ var player_id: String
 @onready var fumee = $"../background/Terrain_1/RectangleStanding_4/GPUParticles3D"
 @export var settings: Control
 
-var config_path = "usersave/config.cfg"
+var config_path = "user://usersave/config.cfg"
 @onready var config = ConfigFile.new()
 
 func _ready():
-	if FileAccess.file_exists("usersave/user_login.json"):
+	if Global.player_identifier != null:
 		print("file existe")
-		var de = FileAccess.open("usersave/user_login.json", FileAccess.READ)
-		var data = JSON.parse_string(de.get_as_text())
-		de.close()
+		#var de = FileAccess.open("res://usersave/user_login.json", FileAccess.READ)
+		#var data = JSON.parse_string(de.get_as_text())
+		#de.close()
 		var popup = get_node("../Panel")
 		var pseudo = get_node("Pseudo")
-		if data["player_identifier"] == null ||  data["player_identifier"] == "":
+		if 1 == 2:
 			popup.set_visible(true)
 		else:
 			popup.set_visible(false)
 			pseudo.set_visible(true)
 			get_node("deco").set_visible(true)
-			player_identifier = data["player_identifier"]
+			player_identifier = Global.player_identifier
 			var hearders = PackedStringArray(["Content-Type: application/json"])
 			var game = JSON.new().stringify({
 				"game_key" : API_KEY,
@@ -46,11 +46,12 @@ func _ready():
 			connectCurrent.request_completed.connect(_on_request_completed)
 	else:
 		print("not exist")
-		var de = FileAccess.open("usersave/user_login.json", FileAccess.WRITE)
-		de.store_string(JSON.new().stringify({"player_identifier":null}))
-		de.close()
 		var popup = get_node("../Panel")
 		popup.set_visible(true)
+		#var de = FileAccess.open("res://usersave/user_login.json", FileAccess.WRITE)
+		#de.store_string(JSON.new().stringify({"player_identifier":null}))
+		#de.close()
+		
 	
 	fumee.emitting = false
 	
@@ -109,10 +110,7 @@ func _on_request_completed(result, response_code, headers, body):
 	connectCurrent.queue_free()
 
 func load_session():
-	var de = FileAccess.open("usersave/user_login.json", FileAccess.READ)
-	var data = JSON.parse_string(de.get_as_text())
-	de.close()
-	player_identifier = data["player_identifier"]
+	player_identifier = Global.player_identifier
 	var hearders = PackedStringArray(["Content-Type: application/json"])
 	var game = JSON.new().stringify({
 		"game_key" : API_KEY,

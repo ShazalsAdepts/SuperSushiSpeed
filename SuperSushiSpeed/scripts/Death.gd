@@ -40,10 +40,7 @@ func set_score(x,y,on_time,late,not_late,mist):
 		score_set = true
 	
 func save_score():
-	var de = FileAccess.open("res://usersave/user_login.json", FileAccess.READ)
-	var data = JSON.parse_string(de.get_as_text())
-	de.close()
-	var player_identifier = data["player_identifier"]
+	var player_identifier = Global.player_identifier
 	var hearders = PackedStringArray(["Content-Type: application/json"])
 	var game = JSON.new().stringify({
 		"game_key" : API_KEY,

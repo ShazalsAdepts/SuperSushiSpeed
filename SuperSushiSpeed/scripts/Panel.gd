@@ -58,7 +58,6 @@ func on_rename_completed(result, response_code, headers, body):
 	pseudot.text = pseudo
 	pseudot.set_visible(true)
 	rename.queue_free()
-	var de = FileAccess.open("res://usersave/user_login.json", FileAccess.WRITE)
-	de.store_string(JSON.new().stringify({"player_identifier":player_identifier}))
+	Global.player_identifier = player_identifier
 	get_node(".").set_visible(false)
 	get_node("../Control/deco").set_visible(true)

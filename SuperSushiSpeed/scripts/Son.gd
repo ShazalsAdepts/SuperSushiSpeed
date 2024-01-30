@@ -2,7 +2,31 @@ extends AudioStreamPlayer
 
 var next_beat_index = 0
 
-var beats = []
+var beats = [
+	0.08,
+	0.10,
+	0.65,
+	1.10,
+	1.55,
+	1.85,
+	2.45,
+	3.05,
+	3.35,
+	3.50,
+	3.95,
+	4.25,
+	4.85,
+	5.45,
+	5.85,
+	6.35,
+	6.60,
+	7.21,
+	7.80,
+	8.15,
+	8.25,
+	8.75,
+	9.05
+]
 
 @export var musique: AudioStreamPlayer
 @export var player: CharacterBody3D
@@ -10,10 +34,12 @@ var beats = []
 var last_click = 0.0
 
 func _ready():
-	load_beats("res://son/fuck_noel_beat_times.txt")
+	pass
+	#load_beats("res://son/fuck_noel_beat_times.txt")
 
 func load_beats(path):
 	var file = FileAccess.open(path, FileAccess.READ)
+	print(file)
 	if file:
 		while not file.eof_reached():
 			var line = file.get_line()

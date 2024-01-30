@@ -93,6 +93,8 @@ var multiply = 1
 @onready var sushi_muscle_right = load("assets/sushi/sushiV2MOOSCLESRight.obj")
 @onready var sushi_muscle_left = load("assets/sushi/sushiV2MOOSCLESLeft.obj")
 
+func _on_ready():
+	pass
 func _physics_process(delta):
 	if not is_on_floor():
 		velocity.y -= gravity * 2 * delta

@@ -10,7 +10,7 @@ extends Control
 @onready var son_slider = $MarginContainer/GridContainer/MusicSetting/HSlider
 @onready var sfx_slider = $MarginContainer/GridContainer/SFXSetting/HSlider
 
-var config_path = "res://usersave/config.cfg"
+var config_path = "user://usersave/config.cfg"
 @onready var config = ConfigFile.new()
 
 func _ready():

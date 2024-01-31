@@ -448,7 +448,6 @@ theme_override_colors/font_hover_color = Color(0.878431, 0.176471, 0.180392, 1)
 theme_override_font_sizes/font_size = 30
 text = "Andinox"
 underline = 1
-uri = "https://github.com/andinox"
 
 [node name="LinkDarkelik" type="LinkButton" parent="Control"]
 layout_mode = 0
@@ -460,7 +459,6 @@ theme_override_colors/font_hover_color = Color(0.878431, 0.176471, 0.180392, 1)
 theme_override_font_sizes/font_size = 30
 text = "Darkelik"
 underline = 1
-uri = "https://www.instagram.com/darkelik/"
 
 [node name="LinkKomixa" type="LinkButton" parent="Control"]
 layout_mode = 0
@@ -472,7 +470,6 @@ theme_override_colors/font_hover_color = Color(0.878431, 0.176471, 0.180392, 1)
 theme_override_font_sizes/font_size = 30
 text = "Komixa"
 underline = 1
-uri = "https://www.instagram.com/toto_mtoketchup/"
 
 [node name="LinkRosago" type="LinkButton" parent="Control"]
 layout_mode = 0
@@ -484,7 +481,6 @@ theme_override_colors/font_hover_color = Color(0.878431, 0.176471, 0.180392, 1)
 theme_override_font_sizes/font_size = 30
 text = "Rosago"
 underline = 1
-uri = "https://www.instagram.com/marius_piris/"
 
 [node name="ControlSettings" type="Control" parent="." node_paths=PackedStringArray("menu", "video", "audio", "controls")]
 visible = false

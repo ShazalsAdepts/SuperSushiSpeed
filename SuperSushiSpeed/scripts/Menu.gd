@@ -16,6 +16,7 @@ var player_id: String
 #@onready var config = ConfigFile.new()
 
 func _ready():
+	"""
 	if Global.player_identifier != null:
 		#print("file existe")
 		#var de = FileAccess.open("res://usersave/user_login.json", FileAccess.READ)
@@ -51,7 +52,7 @@ func _ready():
 		#var de = FileAccess.open("res://usersave/user_login.json", FileAccess.WRITE)
 		#de.store_string(JSON.new().stringify({"player_identifier":null}))
 		#de.close()
-		
+	"""
 	
 	fumee.emitting = false
 	
@@ -110,6 +111,7 @@ func _on_request_completed(result, response_code, headers, body):
 	connectCurrent.queue_free()
 
 func load_session():
+	"""
 	player_identifier = Global.player_identifier
 	var hearders = PackedStringArray(["Content-Type: application/json"])
 	var game = JSON.new().stringify({
@@ -126,6 +128,8 @@ func load_session():
 		game
 	)
 	getsession.request_completed.connect(_on_load_completed)
+	"""
+	pass
 	
 func _on_load_completed(result, response_code, headers, body):
 	var json = JSON.parse_string(body.get_string_from_utf8())

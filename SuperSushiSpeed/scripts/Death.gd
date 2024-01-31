@@ -10,20 +10,17 @@ var session_token: String
 var player_id: int
 var player_name: String
 var score_set: bool = false
-var play_anim = false
+var play_anim = true # changé pour tester si ca enlève le virus mdr
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
-
 
 func _process(delta):
 	if play_anim == true:
 		get_node("best/AnimationPlayer").play("wow")
 
-
 func _on_restart_pressed():
 	get_tree().change_scene_to_file("res://scenes/count_down.tscn")
-
 
 func _on_back_pressed():
 	get_tree().change_scene_to_file("res://scenes/menu.tscn")
@@ -36,7 +33,7 @@ func set_score(x,y,on_time,late,not_late,mist):
 		get_node("label_score").text = str(x)
 		get_node("beatsmiss").text = str(mist+late+not_late)
 		get_node("perfect").text = str(on_time)
-		save_score()
+		#save_score()
 		score_set = true
 	
 func save_score():

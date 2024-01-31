@@ -93,8 +93,7 @@ var multiply = 1
 @onready var sushi_muscle_right = load("assets/sushi/sushiV2MOOSCLESRight.obj")
 @onready var sushi_muscle_left = load("assets/sushi/sushiV2MOOSCLESLeft.obj")
 
-func _on_ready():
-	pass
+
 func _physics_process(delta):
 	if not is_on_floor():
 		velocity.y -= gravity * 2 * delta
@@ -132,40 +131,10 @@ func _physics_process(delta):
 	handle_rythme()
 	handle_speed_effect(delta)
 	
-	"""
-	var balls = [
-		get_node("ball"),
-		get_node("ball1"),
-		get_node("ball2"),
-		get_node("ball3"),
-		get_node("ball4"),
-		get_node("ball5"),
-		get_node("ball6")
-	]
-	var i = 0
-	for ball in balls:
-		ball.set_visible(false)
-	"""
-	
 	for ballss in son.beats:
 		var inco = ballss- musique.get_playback_position()
 		if inco < 0.1 && inco > 0:
 				get_node("Panel3/AnimationPlayer").play("beats_up")
-	
-	"""
-	var dif = 0
-	for income in range(2):
-		for rly_income in range(1, 23):
-			var beats_time = son.beats[rly_income]
-			var incoming_in = beats_time - (dif -  musique.get_playback_position())
-			if incoming_in < 2 && incoming_in > 0:
-				balls[i].set_visible(true)
-				var x = ((incoming_in)*974)/2+100
-				balls[i].position.x = x
-				balls[i].position.y = 576
-				i = i +1
-		dif = musique.stream.get_length() #* 1 / musique.pitch_scale
-	"""
 	
 	if (player_camera and global_transform.origin.z > player_camera.global_transform.origin.z + 0.3) or global_transform.origin.y < -1:
 		die()

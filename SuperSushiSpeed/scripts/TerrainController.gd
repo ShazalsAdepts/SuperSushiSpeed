@@ -80,6 +80,5 @@ func _append_to_far_edge(target_block: MeshInstance3D, appending_block: MeshInst
 func _load_terrain_scenes(target_path: String) -> void:
 	var dir = DirAccess.open(target_path)
 	for i in range(20):
-		print("res://modules/terrain_"+str(i)+".tscn")
 		var r = ResourceLoader.load("res://modules/terrain_"+str(i)+".tscn")
 		TerrainBlocks.append(r)

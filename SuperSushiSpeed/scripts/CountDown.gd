@@ -4,6 +4,7 @@ var temps_restant = 4  # Durée du décompte en secondes
 @export var son: AudioStreamPlayer
 var last_time = 4
 var labels : Array
+
 func _ready():
 	labels = [
 		get_node("0"),

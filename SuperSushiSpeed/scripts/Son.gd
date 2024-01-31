@@ -33,9 +33,6 @@ var beats = [
 
 var last_click = 0.0
 
-func _ready():
-	pass
-	#load_beats("res://son/fuck_noel_beat_times.txt")
 
 func load_beats(path):
 	var file = FileAccess.open(path, FileAccess.READ)

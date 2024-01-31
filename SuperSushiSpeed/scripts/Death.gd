@@ -61,7 +61,7 @@ func get_seesion(result, response_code, headers, body):
 	session_token = json["session_token"]
 	player_id = json["player_id"]
 	player_name = json["player_name"]
-	var header = ["x-session-token:"+session_token]
+	var header = ["x-session-token:" + session_token]
 	get_score_http = HTTPRequest.new()
 	add_child(get_score_http)
 	get_score_http.request_completed.connect(score_getted)
@@ -70,7 +70,6 @@ func get_seesion(result, response_code, headers, body):
 		header,
 		HTTPClient.METHOD_GET
 		)
-
 
 func score_getted(result, response_code, headers, body):
 	var json = JSON.parse_string(body.get_string_from_utf8())
@@ -81,6 +80,7 @@ func score_getted(result, response_code, headers, body):
 		save()
 	else:
 		get_node("best").set_visible(false)
+
 func save():	
 	var data = { "score": str(score), "member_id":player_name, "matadata": combo}
 	var header = ["Content-Type: application/json", "x-session-token:"+session_token]
@@ -89,7 +89,6 @@ func save():
 	submit_score_http.request_completed.connect(_on_upload_score_request_completed)
 	# Send request
 	submit_score_http.request("https://api.lootlocker.io/game/leaderboards/"+leaderboard_key+"/submit", header, HTTPClient.METHOD_POST, JSON.stringify(data))
-
 
 func _on_upload_score_request_completed(result, response_code, headers, body):
 	var json = JSON.new()
